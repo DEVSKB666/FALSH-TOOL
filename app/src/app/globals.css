@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------- */
+/*  shadcn/ui design tokens - exposed as CSS variables so the         */
+/*  ThemeProvider can switch the whole palette by toggling a class    */
+/*  on <html>.                                                        */
+/* ----------------------------------------------------------------- */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 0 72% 51%; /* MZA red */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 0 72% 51%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 8% 6.5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 0 72% 51%;
+  }
+
+  /* "racing" preset - red/black with a hint of carbon */
+  .theme-racing {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
+    --primary: 0 92% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 96%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 92% 50%;
+  }
+
+  /* "neon" preset - inspired by mecha-tuner UIs */
+  .theme-neon {
+    --background: 240 30% 5%;
+    --foreground: 180 100% 90%;
+    --card: 240 30% 8%;
+    --card-foreground: 180 100% 90%;
+    --primary: 320 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 30% 12%;
+    --secondary-foreground: 180 100% 90%;
+    --muted: 240 25% 14%;
+    --muted-foreground: 200 30% 70%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 240 30% 5%;
+    --border: 240 25% 18%;
+    --input: 240 25% 18%;
+    --ring: 320 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family:
+      var(--font-prompt),
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    /* prevent text selection so the app feels native */
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  /* But DO allow selection inside text inputs / textareas */
+  input,
+  textarea,
+  [contenteditable],
+  .selectable {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+}
+
+/* ---------- Custom utility classes used by background presets ---- */
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .bg-radial-fade {
+    background:
+      radial-gradient(
+        ellipse at top,
+        hsl(var(--primary) / 0.2),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at bottom,
+        hsl(var(--accent) / 0.2),
+        transparent 50%
+      );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Tauri/Web double-render guard - only show after hydration */
+.no-fouc {
+  visibility: hidden;
+}
+.fouc-ready {
+  visibility: visible;
+}

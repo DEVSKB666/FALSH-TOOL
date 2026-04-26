@@ -1,0 +1,8 @@
+Test-Path : Cannot bind argument to parameter 'Path' because it is an empty string.
+At C:\Users\rovki\Downloads\MAZA\tools\apply_renames_v2.ps1:34 char:21
++ if (-not (Test-Path $RenameMap)) { Write-Error "Missing $RenameMap";  ...
++                     ~~~~~~~~~~
+    + CategoryInfo          : InvalidData: (:) [Test-Path], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ParameterArgumentValidationErrorEmptyStringNotAllowed,Microsoft.PowerShell.Commands.Test 
+   PathCommand
+ 

@@ -1,0 +1,5002 @@
+﻿[
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2005",
+        "value":  "Arial Black"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2006",
+        "value":  "Showcard Gothic"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2007",
+        "value":  "TUNER"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2008",
+        "value":  "M Z A T U N E R   E D I T I O N"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2009",
+        "value":  "---"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+200A",
+        "value":  "_"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+200A_U+200B",
+        "value":  "BIN Files (*.bin)|*.bin|All Files (*.*)|*.*"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+200A_U+2010",
+        "value":  "/"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+200A_U+2011",
+        "value":  "https://mza-tuner.site/Sharefiles/"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+200A_U+2012",
+        "value":  "ดาวน์โหลดและบันทึกไฟล์สําเร็จแล้วครับ!"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+200A_U+2013",
+        "value":  "MZATUNER"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+200A_U+2014",
+        "value":  "ไม่สามารถดาวน์โหลดไฟล์ได้: "
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+200A_U+2015",
+        "value":  "SYSTEM"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+200A_U+2022",
+        "value":  "กำลังดึงข้อมูลโฟลเดอร์ "
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+200A_U+2024",
+        "value":  "..."
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+200A_U+2025",
+        "value":  "กำลังเชื่อมต่อเซิร์ฟเวอร์ส่วนกลาง..."
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+200A_U+2027",
+        "value":  "รอสักครู่..."
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+200A_U+2028",
+        "value":  "https://82.26.104.124/Sharefiles/"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+200A_U+2029",
+        "value":  "href=\"([^\"/]+)\""
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+200A_U+202A",
+        "value":  "?C="
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+200A_U+202B",
+        "value":  "Parent Directory"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+200A_U+202C",
+        "value":  ".hex"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+200A_U+202D",
+        "value":  ".zip"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+200A_U+202E",
+        "value":  ".rar"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+202F",
+        "value":  ".txt"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+200A_U+2032",
+        "value":  "ผู้จูนทางคลาวด์"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+200A_U+2035",
+        "value":  "D2"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+200A_U+2033",
+        "value":  "ระบบคลาวด์"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+200A_U+2036",
+        "value":  "ยังไม่มีไฟล์แชร์บนเซิร์ฟเวอร์"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+200A_U+203E",
+        "value":  "เชื่อมต่อเซิร์ฟเวอร์ไม่ได้: "
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+200A_U+2047",
+        "value":  "โหลดไฟล์ .bin"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+200A_U+2048",
+        "value":  "เจาะระบบแทรกโค้ด... {0}%"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+200A_U+2049",
+        "value":  "กำลังคำนวณค่า..."
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+200A_U+204A",
+        "value":  "กำลังเขียนทับข้อมูล ROM"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+200A_U+204B",
+        "value":  "ซิงค์ตารางยิงหอบตารางที่: {0}"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+200A_U+204C",
+        "value":  "เคลียร์แคชระบบเตรียมใช้งาน..."
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+200A_U+204D",
+        "value":  "การจูนหอบสำเร็จสมบูรณ์!"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+200A_U+204E",
+        "value":  "เริ่มกระบวนการ / บันทึกยิงหอบ"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+200A_U+204F",
+        "value":  "คำสั่งจูนหอบสำเร็จ! ระดับ GHOST CAM ถูกฝังลงใน ROM รหัสนี้พร้อมใช้งานแล้ว"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+200A_U+2050",
+        "value":  "MZATUNER EDGE"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+200A_U+2051",
+        "value":  "กรุณาเลือกไฟล์ .BIN เป้าหมายให้ถูกต้องก่อนครับ!"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+200A_U+2052",
+        "value":  "ALERT"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+200A_U+2053",
+        "value":  "การเขียน ไฟล์ เสร็จสิ้น\r\nผล = ล้มเหลว!!\r\nโปรด ปิดเปิดกุญแจ ใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+200A_U+2054",
+        "value":  "การเขียนไฟล์เสร็จสิ้น"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+200A_U+2055",
+        "value":  "อัดไฟล์สำเร็จ!! ปิดเปิดกุญแจใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+200A_U+2056",
+        "value":  "ลบ ล้มเหลว, ECM บล็อค"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+200A_U+2057",
+        "value":  "การเชื่อมต่อล้มเหลว กรุณาลองใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+200A_U+2058",
+        "value":  "ต่ำมาก"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+200A_U+2059",
+        "value":  "อ่อนนิดๆ"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+200A_U+205A",
+        "value":  "ปกติ"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+200A_U+205B",
+        "value":  "Over"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+200A_U+205C",
+        "value":  " V  {0:F1} ({1})"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+200A_U+205D",
+        "value":  "{0:F1} V"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+200A_U+205E",
+        "value":  "label_batStatus"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+205F",
+        "value":  "Worker crashed"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+200A_U+2060",
+        "value":  "เกิดข้อผิดพลาดในเธรดสื่อสาร"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+200A_U+2061",
+        "value":  "DEC: {0} {1}   HEX: {2:X2} {3:X2}   ASCII: \u0027{4}{5}\u0027"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+200A_U+2062",
+        "value":  "STATUS: รอข้อมูลรหัสผ่าน (Hex 2 หลัก)"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+200A_U+2063",
+        "value":  "[^\\u0000-\\u007F\\u0E00-\\u0E7F]+"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+200A_U+2064",
+        "value":  "กำลังเรียกใช้งาน: "
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+200A_U+206A",
+        "value":  "คุณต้องการรีสตาร์ทโปรแกรมใช่หรือไม่?"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+200A_U+206B",
+        "value":  "ยืนยันการรีสตาร์ท"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+200A_U+206C",
+        "value":  "กรุณาปิดสวิตซ์กุญแจก่อน แล้วกด OK เพื่อเข้าสู่โหมดปลอดภัย"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+200A_U+206D",
+        "value":  "รอเปิดสวิตซ์ กุญแจ....."
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+200A_U+206E",
+        "value":  "ไม่สามารถเข้าสู่โหมด Security ได้ ❌"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+200A_U+206F",
+        "value":  "ล้มเหลว"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+200A_U+3000",
+        "value":  "ลบ FlashCount สำเร็จ ✅\n\nกรุณาปิดสวิตซ์กุญแจ แล้วเปิดใหม่\nระบบจะรีเฟรชโปรแกรมใหม่"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+00A0",
+        "value":  "เกิดข้อผิดพลาด ❌\n"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+1680",
+        "value":  "กรุณาปิดสวิตซ์กุญแจก่อน แล้วกด OK เพื่อดำเนินการต่อ"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2000",
+        "value":  "ยกเลิกการทำงานแล้ว ❌"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2001",
+        "value":  "รอปุ่มเป็นสีเขียว และ เปิดสวิตซ์กุญแจเพื่อเข้าสู่โหมด Security "
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2002",
+        "value":  "License ไม่ถูกต้อง หรือหมดอายุ ❌\n"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2003",
+        "value":  "คุณต้องการลบโค้ดใช่หรือไม่?"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2004",
+        "value":  "ยืนยันการทำงาน"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2005",
+        "value":  "ผลการทำงาน"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2006",
+        "value":  "ปลดการจ่ายน้ำมัน TPS 0 % (MZATUNER EDGE)"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2007",
+        "value":  "BIN Files (*.bin)|*.bin|All files (*.*)|*.*"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2008",
+        "value":  "📁 "
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+2009",
+        "value":  "โหลดไฟล์สำเร็จ: {0}\n(ขนาด: {1} KB)"
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+200A",
+        "value":  "พบข้อผิดพลาดในการอ่านไฟล์: "
+    },
+    {
+        "method":  "​​",
+        "codepoints":  "U+200B_U+200B",
+        "value":  "ERROR"
+    },
+    {
+        "method":  "​‐",
+        "codepoints":  "U+200B_U+2010",
+        "value":  "กรุณาเลือกไฟล์ต้นฉบับก่อนครับ!"
+    },
+    {
+        "method":  "​‑",
+        "codepoints":  "U+200B_U+2011",
+        "value":  "ไฟล์ต้นฉบับมีขนาดเล็กเกินไป ไม่ใช่สมอง 48KB ที่สมบูรณ์!"
+    },
+    {
+        "method":  "​‒",
+        "codepoints":  "U+200B_U+2012",
+        "value":  "แพทช์ปลดน้ำมัน (48KB) ที่ตำแหน่ง 0x8F12 เรียบร้อยแล้ว!\nค่าที่ถูกเขียน: แถว 1 = {0:X4}, แถว 2 = {1:X4}\n\n(อย่าลืมกดปุ่มบันทึกไฟล์ออกด้วยนะครับ)"
+    },
+    {
+        "method":  "​–",
+        "codepoints":  "U+200B_U+2013",
+        "value":  "กรุณากรอกตัวเลขในช่องให้ถูกต้อง!"
+    },
+    {
+        "method":  "​—",
+        "codepoints":  "U+200B_U+2014",
+        "value":  "ไฟล์ต้นฉบับมีขนาดเล็กเกินไป ไม่ใช่สมอง 64KB ที่สมบูรณ์!"
+    },
+    {
+        "method":  "​―",
+        "codepoints":  "U+200B_U+2015",
+        "value":  "แพทช์ปลดน้ำมัน (64KB) ที่ตำแหน่ง 0x99A5 (Offset ของ 0x19A5) เรียบร้อยแล้ว!\nค่าที่ถูกเขียน: แถว 1 = {0:X4}, แถว 2 = {1:X4}\n\n(อย่าลืมกดปุ่มบันทึกไฟล์ออกด้วยนะครับ)"
+    },
+    {
+        "method":  "​•",
+        "codepoints":  "U+200B_U+2022",
+        "value":  "ไม่มีข้อมูลไฟล์ให้บันทึก กรุณาโหลดไฟล์ก่อนครับ!"
+    },
+    {
+        "method":  "​․",
+        "codepoints":  "U+200B_U+2024",
+        "value":  "MOD_TPS_"
+    },
+    {
+        "method":  "​‥",
+        "codepoints":  "U+200B_U+2025",
+        "value":  "บันทึกไฟล์สำเร็จเรียบร้อย!\n"
+    },
+    {
+        "method":  "​‧",
+        "codepoints":  "U+200B_U+2027",
+        "value":  "ไม่สามารถบันทึกไฟล์ได้: "
+    },
+    {
+        "method":  "​\u2028",
+        "codepoints":  "U+200B_U+2028",
+        "value":  "กรุณาเลือกไฟล์ในตาราง (ด้านซ้าย) ที่ต้องการจะบันทึกก่อนนะครับ!"
+    },
+    {
+        "method":  "​\u2029",
+        "codepoints":  "U+200B_U+2029",
+        "value":  "ลืมแนบไฟล์ครับ! กรุณาเลือกไฟล์ก่อนอัพโหลด"
+    },
+    {
+        "method":  "​‪",
+        "codepoints":  "U+200B_U+202A",
+        "value":  "ชื่อผู้จูน"
+    },
+    {
+        "method":  "​‫",
+        "codepoints":  "U+200B_U+202B",
+        "value":  "กรุณาใส่ชื่อผู้จูนหรือสำนักก่อนครับ"
+    },
+    {
+        "method":  "​‬",
+        "codepoints":  "U+200B_U+202C",
+        "value":  "กำลังอัพโหลด..."
+    },
+    {
+        "method":  "​‭",
+        "codepoints":  "U+200B_U+202D",
+        "value":  "https://82.26.104.124/Sharefiles/upload.php"
+    },
+    {
+        "method":  "​‮",
+        "codepoints":  "U+200B_U+202E",
+        "value":  "?tuner="
+    },
+    {
+        "method":  "​ ",
+        "codepoints":  "U+200B_U+202F",
+        "value":  "\u0026details="
+    },
+    {
+        "method":  "​′",
+        "codepoints":  "U+200B_U+2032",
+        "value":  "\u0026ecu="
+    },
+    {
+        "method":  "​‵",
+        "codepoints":  "U+200B_U+2035",
+        "value":  "POST"
+    },
+    {
+        "method":  "​″",
+        "codepoints":  "U+200B_U+2033",
+        "value":  "อัพโหลดเรียบร้อย! ขอบคุณที่แบ่งปันสังคมจูนเนอร์ครับ"
+    },
+    {
+        "method":  "​‶",
+        "codepoints":  "U+200B_U+2036",
+        "value":  "เกิดข้อผิดพลาดในการส่งไฟล์:\r\n"
+    },
+    {
+        "method":  "​‾",
+        "codepoints":  "U+200B_U+203E",
+        "value":  "\r\n(ต้องสร้างไฟล์ upload.php บน Server ของคุณด้วยนะครับ)"
+    },
+    {
+        "method":  "​⁇",
+        "codepoints":  "U+200B_U+2047",
+        "value":  "System Ready. Welcome Master."
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2008_U+202B",
+        "value":  "📂 เลือกไฟล์ .bin (ต้นฉบับ)"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2008_U+202C",
+        "value":  "[-] ใช้งาน (แพทช์ข้อมูล)"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2008_U+202D",
+        "value":  "[+] บันทึกไฟล์ออก"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2008_U+202E",
+        "value":  "MZA CC CALCULATOR PRO"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+202F",
+        "value":  "{0:F1} CC"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2008_U+2032",
+        "value":  "ENGINE DISPLACEMENT RESULT"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2008_U+2035",
+        "value":  "ลูกสูบ (มม.):"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2008_U+2033",
+        "value":  "ชัก (มม.):"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2008_U+2036",
+        "value":  "[ PRO TYPING ENABLED ]"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2008_U+203E",
+        "value":  "Drag the File to Select .."
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2008_U+2047",
+        "value":  "Bin files (*.bin)|*.bin|All files (*.*)|*.*"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2008_U+2048",
+        "value":  "RPM"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2008_U+2049",
+        "value":  "A"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2008_U+204A",
+        "value":  "%"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2008_U+204B",
+        "value":  "F1"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2008_U+204C",
+        "value":  "V"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2008_U+204D",
+        "value":  ":"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2008_U+204E",
+        "value":  " ("
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2008_U+204F",
+        "value":  ")"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2008_U+2050",
+        "value":  "ID{0:D4}"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2008_U+2051",
+        "value":  "c:\\MZATUNER\\data.ini"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2008_U+2052",
+        "value":  "MZA_TUNER_2026_SINGLE_INSTANCE_MUTEX"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2008_U+2053",
+        "value":  "โปรแกรม MZA-TUNER กำลังทำงานอยู่แล้ว ไม่สามารถเปิดซ้อนได้ครับ!"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2008_U+2054",
+        "value":  "แจ้งเตือนระบบ"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2008_U+2055",
+        "value":  "กำลังเริ่มต้นระบบ MZA-TUNER..."
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2008_U+2056",
+        "value":  "กำลังโหลดข้อมูลตารางแมพเครื่องยนต์..."
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2008_U+2057",
+        "value":  "ตรวจสอบความปลอดภัยและสิทธิ์การใช้งาน..."
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2008_U+2058",
+        "value":  "กำลังเปิดหน้าหลัก HFT v2.0..."
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2008_U+2059",
+        "value":  "ระบบความปลอดภัยปฏิเสธการเข้าใช้งาน (Security Check Failed)\nกรุณาติดต่อผู้ดูแลระบบเพื่อขอรหัสปลดล็อค"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2008_U+205A",
+        "value":  "MZA-TUNER SECURITY"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2008_U+205B",
+        "value":  "ตรวจพบข้อผิดพลาดร้ายแรงขณะเริ่มโปรแกรม:\n\n"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2008_U+205C",
+        "value":  "MZA-TUNER CRITICAL ERROR"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2008_U+205D",
+        "value":  "Security Violation"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2008_U+205E",
+        "value":  "SYSTEM_MALWARE_DEBUGGER_DETECTED\nโปรโตคอลความปลอดภัยสั่งระงับการทำงานทันที!"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+205F",
+        "value":  "System Integrity Check"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2008_U+2060",
+        "value":  "UNSUPPORTED_ENVIRONMENT_VM\nโปรแกรมไม่สามารถทำงานบนเครื่องเสมือนเพื่อความปลอดภัยของข้อมูล"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2008_U+2061",
+        "value":  "\\temp\\"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2008_U+2062",
+        "value":  "\\artifact\\"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2008_U+2063",
+        "value":  "HBl8veffgNnIgeT8ht7oidLGjNTpj8jQUpPM35bPypnC2pzF3J85CWI7NmU+Hg=="
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2008_U+2064",
+        "value":  "System Security Breach"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2008_U+206A",
+        "value":  "CRITICAL_ERROR: ILLEGAL_MODIFICATION_DETECTED\nตรวจพบการแก้ไขไฟล์โดยไม่ได้รับอนุญาต (Metadata Tampering)\nระบบจะปิดการทำงานเพื่อป้องกันความเสียหาย!"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2008_U+206B",
+        "value":  "MZA-TUNER: "
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2008_U+206C",
+        "value":  "dnspy"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2008_U+206D",
+        "value":  "x64dbg"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2008_U+206E",
+        "value":  "x32dbg"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2008_U+206F",
+        "value":  "ollydbg"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2008_U+3000",
+        "value":  "ida64"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+00A0",
+        "value":  "idag"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+1680",
+        "value":  "idaw"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2000",
+        "value":  "scylla"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2001",
+        "value":  "reclass"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2002",
+        "value":  "cheatengine"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2003",
+        "value":  "processhacker"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2004",
+        "value":  "de4dot"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2005",
+        "value":  "fiddler"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2006",
+        "value":  "charles"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2007",
+        "value":  "wireshark"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2008",
+        "value":  "httpanalyzer"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+2009",
+        "value":  "httpdebug"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+200A",
+        "value":  "analyzer"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2009_U+200B",
+        "value":  "sniffer"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2009_U+2010",
+        "value":  "Select * from Win32_ComputerSystem"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2009_U+2011",
+        "value":  "Manufacturer"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2009_U+2012",
+        "value":  "Model"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2009_U+2013",
+        "value":  "microsoft corporation"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2009_U+2014",
+        "value":  "virtual"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2009_U+2015",
+        "value":  "vmware"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2009_U+2022",
+        "value":  "virtualbox"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2009_U+2024",
+        "value":  "C:\\windows\\System32\\Drivers\\VBoxMouse.sys"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2009_U+2025",
+        "value":  "C:\\windows\\System32\\Drivers\\VBoxGuest.sys"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2009_U+2027",
+        "value":  "C:\\windows\\System32\\Drivers\\VBoxSF.sys"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2009_U+2028",
+        "value":  "C:\\windows\\System32\\Drivers\\VBoxVideo.sys"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2009_U+2029",
+        "value":  "C:\\windows\\System32\\vboxdisp.dll"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2009_U+202A",
+        "value":  "C:\\windows\\System32\\vboxhook.dll"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2009_U+202B",
+        "value":  "GARBAGE"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2009_U+202C",
+        "value":  "De4Dot_Trap"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2009_U+202D",
+        "value":  "กำลังเริ่มระบบ MZA-TUNER..."
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2009_U+202E",
+        "value":  "เวอร์ชัน 2.0.26 พรีเมียม"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+202F",
+        "value":  "พัฒนาโดยทีมงาน MZA-TUNER TEAM © 2026"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2009_U+2032",
+        "value":  "Green-Button-PNG"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2009_U+2035",
+        "value":  "honda-motorcycles-logo-wing-10"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2009_U+2033",
+        "value":  "tik"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2009_U+2036",
+        "value":  "รีเซ็ตสำเร็จ"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2009_U+203E",
+        "value":  "ยืนยันผลลัพธ์"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2009_U+2047",
+        "value":  "x2"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2009_U+2048",
+        "value":  "เลือกตำแหน่งและชื่อไฟล์สำหรับบันทึก EEPROM"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2009_U+2049",
+        "value":  "File EEPROM READ ID"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2009_U+204A",
+        "value":  "{0} {1:dd-MM-yyyy}.bin"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2009_U+204B",
+        "value":  "Default"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2009_U+204C",
+        "value":  "Binary files (*.bin)|*.bin|All files (*.*)|*.*"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2009_U+204D",
+        "value":  "bin"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2009_U+204E",
+        "value":  "Data berhasil disimpan ke: "
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2009_U+204F",
+        "value":  "Gagal menyimpan file: "
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2009_U+2050",
+        "value":  "ผู้ใช้ยกเลิกการบันทึกไฟล์"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2009_U+2051",
+        "value":  "{0} %"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2009_U+2052",
+        "value":  "{0} Detik"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2009_U+2053",
+        "value":  "{0:F1} s"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2009_U+2054",
+        "value":  "[{0:F4}] 0 \u003e [{1}]"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2009_U+2055",
+        "value":  "[{0:F4}] 0 \u003c [{1}]"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2009_U+2056",
+        "value":  "{0} s"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2009_U+2057",
+        "value":  "{0}?t={1}"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2009_U+2058",
+        "value":  "http://82.26.104.124/mza-tuner/is_blacklisted.php?hwid="
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2009_U+2059",
+        "value":  "❌ ตรวจพบความผิดปกติ ใบอนุญาตการใช้งานถูกระงับเพื่อความปลอดภัย"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2009_U+205A",
+        "value":  "แจ้งเตือนความปลอดภัย"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2009_U+205B",
+        "value":  "คัดลอกสำเร็จ"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2009_U+205C",
+        "value":  "ไม่สามารถคัดลอกได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2009_U+205D",
+        "value":  "ข้อผิดพลาด: รหัสปลดล็อคไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2009_U+205E",
+        "value":  "ยืนยันตัวตนไม่สำเร็จ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2009_U+205F",
+        "value":  "คำเตือนความปลอดภัย: ตรวจพบการพยายามเข้าระบบไม่ถูกต้องหลายครั้ง ระบบจะระงับการทำงานหากยังพบข้อผิดพลาด"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2009_U+2060",
+        "value":  "คำเตือนความปลอดภัย"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2009_U+2061",
+        "value":  "มาตรการความปลอดภัยทำงาน: เริ่มใช้โปรโตคอลป้องกันการแฮก ระบบจำกัดการเข้าถึงโดยสมบูรณ์!"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2009_U+2062",
+        "value":  "เปิดใช้งานระบบล็อกความปลอดภัย"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2009_U+2063",
+        "value":  "ระบบ: กำลังลบไฟล์ข้อมูลเก่า"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2009_U+2064",
+        "value":  "โหมด: ค้นหากล่อง ECU | สถานะ: กำลังรอ... | เวลา: {0} วินาที"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2009_U+206A",
+        "value":  "กรุณาเชื่อมต่อพอร์ต (Open Port) ก่อนครับ!"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2009_U+206B",
+        "value":  "กรุณาบิดกุญแจ OFF แล้ว ON ค้างไว้ 5 วินาที\r\nจากนั้นกด OK เพื่อเริ่มการลบ"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2009_U+206C",
+        "value":  "รีเซ็ต Flash Count และเขียนไฟล์สำเร็จ!"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2009_U+206D",
+        "value":  "Success 100%"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2009_U+206E",
+        "value":  "BIN Files (*.bin)|*.bin"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2009_U+206F",
+        "value":  "กรุณาเลือกไฟล์ .BIN ที่ต้องการจูน"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2009_U+3000",
+        "value":  "ER"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+00A0",
+        "value":  "00"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+1680",
+        "value":  "--- ไม่พบผู้แชร์ในระบบ (ยังไม่มีไฟล์ถูกอัพโหลด) ---"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2000",
+        "value":  "กำลังเชื่อมต่อกับเซิร์ฟเวอร์คลาวด์ MZATUNER..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2001",
+        "value":  "เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2002",
+        "value":  "กรุณาเลือกไฟล์สกุล .bin เท่านั้น"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2003",
+        "value":  "BIN files (*.bin)|*.bin|All files (*.*)|*.*"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+200A_U+2004",
+        "value":  "ลากไฟล์มาวางตรงนี้\nหรือคลิกเพื่อเลือกไฟล์"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2006_U+2051",
+        "value":  "C:\\Program Files (x86)\\TunerPro RT\\TunerPro.exe"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2006_U+2052",
+        "value":  "ไฟล์ไม่พบ: "
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2006_U+2053",
+        "value":  "MZATUNER.tpk"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2006_U+2054",
+        "value":  "https://www.tunerpro.net/download/SetupTunerProRT_v500_10044.exe"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2006_U+2055",
+        "value":  "SetupTunerProRT_v500_10044.exe"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2006_U+2056",
+        "value":  "https://ftdichip.com/wp-content/uploads/2025/03/CDM2123620_Setup.zip"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2006_U+2057",
+        "value":  "CDM2123620_Setup.zip"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2006_U+2058",
+        "value":  "lockdeta.exe"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2006_U+2059",
+        "value":  "WindowsFormsApp2.exe"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2006_U+205A",
+        "value":  "กรุณา ปิด และ เปิด สวิตช์กุญแจ (OFF - ON)\r\nค้างไว้เป็นเวลา 5 วินาที"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2006_U+205B",
+        "value":  "ลบจำนวนการ Flash"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2006_U+205C",
+        "value":  "รีเซ็ตจำนวนการ Flash เรียบร้อยแล้ว\r\nกรุณา ปิด และ เปิด สวิตช์กุญแจ (OFF - ON)\r\nอีกครั้งเป็นเวลา 5 วินาที"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2006_U+205D",
+        "value":  "รีเซ็ต ECM เรียบร้อยแล้ว"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2006_U+205E",
+        "value":  "รีเซ็ต ECM"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+205F",
+        "value":  "กรุณา ปิด และ เปิด กุญแจรถใหม่อีกครั้ง\r\nแล้วรอประมาณ 10 วินาที"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2006_U+2060",
+        "value":  "ตั้งค่ารหัสผ่าน ECU (Security Mode)"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2006_U+2061",
+        "value":  "🔑 แก้ไข PASSWORD"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2006_U+2062",
+        "value":  "ตำแหน่งที่ 1 :"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2006_U+2063",
+        "value":  "ตำแหน่งที่ 2 :"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2006_U+2064",
+        "value":  "ตกลง"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2006_U+206A",
+        "value":  "ยกเลิก"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2006_U+206B",
+        "value":  "0x"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2006_U+206C",
+        "value":  "h"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2006_U+206D",
+        "value":  "C:\\MZATUNER\\MZA_TUNER_FLASH_2026.exe"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2006_U+206E",
+        "value":  "MZA_TUNER_FLASH_2026.lnk"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2006_U+206F",
+        "value":  "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut(\u0027"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2006_U+3000",
+        "value":  "\u0027); $s.TargetPath = \u0027"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+00A0",
+        "value":  "\u0027; $s.WorkingDirectory = \u0027"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+1680",
+        "value":  "\u0027; $s.Save()"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2000",
+        "value":  "powershell"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2001",
+        "value":  "-ExecutionPolicy Bypass -WindowStyle Hidden -Command \""
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2002",
+        "value":  "https://web.facebook.com/Thanadol2022/"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2003",
+        "value":  "ไม่สามารถเปิดลิงก์ได้: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2004",
+        "value":  "headerColor.dat"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2005",
+        "value":  "button"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2006",
+        "value":  "buttonColors.dat"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2007",
+        "value":  "{0},{1}"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2008",
+        "value":  "ไม่สามารถบันทึกสีได้: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+2009",
+        "value":  "โหลดสีล้มเหลว: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+200A",
+        "value":  "Open Binary File"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2007_U+200B",
+        "value":  "ไฟล์ที่เลือกไม่ใช่รูปแบบ .bin กรุณาตรวจสอบใหม่"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2007_U+2010",
+        "value":  "ไม่สามารถอ่านไฟล์ได้เนื่องจาก: "
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2007_U+2011",
+        "value":  "Warning. Checksum invalid."
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2007_U+2012",
+        "value":  "ตรวจพบว่า Checksum ของไฟล์ไม่ถูกต้อง!\nต้องการให้ระบบแก้ไขให้โดยอัตโนมัติหรือไม่?"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2007_U+2013",
+        "value":  "Checksum Warning"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2007_U+2014",
+        "value":  "Checksum fixed successfully."
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2007_U+2015",
+        "value":  "แก้ไข Checksum เรียบร้อยแล้ว"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2007_U+2022",
+        "value":  "Checksum verified."
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2007_U+2024",
+        "value":  "แจ้งเตือน - MZATUNER"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2007_U+2025",
+        "value":  "ล้างข้อมูลไฟล์ .bin เรียบร้อย"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2007_U+2027",
+        "value":  "ไม่พบข้อมูลไฟล์ที่เลือก กรุณาลองใหม่อีกครั้ง"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2007_U+2028",
+        "value":  "ข้อผิดพลาด"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2007_U+2029",
+        "value":  "{0:N2} KB"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2007_U+202A",
+        "value":  "{0:N2} MB"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2007_U+202B",
+        "value":  "สำเร็จ - MZATUNER"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2007_U+202C",
+        "value":  "เลือกไฟล์สำเร็จ เริ่มอัดได้เลย"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2007_U+202D",
+        "value":  "Binary file loaded successfully."
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2007_U+202E",
+        "value":  "กรุณาเลือกไฟล์ .bin ก่อน"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+202F",
+        "value":  "Warning"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2007_U+2032",
+        "value":  "กำลังเตรียมความพร้อม... กรุณารอระบบเชื่อมต่อ"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2007_U+2035",
+        "value":  "ECU Write operation started. Please do not disconnect."
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2007_U+2033",
+        "value":  "FB: เส’เอ็ม สามย่าน"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2007_U+2036",
+        "value":  "จำหน่าย ไฟล์รีแมพ สายรีแมพ โปรแกรมรีแมพ"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2007_U+203E",
+        "value":  "เวอร์ชัน: "
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2007_U+2047",
+        "value":  "\nผู้พัฒนา: "
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2007_U+2048",
+        "value":  "\nติดต่อ: "
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2007_U+2049",
+        "value":  "\n\n"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2007_U+204A",
+        "value":  "เกี่ยวกับโปรแกรม"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2007_U+204B",
+        "value":  "http://mza-tuner.site/TunerProRTTH.exe"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2007_U+204C",
+        "value":  "TunerProRTTH.exe"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2007_U+204D",
+        "value":  "Thread ยังไม่ยอมจบเอง อาจมีปัญหาในการคืน resource"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2007_U+204E",
+        "value":  "Failed to initialize FTDI"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2007_U+204F",
+        "value":  "Error in sceToolStripMenuItem_Click: "
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2007_U+2050",
+        "value":  "C:\\MZATUNER\\DATA\\By.ช่างลิงกล่องซิ่ง\\MultiGaugesHondaMonitor.exe"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2007_U+2051",
+        "value":  "ไม่สามารถเปิดโปรแกรมได้: "
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2007_U+2052",
+        "value":  "\nกรุณาติดต่อ FB : เส’เอ็ม สามย่าน"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2007_U+2053",
+        "value":  "เกิดข้อผิดพลาด"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2007_U+2054",
+        "value":  "❌ ไม่พบไฟล์ที่ต้องการใช้งาน ❌\n\nกรุณาติดต่อ FB: เส’เอ็ม สามย่าน\nค่าบริการอัพเดทระบบ: 100 บาท\n\n----------------------------------\nกรุงไทย: 232-0816-100 (ธนดล แนมนิล)\nพร้อมเพย์: 095-213-4102\n----------------------------------\n\nต้องการเปิดไปหน้า Facebook เพื่อส่งสลิปเลยหรือไม่?"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2007_U+2055",
+        "value":  "ดูดดาต้า V2 - แจ้งเตือน"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2007_U+2056",
+        "value":  "ไม่สามารถเปิดเบราว์เซอร์ได้: "
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2007_U+2057",
+        "value":  "Knob/Ignition Key OFF - ON\r\nFor 5 Seconds"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2007_U+2058",
+        "value":  "Delete Flash Count"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2007_U+2059",
+        "value":  "Reset Flash Count Completed\r\nKnob/Ignition Key OFF - ON\r\nFor 5 Seconds"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2007_U+205A",
+        "value":  "MAN-TURBO \u0026 MZA-TUNER\r\n"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2007_U+205B",
+        "value":  "FB: เส’เอ็ม สามย่าน \u0026 Man-Turbo Remap"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2007_U+205C",
+        "value":  "http://mza-tuner.site/MZA_TUNER_FLASH_2026.exe"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2007_U+205D",
+        "value":  "MZA_TUNER_FLASH_2026.exe"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2007_U+205E",
+        "value":  "MZA_TUNER.lnk"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2007_U+205F",
+        "value":  "mza_update_temp.exe"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2007_U+2060",
+        "value":  "/k cls \u0026 title MZA TUNER - Update Manager 2026 \u0026 echo. \u0026 echo  =============================================== \u0026 echo  [ MZA TUNER AUTO UPDATE SYSTEM ] \u0026 echo  =============================================== \u0026 echo. \u0026 if not exist \""
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2007_U+2061",
+        "value":  "\" (mkdir \""
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2007_U+2062",
+        "value":  "\") else (echo  [1/4] Cleaning old version... \u0026 if exist \""
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2007_U+2063",
+        "value":  "\" del /f /q \""
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2007_U+2064",
+        "value":  "\") \u0026 echo  Done. \u0026 echo. \u0026 echo  [2/4] Downloading latest updates... \u0026 curl -L -# "
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2007_U+206A",
+        "value":  " -o \""
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2007_U+206B",
+        "value":  "\" \u0026 echo. \u0026 echo  [3/4] Installing system files to C:\\MZATUNER... \u0026 move /Y \""
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2007_U+206C",
+        "value":  "\" \""
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2007_U+206D",
+        "value":  "\" \u003enul \u0026 echo  Done. \u0026 echo. \u0026 echo  [4/4] Updating desktop shortcut... \u0026 powershell -ExecutionPolicy Bypass -Command \"$s=(New-Object -COM WScript.Shell).CreateShortcut(\u0027"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2007_U+206E",
+        "value":  "\u0027);$s.TargetPath=\u0027"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2007_U+206F",
+        "value":  "\u0027;$s.WorkingDirectory=\u0027"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2007_U+3000",
+        "value":  "\u0027;$s.Save()\" \u0026 echo  Done. \u0026 echo. \u0026 echo  ----------------------------------------------- \u0026 echo  [ SUCCESS ] Update completed successfully! \u0026 echo  The application will restart in 3 seconds... \u0026 timeout /t 3 \u003enul \u0026 start \"\" \""
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+00A0",
+        "value":  "\" \u0026 exit"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+1680",
+        "value":  "cmd.exe"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2000",
+        "value":  "Update Failed: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2001",
+        "value":  "MZA Update Error"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2002",
+        "value":  "❌ ไม่พบไฟล์ S.exe ❌\nกรุณานำไฟล์ S.exe มาวางไว้ในโฟลเดอร์โปรแกรมครับ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2003",
+        "value":  "ไม่สามารถเปิดระบบ V1 ได้"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2004",
+        "value":  "เกิดข้อผิดพลาดในการเข้าสู่ระบบ V1: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2005",
+        "value":  "❌ ไม่พบไฟล์ lockdeta.exe ฝังอยู่ในระบบ\nกรุณาตรวจสอบการตั้งค่าโปรเจกต์ครับ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2006",
+        "value":  "ไม่สามารถเปิด lockdeta.exe ได้: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2007",
+        "value":  "อัพเดทข้อมูลรหัสกล่องสำเร็จ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2008",
+        "value":  "ไม่สามารถเปิดตัวจัดการรหัสกล่องได้: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+2009",
+        "value":  "C:\\MZATUNER\\programName.dat"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2008_U+200A",
+        "value":  "Trebuchet MS"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2008_U+200B",
+        "value":  "เปลี่ยนสีธีมโปรแกรมสำเร็จ! (CHROMA_SYNC)"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2008_U+2010",
+        "value":  "เปลี่ยนสีธีมสำเร็จ! (CHROMA_SYNC)"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2008_U+2011",
+        "value":  "MZA-TUNER SYSTEM"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2008_U+2012",
+        "value":  "ยินดีต้อนรับเข้าสู่โปรแกรม MZA-TUNER"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2008_U+2013",
+        "value":  "อัดไฟล์เสร็จสิ้น!! ปิดเปิดกุญแจใหม่อีกครั้ง"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2008_U+2014",
+        "value":  "Write operation complete. Please cycle the ignition key."
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2008_U+2015",
+        "value":  "Write operation failed. Please check connection and try again."
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2008_U+2022",
+        "value":  "การเขียนไฟล์ลงECMล้มเหลว!!\r\nกรุณาปิดเปิดกุญแจแล้วลองอีกครั้ง"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2008_U+2024",
+        "value":  "ฮอนด้าแฟลช"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2008_U+2025",
+        "value":  "ECU Disconnected."
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2008_U+2027",
+        "value":  "vv"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2008_U+2028",
+        "value":  "M"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2008_U+2029",
+        "value":  "48KB ROM"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2008_U+202A",
+        "value":  "64KB ROM"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2004_U+206A",
+        "value":  "button12"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2004_U+206B",
+        "value":  "รีสตาร์ทโปรแกรม"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2004_U+206C",
+        "value":  "button20"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2004_U+206D",
+        "value":  "อัดไฟล์"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2004_U+206E",
+        "value":  "button19"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2004_U+206F",
+        "value":  "button26"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2004_U+3000",
+        "value":  "🔄 Resset"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+00A0",
+        "value":  "PbProgress"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+1680",
+        "value":  "sx1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2000",
+        "value":  "button22"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2001",
+        "value":  "ดูดไฟล์ 48-64 KB"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2002",
+        "value":  "ไฟลToolStripMenuItem1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2003",
+        "value":  "🗂️ ไฟล์"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2004",
+        "value":  "เกยวกบโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2005",
+        "value":  "ℹ️ เกี่ยวกับโปรแกรม"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2006",
+        "value":  "ตดตอสอบถามปญหาToolStripMenuItem"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2007",
+        "value":  "📞 ติดต่อสอบถาม/ปัญหา"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2008",
+        "value":  "อพเดทตรวจสอบเวอรชนToolStripMenuItem"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+2009",
+        "value":  "🔄 อัพเดท/ตรวจสอบเวอร์ชั่น"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+200A",
+        "value":  "เปลยนสโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2005_U+200B",
+        "value":  "🎨 เปลี่ยนสีโปรแกรม"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2005_U+2010",
+        "value":  "ปรบเปลยนแตงโลโกToolStripMenuItem"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2005_U+2011",
+        "value":  "🖼️ ปรับเปลี่ยนแต่งโลโก้"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2005_U+2012",
+        "value":  "ตงคาชอโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2005_U+2013",
+        "value":  "⚙️ ตั้งค่าชื่อโปรแกรม"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2005_U+2014",
+        "value":  "ตดตงไดรเวอรFTDIToolStripMenuItem"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2005_U+2015",
+        "value":  "🔌 ติดตั้งไดรเวอร์ (FTDI)"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2005_U+2022",
+        "value":  "เปดโปรแกรมTunerProRTToolStripMenuItem"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2005_U+2024",
+        "value":  "🚀 เปิดโปรแกรม TunerPro RT"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2005_U+2025",
+        "value":  "ลงทะเบยนTunerProToolStripMenuItem"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2005_U+2027",
+        "value":  "🔑 ลงทะเบียน TunerPro"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2005_U+2028",
+        "value":  "ตดตงTunerProRTToolStripMenuItem"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2005_U+2029",
+        "value":  "📥 ติดตั้ง TunerPro RT"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2005_U+202A",
+        "value":  "ตดตงTunerProRTTHToolStripMenuItem"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2005_U+202B",
+        "value":  "📥 ติดตั้ง  TunerPro RT TH"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2005_U+202C",
+        "value":  "แปลงไฟลECUACGToolStripMenuItem1"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2005_U+202D",
+        "value":  "🧬 แปลงไฟล์ ECU - ACG"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2005_U+202E",
+        "value":  "ปลดรหสXDFADXToolStripMenuItem1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+202F",
+        "value":  "🔓 ปลดรหัส XDF - ADX"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2005_U+2032",
+        "value":  "เพมรหสกลองโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2005_U+2035",
+        "value":  "จดการรถToolStripMenuItem"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2005_U+2033",
+        "value":  "🛵 จัดการรถ"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2005_U+2036",
+        "value":  "ลบโคดToolStripMenuItem"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2005_U+203E",
+        "value":  "❌ ลบโค้ด"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2005_U+2047",
+        "value":  "รเซตกลองECUToolStripMenuItem"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2005_U+2048",
+        "value":  "♻️ รีเซ็ตกล่อง ECU"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2005_U+2049",
+        "value":  "ดดาตารถToolStripMenuItem"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2005_U+204A",
+        "value":  "📊 ดูดาต้ารถ"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2005_U+204B",
+        "value":  "อานขอมลจากรถV1ToolStripMenuItem"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2005_U+204C",
+        "value":  "📊 อ่านข้อมูลจากรถ V.1"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2005_U+204D",
+        "value":  "อานขอมลจากรถV2ToolStripMenuItem"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2005_U+204E",
+        "value":  "📈 อ่านข้อมูลจากรถ V.2"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2005_U+204F",
+        "value":  "ลอคดดลอคโหมดToolStripMenuItem"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2005_U+2050",
+        "value":  "🔓 ล็อคดูด - ล็อคโหมด"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2005_U+2051",
+        "value":  "ฟToolStripMenuItem"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2005_U+2052",
+        "value":  "🚀 ฟังชั่นพิเศษ"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2005_U+2053",
+        "value":  "ลบจำนวนการอดรถออโตToolStripMenuItem"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2005_U+2054",
+        "value":  "🧹 ลบจำนวนการอัดรถออโต้"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2005_U+2055",
+        "value":  "ลบจำนวนการอดรถเกยรToolStripMenuItem"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2005_U+2056",
+        "value":  "ดดไฟลรถเกยร4864ToolStripMenuItem"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2005_U+2057",
+        "value":  "คอนเนกเพอเขาสดดไฟลสถานนะอยขวาบนToolStripMenuItem"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2005_U+2058",
+        "value":  "⚙️ คอนเน็กเพื่อเข้าสู่ดูดไฟล์ !! สถานนะอยุ่ขวาบน  !!"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2005_U+2059",
+        "value":  "คำToolStripMenuItem"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2005_U+205A",
+        "value":  "⚙️ คำนวนหัวฉีดรถ"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2005_U+205B",
+        "value":  "ตดตอไฟล32KBเปน64KBToolStripMenuItem"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2005_U+205C",
+        "value":  "⚙️ ตัดต่อไฟล์ 32KB เป้น 64KB"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2005_U+205D",
+        "value":  "จนยงออโตToolStripMenuItem"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2005_U+205E",
+        "value":  "⚙️ ช่วยจูนยิงอัตโนมัติ "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2005_U+205F",
+        "value":  "ปลดการจายนำมนTPS0ToolStripMenuItem"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2005_U+2060",
+        "value":  "⚙️ ปลดการจ่ายน้ำมัน TPS 0%"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2005_U+2061",
+        "value":  "ชวยจนหอบToolStripMenuItem"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2005_U+2062",
+        "value":  "⚙️ ช่วยจูนหอบ"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2005_U+2063",
+        "value":  "menuStrip1"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2005_U+2064",
+        "value":  "label5"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2005_U+206A",
+        "value":  "label5.Text"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2005_U+206B",
+        "value":  "pnlTitleBar"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2005_U+206C",
+        "value":  "pbAppLogo"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2005_U+206D",
+        "value":  "lblAppTitle"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2005_U+206E",
+        "value":  "เส’เอ็ม สามย่าน"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2005_U+206F",
+        "value":  "btnMinCustom"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2005_U+3000",
+        "value":  "—"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+00A0",
+        "value":  "btnCloseCustom"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+1680",
+        "value":  "label6"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2000",
+        "value":  "STATUS:"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2001",
+        "value":  "$this.Icon"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2002",
+        "value":  "FormMain"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2003",
+        "value":  "C:\\MZATUNER\\data.ini"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2004",
+        "value":  "ไม่พบไฟล์จ้อมูล"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2005",
+        "value":  ";"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2006",
+        "value":  "khPartCode"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2007",
+        "value":  "khEcmId"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2008",
+        "value":  "khStartOffset"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+2009",
+        "value":  "khCksumOffset"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+200A",
+        "value":  "shPartCode"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2006_U+200B",
+        "value":  "shEcmId"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2006_U+2010",
+        "value":  "สวัสดีครับ"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2006_U+2011",
+        "value":  "Bahnschrift SemiBold Condensed"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2006_U+2012",
+        "value":  "Copperplate Gothic Bold"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2006_U+2013",
+        "value":  "RESET ECM DONE"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2006_U+2014",
+        "value":  "Reset ECM"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2006_U+2015",
+        "value":  "Please turn OFF/ON the ignition key\rfor 10 seconds"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2006_U+2022",
+        "value":  "ลบโค๊ดสำเร็จ"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2006_U+2024",
+        "value":  "ลบโค๊ด"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2006_U+2025",
+        "value":  "โปรดปิดกุญแจ 5วินาทีแล้วกดปุ่มOK"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2006_U+2027",
+        "value":  "รีเซ็ทแฟลชเคาท์"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2006_U+2028",
+        "value":  "เปิดกุญแจ 5วินาทีแล้วกดปุ่มOK"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2006_U+2029",
+        "value":  "ลบแฟลชเคาท์!!สำเร็จ!!"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2006_U+202A",
+        "value":  "Bin file(*.bin) | *.bin|ACG Files(*.acg)|*.acg|ECU Files(*.ECU)|*.ECU"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2006_U+202B",
+        "value":  "https://www.dropbox.com/t/92lfOkTA0htZ9doI"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2006_U+202C",
+        "value":  "INI files (*.ini)|*.ini|All files (*.*)|*.*"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2006_U+202D",
+        "value":  "data.ini"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2006_U+202E",
+        "value":  "ดาวน์โหลดเสร็จสมบูรณ์แล้วที่ "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2006_U+202F",
+        "value":  "เกิดข้อผิดพลาดในการดาวน์โหลด: "
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2006_U+2032",
+        "value":  "เปลี่ยนชื่อโปรแกรม"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2006_U+2035",
+        "value":  "กรุณาใส่ชื่อโปรแกรมใหม่:"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2006_U+2033",
+        "value":  "C:\\MZATUNER"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2006_U+2036",
+        "value":  "เปลี่ยนชื่อสำเร็จ!"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2006_U+203E",
+        "value":  "แจ้งเตือน"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2006_U+2047",
+        "value":  "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2006_U+2048",
+        "value":  "Select an Image"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2006_U+2049",
+        "value":  "ไฟล์ภาพเก่าของเดิม, ต้องการเปลื่ยนรูปทับไฟล์นี้ไหม?"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2006_U+204A",
+        "value":  "คำเตือน"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2006_U+204B",
+        "value":  "เปลี่ยนรูปสำเร็จ!!"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2006_U+204C",
+        "value":  "ตั้งต่า"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2006_U+204D",
+        "value":  "เปลี่ยนรูปไม่สำเร็จ!!\n"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2006_U+204E",
+        "value":  "S.exe"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2006_U+204F",
+        "value":  "\""
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2006_U+2050",
+        "value":  "runas"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2003_U+200B",
+        "value":  "OFF"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2003_U+2010",
+        "value":  "กรุณาเชื่อมต่อรถ/เปิดกุญแจรถ !!"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2003_U+2011",
+        "value":  "ON"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2003_U+2012",
+        "value":  "{0}/{1}"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2003_U+2013",
+        "value":  "เชื่อมต่อไม่สำเร็จ"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2003_U+2014",
+        "value":  "ตรวจสอบสาย/สวิตช์ แล้วลองใหม่"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2003_U+2015",
+        "value":  "เข้าสู่โหมด Security แล้ว"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2003_U+2022",
+        "value":  "ปิดแล้ว ✅ กรุณาเปิดสวิตช์กุญแจ (ON)"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2003_U+2024",
+        "value":  "ส่งคำสั่งพิเศษเรียบร้อย ✅"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2003_U+2025",
+        "value":  "กำลังทำการล็อคข้อมูล (Anti-Read)..."
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2003_U+2027",
+        "value":  "MZA-TUNER | FLASHERNEW 2026"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2003_U+2028",
+        "value":  "MZA_SHIELD_2026_ULTRA_PRO"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2003_U+2029",
+        "value":  "MZA SHIELD"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2003_U+202A",
+        "value":  "ระบบล็อคข้อมูล (Deep Lock) ทำงานเรียบร้อย"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2003_U+202B",
+        "value":  "0000"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2003_U+202C",
+        "value":  "!!! ว้ายๆ กล่องไปดิ้ !!!"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2003_U+202D",
+        "value":  "auto"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2003_U+202E",
+        "value":  "!!! อัพเดทรหัสกล่องบ้างนะ !!!"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+202F",
+        "value":  "4000"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2003_U+2032",
+        "value":  "7600"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2003_U+2035",
+        "value":  "0"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2003_U+2033",
+        "value":  "DFEF"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2003_U+2036",
+        "value":  "8000"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2003_U+203E",
+        "value":  "E0000"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2003_U+2047",
+        "value":  "B000"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2003_U+2048",
+        "value":  "3FFF8"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2003_U+2049",
+        "value":  "7FFF8"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2003_U+204A",
+        "value":  "FFFF8"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2003_U+204B",
+        "value":  "10000"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2003_U+204C",
+        "value":  "A000"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2003_U+204D",
+        "value":  "programName.dat"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2003_U+204E",
+        "value":  "Default Program Name"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2003_U+204F",
+        "value":  "Background.dat"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2003_U+2050",
+        "value":  "เริ่มทำงาน - MZATUNER"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2003_U+2051",
+        "value":  "กรุณาเปิดสวิตช์กุญแจรถ (ON) แล้วรอระบบเชื่อมต่อ"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2003_U+2052",
+        "value":  "Open bin file"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2003_U+2053",
+        "value":  "Bin file (*.bin)|*.bin"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2003_U+2054",
+        "value":  "{0} ({1:F2} KB)"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2003_U+2055",
+        "value":  ".bin"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2003_U+2056",
+        "value":  "ไฟล์ที่เลือกไม่ใช่ .bin"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2003_U+2057",
+        "value":  "(กรุณาเลือกไฟล์ BIN) .."
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2003_U+2058",
+        "value":  "ชื่อไฟล์ : "
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2003_U+2059",
+        "value":  "\n"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2003_U+205A",
+        "value":  "ขนาดไฟล์ : {0:F2} KB\n\n"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2003_U+205B",
+        "value":  "คำเตือน !! โปรดตรวจสอบ ก่อนอัดไฟล์ อีกที เพื่อกันกล่องหลับหรือเสียหาย "
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2003_U+205C",
+        "value":  "คำเตือนเกี่ยวกับไฟล์"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2003_U+205D",
+        "value":  "https://www.facebook.com/profile.php?id=100086932872601"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2003_U+205E",
+        "value":  "https://www.facebook.com/juniel.pontongan/"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+205F",
+        "value":  "Microsoft New Tai Lue"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2003_U+2060",
+        "value":  "TxtEcmId"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2003_U+2061",
+        "value":  "TxtFlashCount"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2003_U+2062",
+        "value":  "Times New Roman"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2003_U+2063",
+        "value":  "TxtConnStat"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2003_U+2064",
+        "value":  "LblConnection"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2003_U+206A",
+        "value":  "Connection:"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2003_U+206B",
+        "value":  "LblChecksumOffset"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2003_U+206C",
+        "value":  "เช็คซั่มออฟเซ็ค"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2003_U+206D",
+        "value":  "LblStartOffset"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2003_U+206E",
+        "value":  "สตาร์ทออฟเซ็ต"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2003_U+206F",
+        "value":  "TbChecksumOffset"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2003_U+3000",
+        "value":  "TbStartOffset"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+00A0",
+        "value":  "Microsoft Tai Le"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+1680",
+        "value":  "TbFileName"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2000",
+        "value":  "กรุณาเลือกไฟล์ BIN .."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2001",
+        "value":  "pictureBox2"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2002",
+        "value":  "TxtPartCode"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2003",
+        "value":  "Microsoft YaHei"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2004",
+        "value":  "BtnWrite"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2005",
+        "value":  "อัดไฟล์ลงกล่อง ECU"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2006",
+        "value":  "pictureBox5"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2007",
+        "value":  "HONDA PART CODE"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2008",
+        "value":  "pictureBox6"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+2009",
+        "value":  "pictureBox7"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+200A",
+        "value":  "TxtPb"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2004_U+200B",
+        "value":  "สถานะการชื่อกุญแจ :"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2004_U+2010",
+        "value":  "🛡จำนวนการอัด : "
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2004_U+2011",
+        "value":  "label4"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2004_U+2012",
+        "value":  "📈 : ไอดีกล่องอีซียู : "
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2004_U+2013",
+        "value":  "ไฟลToolStripMenuItem"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2004_U+2014",
+        "value":  "ไฟล์"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2004_U+2015",
+        "value":  "เปลยนชอโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2004_U+2022",
+        "value":  "เปลยนรปToolStripMenuItem1"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2004_U+2024",
+        "value":  "ปลดรหสXDFADXToolStripMenuItem"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2004_U+2025",
+        "value":  "แปลงไฟลECUACGToolStripMenuItem"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2004_U+2027",
+        "value":  "เลอกไฟลแฟชรToolStripMenuItem"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2004_U+2028",
+        "value":  "เลือกไฟล์ Bin"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2004_U+2029",
+        "value":  "ตดตงไดรเวอรToolStripMenuItem1"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2004_U+202A",
+        "value":  "รสตารทโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2004_U+202B",
+        "value":  "อพเดทรหสกลองลาสดToolStripMenuItem"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2004_U+202C",
+        "value":  "อัพเดทรหัสกล่องล่าสุด"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2004_U+202D",
+        "value":  "ไฟลเดมโรงงานToolStripMenuItem"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2004_U+202E",
+        "value":  "ไฟลโมสำหรบมอใหมToolStripMenuItem"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+202F",
+        "value":  "toolStripMenuItem1"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2004_U+2032",
+        "value":  "ลบออโตToolStripMenuItem"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2004_U+2035",
+        "value":  "ลบออโตToolStripMenuItem1"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2004_U+2033",
+        "value":  "รเซตกลองToolStripMenuItem"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2004_U+2036",
+        "value":  "รีเช็ตกล่อง"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2004_U+203E",
+        "value":  "ลบโคตToolStripMenuItem"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2004_U+2047",
+        "value":  "ลบโค็ต"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2004_U+2048",
+        "value":  "ลบแฟลชเคาทShindengenToolStripMenuItem"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2004_U+2049",
+        "value":  "ลบแฟลชเคาท์Shindengen"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2004_U+204A",
+        "value":  "ดดดาตาToolStripMenuItem"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2004_U+204B",
+        "value":  "จนโปรToolStripMenuItem"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2004_U+204C",
+        "value":  "เปดจนโปรToolStripMenuItem"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2004_U+204D",
+        "value":  "ลงทะเบยนToolStripMenuItem"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2004_U+204E",
+        "value":  "อพเดทจนโปรToolStripMenuItem"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2004_U+204F",
+        "value":  "ลอคฝงชนToolStripMenuItem"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2004_U+2050",
+        "value":  "เพมรหสกลองToolStripMenuItem"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2004_U+2051",
+        "value":  "อพเดทโปรแกรมToolStripMenuItem"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2004_U+2052",
+        "value":  "ACG/ECU TO BIN"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2004_U+2053",
+        "value":  "pictureBox1"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2004_U+2054",
+        "value":  "groupBox3"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2004_U+2055",
+        "value":  "button11"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2004_U+2056",
+        "value":  "➕ เพิ่มรหัสกล่องโปรแกรม"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2004_U+2057",
+        "value":  "button28"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2004_U+2058",
+        "value":  "⚙️ ดูดไฟล์รถเกียร์ 48 - 64"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2004_U+2059",
+        "value":  "button15"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2004_U+205A",
+        "value":  "⚙️ ลบจำนวนการอัดรถเกียร์"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2004_U+205B",
+        "value":  "button21"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2004_U+205C",
+        "value":  "น้ำมัน TPS 0"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2004_U+205D",
+        "value":  "groupBox9"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2004_U+205E",
+        "value":  "0.0 V"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2004_U+205F",
+        "value":  "label_batTitle"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2004_U+2060",
+        "value":  "🔋แบตเตอรรี่:"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2004_U+2061",
+        "value":  "checkBox1"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2004_U+2062",
+        "value":  "ออฟเซ็ตแบบแมนนวล"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2004_U+2063",
+        "value":  "CbFastWrite"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2004_U+2064",
+        "value":  "เขียนไฟล์เร็ว"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2001_U+2035",
+        "value":  "StartOffset"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2001_U+2033",
+        "value":  "START"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2001_U+2036",
+        "value":  "CksumOffset"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2001_U+203E",
+        "value":  "CHKSUM"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2001_U+2047",
+        "value":  "◢ บันทึกข้อมูลทั้งหมดลงฐานข้อมูลหลัก ◣"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2001_U+2048",
+        "value":  "◢ "
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2001_U+2049",
+        "value":  " ◣"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2001_U+204A",
+        "value":  "◤ รหัสพาร์ท / รุ่นรถ ◢"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2001_U+204B",
+        "value":  "◤ หมายเลขลายเซ็น ECM_ID ◢"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2001_U+204C",
+        "value":  "◤ ตำแหน่งเริ่มหน่วยความจำ (HEX) ◢"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2001_U+204D",
+        "value":  "◤ ตำแหน่งเช็คซัม (CHECKSUM) ◢"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2001_U+204E",
+        "value":  "◢ เพิ่มข้อมูลใหม่ ◣"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2001_U+204F",
+        "value":  "◢ บันทึกการแก้ไข ◣"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2001_U+2050",
+        "value":  "◢ ลบข้อมูลนี้ออก ◣"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2001_U+2051",
+        "value":  "รถออโต้"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2001_U+2052",
+        "value":  "◢ ยืนยันการลบไฟล์ชุดนี้ออกจากสารบบหรือไม่? ◣"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2001_U+2053",
+        "value":  "MASTER_CORE_SECURITY"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2001_U+2054",
+        "value":  "บันทึกรหัสกล่องลงโปรแกรม"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2001_U+2055",
+        "value":  "บันทึกรหัสกล่องลงโปรแกรมสำเร็จ"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2001_U+2056",
+        "value":  "ล้มเหลว: "
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2001_U+2057",
+        "value":  "ระบบแก้ไขข้อมูลหลัก"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2001_U+2058",
+        "value":  "ระบบย่อยรถออโต้"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2001_U+2059",
+        "value":  "ระบบย่อยรถเกียร์"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2001_U+205A",
+        "value":  "MZA"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2001_U+205B",
+        "value":  "ระบบเซนซิทีฟคุมการยิงหอบ (GHOST CAM SYSTEM)"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2001_U+205C",
+        "value":  "🤖 MZABot_Ai // CORE"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2001_U+205D",
+        "value":  "lblBotMsg"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2001_U+205E",
+        "value":  "กำลังรอรับคำสั่งจูน..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+205F",
+        "value":  "กรุณาเลือกไฟล์ .BIN"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2001_U+2060",
+        "value":  "ค้นหาไฟล์"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2001_U+2061",
+        "value":  "รออัพเดท"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2001_U+2062",
+        "value":  "EXECUTE / บันทึกยิงหอบ"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2001_U+2063",
+        "value":  "[ กำหนดองศาลิ้นปีกผีเสื้อ / TPS ]"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2001_U+2064",
+        "value":  "0%"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2001_U+206A",
+        "value":  "3%"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2001_U+206B",
+        "value":  "5%"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2001_U+206C",
+        "value":  "8%"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2001_U+206D",
+        "value":  "12%"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2001_U+206E",
+        "value":  "TPS "
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2001_U+206F",
+        "value":  "[ ล็อครอบเดินเบายิงหอบ / RPM ]"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2001_U+3000",
+        "value":  "1800"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+00A0",
+        "value":  "2000"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+1680",
+        "value":  "2500"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2000",
+        "value":  "3000"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2001",
+        "value":  "3500"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2002",
+        "value":  " RPM"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2003",
+        "value":  "[ เลือกระดับความดุดัน / GHOST CAM ]"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2004",
+        "value":  "หอบระดับ 1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2005",
+        "value":  "หอบระดับ 2"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2006",
+        "value":  "หอบระดับ 3"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2007",
+        "value":  "หอบระดับ 4"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2008",
+        "value":  "หอบระดับ 5"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+2009",
+        "value":  "MZA TUNER CORE // V1.0.0.X"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+200A",
+        "value":  "0x{0:X4}"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2002_U+200B",
+        "value":  "MEM_{0}"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2002_U+2010",
+        "value":  "[TARGET : LOCKED]"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2002_U+2011",
+        "value":  "Gasoline"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2002_U+2012",
+        "value":  "NA"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2002_U+2013",
+        "value":  "Bahnschrift SemiBold"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2002_U+2014",
+        "value":  "TARGET HP"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2002_U+2015",
+        "value":  "CYLINDERS"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2002_U+2022",
+        "value":  "FUEL"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2002_U+2024",
+        "value":  "E85"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2002_U+2025",
+        "value":  "ASPI"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2002_U+2027",
+        "value":  "Turbo"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2002_U+2028",
+        "value":  "300"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2002_U+2029",
+        "value":  "4"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2002_U+202A",
+        "value":  "INJECTOR FLOW CALCULATOR"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2002_U+202B",
+        "value":  "REQUIRED CC/MIN"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2002_U+202C",
+        "value":  "{0:F0}"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2002_U+202D",
+        "value":  "REQUIRED LB/HR"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2002_U+202E",
+        "value":  "{0:F1}"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+202F",
+        "value":  "FLOW SCALE (0 - 2200cc)"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2002_U+2032",
+        "value":  "Bahnschrift"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2002_U+2035",
+        "value":  "MZATUNER BINARY SYSTEM // JOINER MODULE"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2002_U+2033",
+        "value":  "เลือกไฟล์ครบ 2 ตัว"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2002_U+2036",
+        "value":  "คลิกเลือกไฟล์จูน (32KB)..."
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2002_U+203E",
+        "value":  "เลือก Bin"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2002_U+2047",
+        "value":  "คลิกเลือกไฟล์เต็ม (64KB)..."
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2002_U+2048",
+        "value":  "เลือกไฟล์เต็ม"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2002_U+2049",
+        "value":  "สร้างไฟล์ BIN"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2002_U+204A",
+        "value":  "MZATUNER_OS_LOADED"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2002_U+204B",
+        "value":  "BIN Files|*.bin"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2002_U+204C",
+        "value":  "กรุณาเลือกไฟล์ให้ครบทั้ง 2 ตัว!"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2002_U+204D",
+        "value":  "ไฟล์ตัวเต็มต้องมีขนาด 64KB!"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2002_U+204E",
+        "value":  "BIN|*.bin"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2002_U+204F",
+        "value":  "_MZATUNER_FIXED.bin"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2002_U+2050",
+        "value":  "สร้างไฟล์ BIN สำเร็จ!"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2002_U+2051",
+        "value":  "เกิดข้อผิดพลาด: "
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2002_U+2052",
+        "value":  "ANTI"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2002_U+2053",
+        "value":  "devenv"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2002_U+2054",
+        "value":  "Goodbye Master. Shutting down."
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2002_U+2055",
+        "value":  "\u003e INITIALIZING MZA-TUNER 2026..."
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2002_U+2056",
+        "value":  "\u003e SEARCHING FTDI INTERFACE..."
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2002_U+2057",
+        "value":  "\u003e FTDI D2XX DRIVER DETECTED [OK]"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2002_U+2058",
+        "value":  "\u003e AUTHENTICATING LICENSE KEY..."
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2002_U+2059",
+        "value":  "\u003e MEMORY OFFSET MAPPING: 0x8000-0xFFFF"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2002_U+205A",
+        "value":  "\u003e K-LINE PROTOCOL STACK LOADED"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2002_U+205B",
+        "value":  "\u003e WARMING UP ISO-9141 BUS... [OK]"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2002_U+205C",
+        "value":  "\u003e SYNCING ECU DATABASE..."
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2002_U+205D",
+        "value":  "\u003e SYSTEM STABLE. ACCESS GRANTED."
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2002_U+205E",
+        "value":  "_Line"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2002_U+205F",
+        "value":  "label_batrei"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2002_U+2060",
+        "value":  "TxtBatteryVolt"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2002_U+2061",
+        "value":  "modernBatteryGauge"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2002_U+2062",
+        "value":  "กำลังเขียน : "
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2002_U+2063",
+        "value":  "F2"
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2002_U+2064",
+        "value":  " KB / "
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2002_U+206A",
+        "value":  " KB ("
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2002_U+206B",
+        "value":  "%)"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2002_U+206C",
+        "value":  "อัดไฟล์สำเร็จ!! ปิดเปิดกุญแจ ใหม่อีกครั้ง"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2002_U+206D",
+        "value":  "X"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2002_U+206E",
+        "value":  "Address "
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2002_U+206F",
+        "value":  " bytes "
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2002_U+3000",
+        "value":  "กำลังส่งสัญญาณปลุกกล่อง Shindengen..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+00A0",
+        "value":  "กำลังตรวจสอบ Seed/Key..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+1680",
+        "value":  "กำลังเริ่ม ประมวลผล"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2000",
+        "value":  "เสร็จสิ้นการประมวลผล เริ่มเขียนไฟล์"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2001",
+        "value":  "การเขียนไฟล์ล้มเหลว, ECM บล็อค"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2002",
+        "value":  "ฮอนด้า แฟลช"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2003",
+        "value":  "การเขียนไฟล์ ล้มเหลว "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2004",
+        "value":  "การตรวจสอบ ล้มเหลว Seed/Key"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2005",
+        "value":  "กำลังส่งสัญญาณปลุกกล่อง ECU..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2006",
+        "value":  "กำลังประมวลผลเตรียมอัดไฟล์..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2007",
+        "value":  "ประมวลผลสำเร็จ กำลังเริ่มเขียนไฟล์..."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2008",
+        "value":  "ล้มเหลว: ECM บล็อค"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+2009",
+        "value":  "เชื่อมต่อเตรียมอัดไฟล์ล้มเหลว"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2003_U+200A",
+        "value":  "ECU Connected."
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+1680_U+2057",
+        "value":  "READ EEPROM KH"
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+1680_U+2058",
+        "value":  "OFF สวิตซ์ และ ON\r\nภายใน 3 วินาที\r\nและกด OK"
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+1680_U+2059",
+        "value":  "READ EEPROM"
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+1680_U+205A",
+        "value":  "Process is already running."
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+1680_U+205B",
+        "value":  "ลบจำนวนการอัด Kh"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+1680_U+205C",
+        "value":  "Format EEPROM 0x00"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+1680_U+205D",
+        "value":  "Format EEPROM 0xFF"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+1680_U+205E",
+        "value":  "READ EEPROM Sh"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+205F",
+        "value":  "ลบจำนวนการอัด Sh"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+1680_U+2060",
+        "value":  "WRITE EEPROM"
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+1680_U+2061",
+        "value":  "คำสั่งไม่รู้จัก"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+1680_U+2062",
+        "value":  "Response: "
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+1680_U+2063",
+        "value":  "Response2: "
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+1680_U+2064",
+        "value":  "Response Data:"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+1680_U+206A",
+        "value":  "X2"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+1680_U+206B",
+        "value":  " "
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+1680_U+206C",
+        "value":  "Data tidak cukup untuk menampilkan byte 11 dan 12."
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+1680_U+206D",
+        "value":  "Response7: "
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+1680_U+206E",
+        "value":  "Response8: "
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+1680_U+206F",
+        "value":  "[{0:F4}] {1} \u003e "
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+1680_U+3000",
+        "value":  "[{0:F4}] {1} \u003e Data kosong."
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+00A0",
+        "value":  "การรีเซ็ตตัวนับแฟลชเสร็จสิ้น\r\nหมุน/กุญแจสตาร์ท ปิด - เปิด\r\nเป็นเวลา 5 วินาที"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+1680",
+        "value":  "ลบตัวนับแฟลช"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2000",
+        "value":  "82-82-14-08-7F-00-00-61-92-92-14-05-C3"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2001",
+        "value":  "82-82-19-05-DE-92-92-19-05-BE"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2002",
+        "value":  "82-82-18-05-DF-92-92-18-05-BF"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2003",
+        "value":  "read64k.log"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2004",
+        "value":  "[!] reply size = {0} (≠ 26) — ทำการบันทึกไฟล์และหยุด"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2005",
+        "value":  "[{0:F4}] หยุด: replySize \u003c= {1} at offset={2}"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2006",
+        "value":  "read48k.log"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2007",
+        "value":  "progressBar1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2008",
+        "value":  "comboBox1"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+2009",
+        "value":  "เริ่มการทำงาน"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+200A",
+        "value":  "PERSEN"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2000_U+200B",
+        "value":  "-"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2000_U+2010",
+        "value":  "label2"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2000_U+2011",
+        "value":  "textBoxLogs"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2000_U+2012",
+        "value":  "label1"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2000_U+2013",
+        "value":  "เลือกหัวข้อที่ต้องการดำเนินการ"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2000_U+2014",
+        "value":  "label3"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2000_U+2015",
+        "value":  "---------- Facebook : เส’เอ็ม สามย่าน ---------- "
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2000_U+2022",
+        "value":  "pass"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2000_U+2024",
+        "value":  "MZA_AUTO_99_PROTECT_ULTRA_V8"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2000_U+2025",
+        "value":  "✅ การยืนยันเสร็จสมบูรณ์ ระบบ MZA-TUNER ถูกปลดล็อคสำเร็จ"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2000_U+2027",
+        "value":  "การยืนยันตัวตนสำเร็จ"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2000_U+2028",
+        "value":  "Win32_Processor"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2000_U+2029",
+        "value":  "Win32_BaseBoard"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2000_U+202A",
+        "value":  "SHARK_V8_PREMIUM_SYSTEM"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2000_U+202B",
+        "value":  "SELECT "
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2000_U+202C",
+        "value":  " FROM "
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2000_U+202D",
+        "value":  "MZA_SECRET_2026_PRO"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2000_U+202E",
+        "value":  "RemapMZA_Pro"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+202F",
+        "value":  "system.dat"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2000_U+2032",
+        "value":  "Segoe UI Black"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+2000_U+2035",
+        "value":  "MZA-TUNER"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+2000_U+2033",
+        "value":  "พรีเมียมจูนเนอร์ซิสเต็ม (PREMIUM ECU)"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+2000_U+2036",
+        "value":  "เวอร์ชัน 2.0.8 โปร (ไซเบอร์-ไทย)"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+2000_U+203E",
+        "value":  "ลงทะเบียนระบบจูนเนอร์"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+2000_U+2047",
+        "value":  "กรุณายืนยันรหัสฮาร์ดแวร์เพื่อปลดล็อคการใช้งานฉบับเต็ม"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+2000_U+2048",
+        "value":  "รหัสเครื่องฮาร์ดแวร์ (HWID)"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+2000_U+2049",
+        "value":  "คัดลอกรหัส"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+2000_U+204A",
+        "value":  "ช่องทางติดต่อจูนเนอร์ผู้ดูแล"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+2000_U+204B",
+        "value":  "Facebook : เส’เอ็ม สามย่าน \u0026 Man-Turbo Remap"
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+2000_U+204C",
+        "value":  "รหัสปลดล็อค (LICENSE KEY)"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+2000_U+204D",
+        "value":  "ยืนยันข้อมูล"
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+2000_U+204E",
+        "value":  "✕"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+2000_U+204F",
+        "value":  "วันที่: {0}   |   เวลาระบบ: {1:HH:mm:ss}"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+2000_U+2050",
+        "value":  "dd MMMM yyyy"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+2000_U+2051",
+        "value":  "th-TH"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+2000_U+2052",
+        "value":  "ตรวจสอบผ่านแล้ว"
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+2000_U+2053",
+        "value":  "ปฏิเสธการเข้าถึง!"
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+2000_U+2054",
+        "value":  "{0}%"
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+2000_U+2055",
+        "value":  "Segoe UI"
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+2000_U+2056",
+        "value":  "◢ ระบบสแกนเฉดสี : CHROMA_HUB ◣"
+    },
+    {
+        "method":  " ⁗",
+        "codepoints":  "U+2000_U+2057",
+        "value":  "R: "
+    },
+    {
+        "method":  " ⁘",
+        "codepoints":  "U+2000_U+2058",
+        "value":  "G: "
+    },
+    {
+        "method":  " ⁙",
+        "codepoints":  "U+2000_U+2059",
+        "value":  "B: "
+    },
+    {
+        "method":  " ⁚",
+        "codepoints":  "U+2000_U+205A",
+        "value":  "◤ ตารางสีพรีเซ็ตนีออน : NEON_MATRIX ◢"
+    },
+    {
+        "method":  " ⁛",
+        "codepoints":  "U+2000_U+205B",
+        "value":  "◢ บันทึกสีที่เลือกเข้าสู่ระบบหลัก ◣"
+    },
+    {
+        "method":  " ⁜",
+        "codepoints":  "U+2000_U+205C",
+        "value":  "[ MZATUNER ] : คลาวด์แชร์ริ่ง - แบ่งปันไฟล์จูนระดับโปร"
+    },
+    {
+        "method":  " ⁝",
+        "codepoints":  "U+2000_U+205D",
+        "value":  "Segoe UI Semibold"
+    },
+    {
+        "method":  " ⁞",
+        "codepoints":  "U+2000_U+205E",
+        "value":  "✖"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2000_U+205F",
+        "value":  "ขั้นตอน 1: เลือกไฟล์ .BIN ในเครื่อง"
+    },
+    {
+        "method":  " ⁠",
+        "codepoints":  "U+2000_U+2060",
+        "value":  "จิ้มเพื่อเลือกไฟล์จูนของคุณ..."
+    },
+    {
+        "method":  " ⁡",
+        "codepoints":  "U+2000_U+2061",
+        "value":  "ค้นหาตามรหัสกล่อง ECU"
+    },
+    {
+        "method":  " ⁢",
+        "codepoints":  "U+2000_U+2062",
+        "value":  "38770-K03-H01"
+    },
+    {
+        "method":  " ⁣",
+        "codepoints":  "U+2000_U+2063",
+        "value":  "รออัพเดท.."
+    },
+    {
+        "method":  " ⁤",
+        "codepoints":  "U+2000_U+2064",
+        "value":  "-----------------"
+    },
+    {
+        "method":  " ⁪",
+        "codepoints":  "U+2000_U+206A",
+        "value":  "ขั้นตอน 2: ปรับตั้งค่าโหมดการจูน"
+    },
+    {
+        "method":  " ⁫",
+        "codepoints":  "U+2000_U+206B",
+        "value":  "โหมดจูนยิง (TPS 0)"
+    },
+    {
+        "method":  " ⁬",
+        "codepoints":  "U+2000_U+206C",
+        "value":  "เปิดฟังก์ชั่น (ON)"
+    },
+    {
+        "method":  " ⁭",
+        "codepoints":  "U+2000_U+206D",
+        "value":  "ปิดฟังก์ชั่น (OFF)"
+    },
+    {
+        "method":  " ⁮",
+        "codepoints":  "U+2000_U+206E",
+        "value":  "ปรับระดับความแรง (Level)"
+    },
+    {
+        "method":  " ⁯",
+        "codepoints":  "U+2000_U+206F",
+        "value":  "--- ดูไฟล์ทุกเลเวล ---"
+    },
+    {
+        "method":  " 　",
+        "codepoints":  "U+2000_U+3000",
+        "value":  "เลเวล 1 (เบาๆ)"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+00A0",
+        "value":  "เลเวล 2 (ปานกลาง)"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+1680",
+        "value":  "เลเวล 3 (โหดๆ)"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2000",
+        "value":  "ข้อมูลไฟล์แชร์จากเซิร์ฟเวอร์ (Live Data)"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2001",
+        "value":  "No"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2002",
+        "value":  "ลำดับ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2003",
+        "value":  "User"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2004",
+        "value":  "ผู้จูน / สำนัก"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2005",
+        "value":  "Ecu"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2006",
+        "value":  "รหัสกล่อง ECU"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2007",
+        "value":  "Details"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2008",
+        "value":  "รายละเอียดการจูน"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+2009",
+        "value":  "Action"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+200A",
+        "value":  "ดาวน์โหลด"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+2001_U+200B",
+        "value":  "↻ อัพเดทรายการไฟล์ (Refresh)"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+2001_U+2010",
+        "value":  "ขั้นตอน 3: โหลดไฟล์ลงเครื่อง"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+2001_U+2011",
+        "value":  "อัพโหลดแชร์ไฟล์จูน (Upload)"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+2001_U+2012",
+        "value":  "ชื่อผู้จูน หรือ ชื่อสำนักของคุณ"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+2001_U+2013",
+        "value":  "ระบุรายละเอียด (เช่น เวล 1 ยิงโหดๆ)"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+2001_U+2014",
+        "value":  "รหัสกล่อง ECU (เช่น 38770-K03-H01)"
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+2001_U+2015",
+        "value":  "🚀 ส่งไฟล์ขึ้นคลาวด์ (Share)"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+2001_U+2022",
+        "value":  "C:\\MZATUNER\\headerColor.dat"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+2001_U+2024",
+        "value":  "Error initializing HUD: "
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+2001_U+2025",
+        "value":  "เตรียมพร้อมอัดไฟล์ลงกล่อง"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+2001_U+2027",
+        "value":  "กรุณารอสักครู่ ระบบกำลังสื่อสารกับ ECU..."
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+2001_U+2028",
+        "value":  "รถเกียร์"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+2001_U+2029",
+        "value":  "◢ ระบบจัดการรหัสกล่อง ECU : คอนโซลควบคุมหลัก ◣"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+2001_U+202A",
+        "value":  "◢ หมวดหมู่ : รถเกียร์ [ MANUAL ]"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+2001_U+202B",
+        "value":  "◢ หมวดหมู่ : รถออโต้ [ AUTO ]"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+2001_U+202C",
+        "value":  "ค้นหาสายธารข้อมูลรหัสพาร์ท"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+2001_U+202D",
+        "value":  "PartCode"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+2001_U+202E",
+        "value":  "รหัสพาร์ท / รุ่นรถ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+2001_U+202F",
+        "value":  "EcmId"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+2001_U+2032",
+        "value":  "หมายเลข ECM ID"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+00A0",
+        "value":  "@ecu_homdaa!\u00262023*mnhdaK#^\u0026hcbaHBQD@0lanmBV#!"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+1680",
+        "value":  "@Shinden@9919"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2000",
+        "value":  ""
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2001",
+        "value":  "ACG Files(*.acg)|*.acg"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2002",
+        "value":  "ECU Files(*.ECU)|*.ECU"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2003",
+        "value":  "C:\\Program Files\\HxD\\HXD.exe"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2004",
+        "value":  "Microsoft Sans Serif"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2005",
+        "value":  "button2"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2006",
+        "value":  "ACG TO BIN"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2007",
+        "value":  "button3"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2008",
+        "value":  "HXD EDITOR"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+2009",
+        "value":  "button1"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+200A",
+        "value":  "ECU TO BIN"
+    },
+    {
+        "method":  "​",
+        "codepoints":  "U+200B",
+        "value":  "rctLockFile"
+    },
+    {
+        "method":  "‐",
+        "codepoints":  "U+2010",
+        "value":  "rtbBin"
+    },
+    {
+        "method":  "‑",
+        "codepoints":  "U+2011",
+        "value":  "groupBox1"
+    },
+    {
+        "method":  "‒",
+        "codepoints":  "U+2012",
+        "value":  "ข้อมูลที่แปลงสำเร็จแล้ว"
+    },
+    {
+        "method":  "–",
+        "codepoints":  "U+2013",
+        "value":  "Form3"
+    },
+    {
+        "method":  "—",
+        "codepoints":  "U+2014",
+        "value":  "แปลงไฟล์ .ACG\u0026.ECUเป็น BIN"
+    },
+    {
+        "method":  "―",
+        "codepoints":  "U+2015",
+        "value":  "Debugger Detected (Managed)"
+    },
+    {
+        "method":  "•",
+        "codepoints":  "U+2022",
+        "value":  "Debugger Detected (Native)"
+    },
+    {
+        "method":  "․",
+        "codepoints":  "U+2024",
+        "value":  "vboxservice"
+    },
+    {
+        "method":  "‥",
+        "codepoints":  "U+2025",
+        "value":  "vboxtray"
+    },
+    {
+        "method":  "‧",
+        "codepoints":  "U+2027",
+        "value":  "vmtoolsd"
+    },
+    {
+        "method":  "\u2028",
+        "codepoints":  "U+2028",
+        "value":  "vgauthservice"
+    },
+    {
+        "method":  "\u2029",
+        "codepoints":  "U+2029",
+        "value":  "vmacthlp"
+    },
+    {
+        "method":  "‪",
+        "codepoints":  "U+202A",
+        "value":  "xenservice"
+    },
+    {
+        "method":  "‫",
+        "codepoints":  "U+202B",
+        "value":  "vmsrvc"
+    },
+    {
+        "method":  "‬",
+        "codepoints":  "U+202C",
+        "value":  "vmusrvc"
+    },
+    {
+        "method":  "‭",
+        "codepoints":  "U+202D",
+        "value":  "Virtual Machine / Sandbox Detected"
+    },
+    {
+        "method":  "‮",
+        "codepoints":  "U+202E",
+        "value":  "SELECT ProcessorId FROM Win32_Processor"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+202F",
+        "value":  "ProcessorId"
+    },
+    {
+        "method":  "′",
+        "codepoints":  "U+2032",
+        "value":  "SELECT SerialNumber FROM Win32_BaseBoard"
+    },
+    {
+        "method":  "‵",
+        "codepoints":  "U+2035",
+        "value":  "SerialNumber"
+    },
+    {
+        "method":  "″",
+        "codepoints":  "U+2033",
+        "value":  "UNKNOWN_ID"
+    },
+    {
+        "method":  "‶",
+        "codepoints":  "U+2036",
+        "value":  "ระบบรักษาความปลอดภัย: "
+    },
+    {
+        "method":  "‾",
+        "codepoints":  "U+203E",
+        "value":  "\nโปรแกรมจะปิดตัวลงเพื่อป้องกันลิขสิทธิ์"
+    },
+    {
+        "method":  "⁇",
+        "codepoints":  "U+2047",
+        "value":  "MZA_TUNER_FLASH Security"
+    },
+    {
+        "method":  "⁈",
+        "codepoints":  "U+2048",
+        "value":  "×"
+    },
+    {
+        "method":  "⁉",
+        "codepoints":  "U+2049",
+        "value":  "Arial"
+    },
+    {
+        "method":  "⁊",
+        "codepoints":  "U+204A",
+        "value":  "FILE_PATH_INPUT"
+    },
+    {
+        "method":  "⁋",
+        "codepoints":  "U+204B",
+        "value":  "KEY_OPEN"
+    },
+    {
+        "method":  "⁌",
+        "codepoints":  "U+204C",
+        "value":  "KEY_MODIFY"
+    },
+    {
+        "method":  "⁍",
+        "codepoints":  "U+204D",
+        "value":  "◢ เลือกไฟล์ ◣"
+    },
+    {
+        "method":  "⁎",
+        "codepoints":  "U+204E",
+        "value":  "◢ ปลดรหัส ◣"
+    },
+    {
+        "method":  "⁏",
+        "codepoints":  "U+204F",
+        "value":  "◢ เซฟไฟล์ ◣"
+    },
+    {
+        "method":  "⁐",
+        "codepoints":  "U+2050",
+        "value":  "Consolas"
+    },
+    {
+        "method":  "⁑",
+        "codepoints":  "U+2051",
+        "value":  "["
+    },
+    {
+        "method":  "⁒",
+        "codepoints":  "U+2052",
+        "value":  "]"
+    },
+    {
+        "method":  "⁓",
+        "codepoints":  "U+2053",
+        "value":  "Impact"
+    },
+    {
+        "method":  "⁔",
+        "codepoints":  "U+2054",
+        "value":  "$9Ad0$!#*)1QqPow^"
+    },
+    {
+        "method":  "⁕",
+        "codepoints":  "U+2055",
+        "value":  "TunerPro"
+    },
+    {
+        "method":  "⁖",
+        "codepoints":  "U+2056",
+        "value":  "Microsoft Enhanced Cryptographic Provider v1.0"
+    },
+    {
+        "method":  "⁗",
+        "codepoints":  "U+2057",
+        "value":  "\r"
+    },
+    {
+        "method":  "⁘",
+        "codepoints":  "U+2058",
+        "value":  "ADXHEADER"
+    },
+    {
+        "method":  "⁙",
+        "codepoints":  "U+2059",
+        "value":  "XDFHEADER"
+    },
+    {
+        "method":  "⁚",
+        "codepoints":  "U+205A",
+        "value":  "รหัสพาสเวิร์ดไม่ถูกต้อง โปรดลองใหม่"
+    },
+    {
+        "method":  "⁛",
+        "codepoints":  "U+205B",
+        "value":  "Error"
+    },
+    {
+        "method":  "⁜",
+        "codepoints":  "U+205C",
+        "value":  "openpassword"
+    },
+    {
+        "method":  "⁝",
+        "codepoints":  "U+205D",
+        "value":  "    \u003copenpassword\u003e"
+    },
+    {
+        "method":  "⁞",
+        "codepoints":  "U+205E",
+        "value":  "\u003c/openpassword\u003e"
+    },
+    {
+        "method":  " ",
+        "codepoints":  "U+205F",
+        "value":  "modifypassword"
+    },
+    {
+        "method":  "⁠",
+        "codepoints":  "U+2060",
+        "value":  "    \u003cmodifypassword\u003e"
+    },
+    {
+        "method":  "⁡",
+        "codepoints":  "U+2061",
+        "value":  "\u003c/modifypassword\u003e"
+    },
+    {
+        "method":  "⁢",
+        "codepoints":  "U+2062",
+        "value":  "\u003cflags\u003e0x"
+    },
+    {
+        "method":  "⁣",
+        "codepoints":  "U+2063",
+        "value":  ".adx"
+    },
+    {
+        "method":  "⁤",
+        "codepoints":  "U+2064",
+        "value":  "    \u003cflags\u003e0x1\u003c/flags\u003e\r\n"
+    },
+    {
+        "method":  "⁪",
+        "codepoints":  "U+206A",
+        "value":  "    \u003cflags\u003e0x10000\u003c/flags\u003e\r\n"
+    },
+    {
+        "method":  "⁫",
+        "codepoints":  "U+206B",
+        "value":  "\r\n"
+    },
+    {
+        "method":  "⁬",
+        "codepoints":  "U+206C",
+        "value":  "เลือกไฟล์"
+    },
+    {
+        "method":  "⁭",
+        "codepoints":  "U+206D",
+        "value":  "ADX or XDF file|*.adx;*.xdf"
+    },
+    {
+        "method":  "⁮",
+        "codepoints":  "U+206E",
+        "value":  "ไฟล์นี้ไม่มีรหัสพาสเวิร์ด\nโปรดเลือกไฟล์ที่ติดรหัสผ่าน"
+    },
+    {
+        "method":  "⁯",
+        "codepoints":  "U+206F",
+        "value":  "ข้อมูล"
+    },
+    {
+        "method":  "　",
+        "codepoints":  "U+3000",
+        "value":  "เปิดไฟล์ล้มเหลว: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+00A0",
+        "value":  "วิเคราะห์ไฟล์ล้มเหลว"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+1680",
+        "value":  "ไม่พบรหัสพาสเวิร์ด"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2000",
+        "value":  "บันทึกไฟล์"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2001",
+        "value":  "XDF file|*.xdf"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2002",
+        "value":  "ADX file|*.adx"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2003",
+        "value":  "บันทึกไฟล์เรียบร้อยแล้ว"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2004",
+        "value":  "สำเร็จ"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2005",
+        "value":  "บันทึกล้มเหลว: "
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2006",
+        "value":  "TbFilePath"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2007",
+        "value":  "BtnOpenFile"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2008",
+        "value":  "เปิดไฟล์"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+2009",
+        "value":  "TbCleanedFile"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+200A",
+        "value":  "BtnAnalyzeFile"
+    },
+    {
+        "method":  " ​",
+        "codepoints":  "U+1680_U+200B",
+        "value":  "ปลดรหัส"
+    },
+    {
+        "method":  " ‐",
+        "codepoints":  "U+1680_U+2010",
+        "value":  "Leelawadee UI"
+    },
+    {
+        "method":  " ‑",
+        "codepoints":  "U+1680_U+2011",
+        "value":  "LblOpenPassword"
+    },
+    {
+        "method":  " ‒",
+        "codepoints":  "U+1680_U+2012",
+        "value":  "PASSWORD"
+    },
+    {
+        "method":  " –",
+        "codepoints":  "U+1680_U+2013",
+        "value":  "LblModifyPassword"
+    },
+    {
+        "method":  " —",
+        "codepoints":  "U+1680_U+2014",
+        "value":  "MODIFY "
+    },
+    {
+        "method":  " ―",
+        "codepoints":  "U+1680_U+2015",
+        "value":  "TbOpenPassword"
+    },
+    {
+        "method":  " •",
+        "codepoints":  "U+1680_U+2022",
+        "value":  "TbModifyPassword"
+    },
+    {
+        "method":  " ․",
+        "codepoints":  "U+1680_U+2024",
+        "value":  "LblUnlockedFile"
+    },
+    {
+        "method":  " ‥",
+        "codepoints":  "U+1680_U+2025",
+        "value":  "FILE_STREAM_IO"
+    },
+    {
+        "method":  " ‧",
+        "codepoints":  "U+1680_U+2027",
+        "value":  "BtnSaveCleanedFile"
+    },
+    {
+        "method":  " \u2028",
+        "codepoints":  "U+1680_U+2028",
+        "value":  "บันทึกไฟล์ที่ปลดรหัสแล้ว"
+    },
+    {
+        "method":  " \u2029",
+        "codepoints":  "U+1680_U+2029",
+        "value":  "LblXdfFile"
+    },
+    {
+        "method":  " ‪",
+        "codepoints":  "U+1680_U+202A",
+        "value":  "TARGET_SOURCE"
+    },
+    {
+        "method":  " ‫",
+        "codepoints":  "U+1680_U+202B",
+        "value":  "Form4"
+    },
+    {
+        "method":  " ‬",
+        "codepoints":  "U+1680_U+202C",
+        "value":  " ADX \u0026 XDF ปลดรหัส"
+    },
+    {
+        "method":  " ‭",
+        "codepoints":  "U+1680_U+202D",
+        "value":  "◢ XDF/ADX PASSWORD BREAKER : RED_MATRIX ◣"
+    },
+    {
+        "method":  " ‮",
+        "codepoints":  "U+1680_U+202E",
+        "value":  "DECRYPTED_STREAM_VIEW"
+    },
+    {
+        "method":  "  ",
+        "codepoints":  "U+1680_U+202F",
+        "value":  "Enter password to open the file"
+    },
+    {
+        "method":  " ′",
+        "codepoints":  "U+1680_U+2032",
+        "value":  "Password empty!"
+    },
+    {
+        "method":  " ‵",
+        "codepoints":  "U+1680_U+2035",
+        "value":  "BtnOK"
+    },
+    {
+        "method":  " ″",
+        "codepoints":  "U+1680_U+2033",
+        "value":  "OK"
+    },
+    {
+        "method":  " ‶",
+        "codepoints":  "U+1680_U+2036",
+        "value":  "BtnCancel"
+    },
+    {
+        "method":  " ‾",
+        "codepoints":  "U+1680_U+203E",
+        "value":  "Cancel"
+    },
+    {
+        "method":  " ⁇",
+        "codepoints":  "U+1680_U+2047",
+        "value":  "OpenPassword"
+    },
+    {
+        "method":  " ⁈",
+        "codepoints":  "U+1680_U+2048",
+        "value":  "รหัสเปิดXDFและADX"
+    },
+    {
+        "method":  " ⁉",
+        "codepoints":  "U+1680_U+2049",
+        "value":  "ดูดไฟล์กล่อง 48K"
+    },
+    {
+        "method":  " ⁊",
+        "codepoints":  "U+1680_U+204A",
+        "value":  "ดูดไฟล์กล่อง 64K"
+    },
+    {
+        "method":  " ⁋",
+        "codepoints":  "U+1680_U+204B",
+        "value":  "ส่ง \u003e\u003e "
+    },
+    {
+        "method":  " ⁌",
+        "codepoints":  "U+1680_U+204C",
+        "value":  " (ส่งล้มเหลว)"
+    },
+    {
+        "method":  " ⁍",
+        "codepoints":  "U+1680_U+204D",
+        "value":  "รับ \u003c\u003c "
+    },
+    {
+        "method":  " ⁎",
+        "codepoints":  "U+1680_U+204E",
+        "value":  "รับ \u003c\u003c ไม่มีข้อมูลตอบกลับ"
+    },
+    {
+        "method":  " ⁏",
+        "codepoints":  "U+1680_U+204F",
+        "value":  "F4"
+    },
+    {
+        "method":  " ⁐",
+        "codepoints":  "U+1680_U+2050",
+        "value":  "\u003e"
+    },
+    {
+        "method":  " ⁑",
+        "codepoints":  "U+1680_U+2051",
+        "value":  "\u003c"
+    },
+    {
+        "method":  " ⁒",
+        "codepoints":  "U+1680_U+2052",
+        "value":  "] 0 "
+    },
+    {
+        "method":  " ⁓",
+        "codepoints":  "U+1680_U+2053",
+        "value":  " ["
+    },
+    {
+        "method":  " ⁔",
+        "codepoints":  "U+1680_U+2054",
+        "value":  ", "
+    },
+    {
+        "method":  " ⁕",
+        "codepoints":  "U+1680_U+2055",
+        "value":  "Input tidak boleh kosong."
+    },
+    {
+        "method":  " ⁖",
+        "codepoints":  "U+1680_U+2056",
+        "value":  "กรุณาเลือกคำสั่งจากรายการ"
+    }
+]

@@ -1,0 +1,49 @@
+[package]
+name        = "mza-tuner-rs"
+version     = "0.1.0"
+edition     = "2021"
+rust-version = "1.74"
+description = "Honda Keihin/Shinden ECU flasher - Rust port of MZA-TUNER"
+license     = "MIT OR Apache-2.0"
+authors     = ["You <you@example.com>"]
+publish     = false
+
+[lib]
+name = "mza_tuner"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mzactl"
+path = "src/main.rs"
+
+[dependencies]
+# crypto - matches the .NET RijndaelManaged 32-byte-key + ECB + PKCS7 setup
+aes       = "0.8"
+ecb       = "0.1"
+cipher    = { version = "0.4", features = ["block-padding", "alloc"] }
+md-5      = "0.10"
+sha1      = "0.10"
+sha2      = "0.10"
+base64    = "0.22"
+
+# misc
+anyhow    = "1.0"
+thiserror = "1.0"
+hex       = "0.4"
+
+# config / data
+configparser = "3.1"
+
+# CLI
+clap = { version = "4.5", features = ["derive"] }
+
+# FTDI hardware - feature gated because libftd2xx pulls in a vendor dylib
+[dependencies.libftd2xx]
+version  = "0.32"
+optional = true
+
+[features]
+default = []
+ftdi    = ["dep:libftd2xx"]
+
+# Release profile lives at the workspace root - see ../Cargo.toml.

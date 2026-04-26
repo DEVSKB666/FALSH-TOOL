@@ -1,0 +1,10 @@
+[package]
+name = "extract_strings"
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "extract_strings"
+path = "src/main.rs"
+
+[workspace]

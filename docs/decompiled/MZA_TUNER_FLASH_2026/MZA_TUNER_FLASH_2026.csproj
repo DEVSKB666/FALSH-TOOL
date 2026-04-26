@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19AA736A-870A-4F30-99B9-1A0FB65FD597}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MZA_TUNER_FLASH_2026</RootNamespace>
+    <AssemblyName>MZA_TUNER_FLASH_2026</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>MZA_TUNER_FLASH_2026.ico</ApplicationIcon>
+    <StartupObject> .⁯</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FTD2XX_NET">
+      <HintPath>C:\MZATUNER\FTD2XX_NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\License_Secrets.cs" />
+    <Compile Include="..\Form_LicenseKey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\MZA_TUNER_FLASH_2026.12.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.13.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.14.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.15.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.16.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.17.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.18.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.19.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.2.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.20.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.21.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.22.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.23.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.24.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.25.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.26.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.27.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.28.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.29.cs" />
+    <Compile Include="..\Form3_AcgEcuToBin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\MZA_TUNER_FLASH_2026.30.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.31.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.32.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.33.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.34.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.35.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.36.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.37.cs" />
+    <Compile Include="..\NetworkClient.cs" />
+    <Compile Include="..\Form_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\MZA_TUNER_FLASH_2026.4.cs" />
+    <Compile Include="..\AssemblyInfo_Extras.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.41.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.42.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.43.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.44.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.45.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.46.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.47.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.48.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.49.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.5.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.50.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.51.cs" />
+    <Compile Include="..\MZA_TUNER_FLASH_2026.6.cs" />
+    <Compile Include="..\Form4_XdfAdxBreaker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\Form5_OpenPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\Form_EepromTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\MZA_TUNER_FLASH_2026.cs" />
+    <Compile Include="-PrivateImplementationDetails-{68F2EF73-\EC2D41B1-A2F9-4664-90D8-86645EE2E753.cs" />
+    <Compile Include=".Designer.2.cs">
+      <DependentUpon>..\Form4_XdfAdxBreaker.cs</DependentUpon>
+    </Compile>
+    <Compile Include=".Designer.3.cs">
+      <DependentUpon>..\Form5_OpenPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include=".Designer.4.cs">
+      <DependentUpon>..\Form_EepromTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include=".Designer.5.cs">
+      <DependentUpon>..\Form_LicenseKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include=".Designer.6.cs">
+      <DependentUpon>..\Form_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include=".Designer.cs">
+      <DependentUpon>..\Form3_AcgEcuToBin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="​.2.cs" />
+    <Compile Include="​.3.cs" />
+    <Compile Include="​.cs" />
+    <Compile Include="‐.2.cs" />
+    <Compile Include="‐.3.cs" />
+    <Compile Include="‐.cs" />
+    <Compile Include="‑.2.cs" />
+    <Compile Include="‑.3.cs" />
+    <Compile Include="‑.cs" />
+    <Compile Include="‒.2.cs" />
+    <Compile Include="‒.3.cs" />
+    <Compile Include="‒.cs" />
+    <Compile Include="–.2.cs" />
+    <Compile Include="–.3.cs" />
+    <Compile Include="–.cs" />
+    <Compile Include="—.2.cs" />
+    <Compile Include="—.3.cs" />
+    <Compile Include="—.cs" />
+    <Compile Include="―.2.cs" />
+    <Compile Include="―.3.cs" />
+    <Compile Include="―.cs" />
+    <Compile Include="•.2.cs" />
+    <Compile Include="•.3.cs" />
+    <Compile Include="•.cs" />
+    <Compile Include="․.2.cs" />
+    <Compile Include="․.3.cs" />
+    <Compile Include="․.cs" />
+    <Compile Include="‥.2.cs" />
+    <Compile Include="‥.3.cs" />
+    <Compile Include="‥.cs" />
+    <Compile Include="‧.2.cs" />
+    <Compile Include="‧.3.cs" />
+    <Compile Include="‧.cs" />
+    <Compile Include="‪.2.cs" />
+    <Compile Include="‪.3.cs" />
+    <Compile Include="‪.cs" />
+    <Compile Include="‫.2.cs" />
+    <Compile Include="‫.3.cs" />
+    <Compile Include="‫.cs" />
+    <Compile Include="‬.2.cs" />
+    <Compile Include="‬.3.cs" />
+    <Compile Include="‬.cs" />
+    <Compile Include="‬.Designer.cs">
+      <DependentUpon>‬.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="‭.2.cs" />
+    <Compile Include="‭.3.cs" />
+    <Compile Include="‭.cs" />
+    <Compile Include="‮.2.cs" />
+    <Compile Include="‮.3.cs" />
+    <Compile Include="‮.cs" />
+    <Compile Include="′.2.cs" />
+    <Compile Include="′.cs" />
+    <Compile Include="″.2.cs" />
+    <Compile Include="″.cs" />
+    <Compile Include="‵.2.cs" />
+    <Compile Include="‵.cs" />
+    <Compile Include="‶.2.cs" />
+    <Compile Include="‶.cs" />
+    <Compile Include="‾.2.cs" />
+    <Compile Include="‾.cs" />
+    <Compile Include="⁇.2.cs" />
+    <Compile Include="⁇.cs" />
+    <Compile Include="⁈.2.cs" />
+    <Compile Include="⁈.cs" />
+    <Compile Include="⁉.2.cs" />
+    <Compile Include="⁉.cs" />
+    <Compile Include="⁊.2.cs" />
+    <Compile Include="⁊.cs" />
+    <Compile Include="⁋.2.cs" />
+    <Compile Include="⁋.cs" />
+    <Compile Include="⁌.2.cs" />
+    <Compile Include="⁌.cs" />
+    <Compile Include="⁍.2.cs" />
+    <Compile Include="⁍.cs" />
+    <Compile Include="⁎.2.cs" />
+    <Compile Include="⁎.cs" />
+    <Compile Include="⁏.2.cs" />
+    <Compile Include="⁏.cs" />
+    <Compile Include="⁐.2.cs" />
+    <Compile Include="⁐.cs" />
+    <Compile Include="⁑.2.cs" />
+    <Compile Include="⁑.cs" />
+    <Compile Include="⁒.2.cs" />
+    <Compile Include="⁒.cs" />
+    <Compile Include="⁓.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁓.cs" />
+    <Compile Include="⁓.Designer.cs">
+      <DependentUpon>⁓.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁔.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁔.cs" />
+    <Compile Include="⁔.Designer.cs">
+      <DependentUpon>⁔.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁕.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁕.cs" />
+    <Compile Include="⁕.Designer.cs">
+      <DependentUpon>⁕.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁖.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁖.cs" />
+    <Compile Include="⁖.Designer.cs">
+      <DependentUpon>⁖.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁗.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁗.cs" />
+    <Compile Include="⁗.Designer.cs">
+      <DependentUpon>⁗.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁘.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁘.cs" />
+    <Compile Include="⁘.Designer.cs">
+      <DependentUpon>⁘.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁙.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁙.cs" />
+    <Compile Include="⁙.Designer.cs">
+      <DependentUpon>⁙.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁚.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁚.cs" />
+    <Compile Include="⁚.Designer.cs">
+      <DependentUpon>⁚.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁛.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁛.cs" />
+    <Compile Include="⁛.Designer.cs">
+      <DependentUpon>⁛.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁜.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁜.cs" />
+    <Compile Include="⁜.Designer.cs">
+      <DependentUpon>⁜.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁝.2.cs" />
+    <Compile Include="⁝.cs" />
+    <Compile Include="⁞.2.cs" />
+    <Compile Include="⁞.cs" />
+    <Compile Include="⁠.2.cs" />
+    <Compile Include="⁠.cs" />
+    <Compile Include="⁡.2.cs" />
+    <Compile Include="⁡.cs" />
+    <Compile Include="⁢.2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="⁢.cs" />
+    <Compile Include="⁢.Designer.cs">
+      <DependentUpon>⁢.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="⁣.2.cs" />
+    <Compile Include="⁣.cs" />
+    <Compile Include="⁤.2.cs" />
+    <Compile Include="⁤.cs" />
+    <Compile Include="⁪.2.cs" />
+    <Compile Include="⁪.cs" />
+    <Compile Include="⁫.2.cs" />
+    <Compile Include="⁫.cs" />
+    <Compile Include="⁬.2.cs" />
+    <Compile Include="⁬.cs" />
+    <Compile Include="⁭.2.cs" />
+    <Compile Include="⁭.cs" />
+    <Compile Include="⁮.2.cs" />
+    <Compile Include="⁮.cs" />
+    <Compile Include="⁯.2.cs" />
+    <Compile Include="⁯.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Form4.resources" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Honda_Flash_Tools.Net.lockdeta.exe" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Honda_Flash_Tools.Net.S.exe" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.pass.resources" />
+    <EmbeddedResource Include="⁚.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="‬.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>‬.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

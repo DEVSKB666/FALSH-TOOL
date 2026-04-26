@@ -1,0 +1,1000 @@
+﻿U+00A0                                    @ecu_homdaa!&2023*mnhdaK#^&hcbaHBQD@0lanmBV#!
+U+1680                                    @Shinden@9919
+U+1680_U+00A0                             วิเคราะห์ไฟล์ล้มเหลว
+U+1680_U+1680                             ไม่พบรหัสพาสเวิร์ด
+U+1680_U+2000                             บันทึกไฟล์
+U+1680_U+2001                             XDF file|*.xdf
+U+1680_U+2002                             ADX file|*.adx
+U+1680_U+2003                             บันทึกไฟล์เรียบร้อยแล้ว
+U+1680_U+2004                             สำเร็จ
+U+1680_U+2005                             บันทึกล้มเหลว: 
+U+1680_U+2006                             TbFilePath
+U+1680_U+2007                             BtnOpenFile
+U+1680_U+2008                             เปิดไฟล์
+U+1680_U+2009                             TbCleanedFile
+U+1680_U+200A                             BtnAnalyzeFile
+U+1680_U+200B                             ปลดรหัส
+U+1680_U+2010                             Leelawadee UI
+U+1680_U+2011                             LblOpenPassword
+U+1680_U+2012                             PASSWORD
+U+1680_U+2013                             LblModifyPassword
+U+1680_U+2014                             MODIFY 
+U+1680_U+2015                             TbOpenPassword
+U+1680_U+2022                             TbModifyPassword
+U+1680_U+2024                             LblUnlockedFile
+U+1680_U+2025                             FILE_STREAM_IO
+U+1680_U+2027                             BtnSaveCleanedFile
+U+1680_U+2028                             บันทึกไฟล์ที่ปลดรหัสแล้ว
+U+1680_U+2029                             LblXdfFile
+U+1680_U+202A                             TARGET_SOURCE
+U+1680_U+202B                             Form4
+U+1680_U+202C                              ADX & XDF ปลดรหัส
+U+1680_U+202D                             ◢ XDF/ADX PASSWORD BREAKER : RED_MATRIX ◣
+U+1680_U+202E                             DECRYPTED_STREAM_VIEW
+U+1680_U+202F                             Enter password to open the file
+U+1680_U+2032                             Password empty!
+U+1680_U+2033                             OK
+U+1680_U+2035                             BtnOK
+U+1680_U+2036                             BtnCancel
+U+1680_U+203E                             Cancel
+U+1680_U+2047                             OpenPassword
+U+1680_U+2048                             รหัสเปิดXDFและADX
+U+1680_U+2049                             ดูดไฟล์กล่อง 48K
+U+1680_U+204A                             ดูดไฟล์กล่อง 64K
+U+1680_U+204B                             ส่ง >> 
+U+1680_U+204C                              (ส่งล้มเหลว)
+U+1680_U+204D                             รับ << 
+U+1680_U+204E                             รับ << ไม่มีข้อมูลตอบกลับ
+U+1680_U+204F                             F4
+U+1680_U+2050                             >
+U+1680_U+2051                             <
+U+1680_U+2052                             ] 0 
+U+1680_U+2053                              [
+U+1680_U+2054                             , 
+U+1680_U+2055                             Input tidak boleh kosong.
+U+1680_U+2056                             กรุณาเลือกคำสั่งจากรายการ
+U+1680_U+2057                             READ EEPROM KH
+U+1680_U+2058                             OFF สวิตซ์ และ ON | ภายใน 3 วินาที | และกด OK
+U+1680_U+2059                             READ EEPROM
+U+1680_U+205A                             Process is already running.
+U+1680_U+205B                             ลบจำนวนการอัด Kh
+U+1680_U+205C                             Format EEPROM 0x00
+U+1680_U+205D                             Format EEPROM 0xFF
+U+1680_U+205E                             READ EEPROM Sh
+U+1680_U+205F                             ลบจำนวนการอัด Sh
+U+1680_U+2060                             WRITE EEPROM
+U+1680_U+2061                             คำสั่งไม่รู้จัก
+U+1680_U+2062                             Response: 
+U+1680_U+2063                             Response2: 
+U+1680_U+2064                             Response Data:
+U+1680_U+206A                             X2
+U+1680_U+206B                              
+U+1680_U+206C                             Data tidak cukup untuk menampilkan byte 11 dan 12.
+U+1680_U+206D                             Response7: 
+U+1680_U+206E                             Response8: 
+U+1680_U+206F                             [{0:F4}] {1} > 
+U+1680_U+3000                             [{0:F4}] {1} > Data kosong.
+U+2000                                    
+U+2000_U+00A0                             การรีเซ็ตตัวนับแฟลชเสร็จสิ้น | หมุน/กุญแจสตาร์ท ปิด - เปิด | เป็นเวลา 5 วินาที
+U+2000_U+1680                             ลบตัวนับแฟลช
+U+2000_U+2000                             82-82-14-08-7F-00-00-61-92-92-14-05-C3
+U+2000_U+2001                             82-82-19-05-DE-92-92-19-05-BE
+U+2000_U+2002                             82-82-18-05-DF-92-92-18-05-BF
+U+2000_U+2003                             read64k.log
+U+2000_U+2004                             [!] reply size = {0} (≠ 26) — ทำการบันทึกไฟล์และหยุด
+U+2000_U+2005                             [{0:F4}] หยุด: replySize <= {1} at offset={2}
+U+2000_U+2006                             read48k.log
+U+2000_U+2007                             progressBar1
+U+2000_U+2008                             comboBox1
+U+2000_U+2009                             เริ่มการทำงาน
+U+2000_U+200A                             PERSEN
+U+2000_U+200B                             -
+U+2000_U+2010                             label2
+U+2000_U+2011                             textBoxLogs
+U+2000_U+2012                             label1
+U+2000_U+2013                             เลือกหัวข้อที่ต้องการดำเนินการ
+U+2000_U+2014                             label3
+U+2000_U+2015                             ---------- Facebook : เส’เอ็ม สามย่าน ---------- 
+U+2000_U+2022                             pass
+U+2000_U+2024                             MZA_AUTO_99_PROTECT_ULTRA_V8
+U+2000_U+2025                             ✅ การยืนยันเสร็จสมบูรณ์ ระบบ MZA-TUNER ถูกปลดล็อคสำเร็จ
+U+2000_U+2027                             การยืนยันตัวตนสำเร็จ
+U+2000_U+2028                             Win32_Processor
+U+2000_U+2029                             Win32_BaseBoard
+U+2000_U+202A                             SHARK_V8_PREMIUM_SYSTEM
+U+2000_U+202B                             SELECT 
+U+2000_U+202C                              FROM 
+U+2000_U+202D                             MZA_SECRET_2026_PRO
+U+2000_U+202E                             RemapMZA_Pro
+U+2000_U+202F                             system.dat
+U+2000_U+2032                             Segoe UI Black
+U+2000_U+2033                             พรีเมียมจูนเนอร์ซิสเต็ม (PREMIUM ECU)
+U+2000_U+2035                             MZA-TUNER
+U+2000_U+2036                             เวอร์ชัน 2.0.8 โปร (ไซเบอร์-ไทย)
+U+2000_U+203E                             ลงทะเบียนระบบจูนเนอร์
+U+2000_U+2047                             กรุณายืนยันรหัสฮาร์ดแวร์เพื่อปลดล็อคการใช้งานฉบับเต็ม
+U+2000_U+2048                             รหัสเครื่องฮาร์ดแวร์ (HWID)
+U+2000_U+2049                             คัดลอกรหัส
+U+2000_U+204A                             ช่องทางติดต่อจูนเนอร์ผู้ดูแล
+U+2000_U+204B                             Facebook : เส’เอ็ม สามย่าน & Man-Turbo Remap
+U+2000_U+204C                             รหัสปลดล็อค (LICENSE KEY)
+U+2000_U+204D                             ยืนยันข้อมูล
+U+2000_U+204E                             ✕
+U+2000_U+204F                             วันที่: {0}   |   เวลาระบบ: {1:HH:mm:ss}
+U+2000_U+2050                             dd MMMM yyyy
+U+2000_U+2051                             th-TH
+U+2000_U+2052                             ตรวจสอบผ่านแล้ว
+U+2000_U+2053                             ปฏิเสธการเข้าถึง!
+U+2000_U+2054                             {0}%
+U+2000_U+2055                             Segoe UI
+U+2000_U+2056                             ◢ ระบบสแกนเฉดสี : CHROMA_HUB ◣
+U+2000_U+2057                             R: 
+U+2000_U+2058                             G: 
+U+2000_U+2059                             B: 
+U+2000_U+205A                             ◤ ตารางสีพรีเซ็ตนีออน : NEON_MATRIX ◢
+U+2000_U+205B                             ◢ บันทึกสีที่เลือกเข้าสู่ระบบหลัก ◣
+U+2000_U+205C                             [ MZATUNER ] : คลาวด์แชร์ริ่ง - แบ่งปันไฟล์จูนระดับโปร
+U+2000_U+205D                             Segoe UI Semibold
+U+2000_U+205E                             ✖
+U+2000_U+205F                             ขั้นตอน 1: เลือกไฟล์ .BIN ในเครื่อง
+U+2000_U+2060                             จิ้มเพื่อเลือกไฟล์จูนของคุณ...
+U+2000_U+2061                             ค้นหาตามรหัสกล่อง ECU
+U+2000_U+2062                             38770-K03-H01
+U+2000_U+2063                             รออัพเดท..
+U+2000_U+2064                             -----------------
+U+2000_U+206A                             ขั้นตอน 2: ปรับตั้งค่าโหมดการจูน
+U+2000_U+206B                             โหมดจูนยิง (TPS 0)
+U+2000_U+206C                             เปิดฟังก์ชั่น (ON)
+U+2000_U+206D                             ปิดฟังก์ชั่น (OFF)
+U+2000_U+206E                             ปรับระดับความแรง (Level)
+U+2000_U+206F                             --- ดูไฟล์ทุกเลเวล ---
+U+2000_U+3000                             เลเวล 1 (เบาๆ)
+U+2001                                    ACG Files(*.acg)|*.acg
+U+2001_U+00A0                             เลเวล 2 (ปานกลาง)
+U+2001_U+1680                             เลเวล 3 (โหดๆ)
+U+2001_U+2000                             ข้อมูลไฟล์แชร์จากเซิร์ฟเวอร์ (Live Data)
+U+2001_U+2001                             No
+U+2001_U+2002                             ลำดับ
+U+2001_U+2003                             User
+U+2001_U+2004                             ผู้จูน / สำนัก
+U+2001_U+2005                             Ecu
+U+2001_U+2006                             รหัสกล่อง ECU
+U+2001_U+2007                             Details
+U+2001_U+2008                             รายละเอียดการจูน
+U+2001_U+2009                             Action
+U+2001_U+200A                             ดาวน์โหลด
+U+2001_U+200B                             ↻ อัพเดทรายการไฟล์ (Refresh)
+U+2001_U+2010                             ขั้นตอน 3: โหลดไฟล์ลงเครื่อง
+U+2001_U+2011                             อัพโหลดแชร์ไฟล์จูน (Upload)
+U+2001_U+2012                             ชื่อผู้จูน หรือ ชื่อสำนักของคุณ
+U+2001_U+2013                             ระบุรายละเอียด (เช่น เวล 1 ยิงโหดๆ)
+U+2001_U+2014                             รหัสกล่อง ECU (เช่น 38770-K03-H01)
+U+2001_U+2015                             🚀 ส่งไฟล์ขึ้นคลาวด์ (Share)
+U+2001_U+2022                             C:\MZATUNER\headerColor.dat
+U+2001_U+2024                             Error initializing HUD: 
+U+2001_U+2025                             เตรียมพร้อมอัดไฟล์ลงกล่อง
+U+2001_U+2027                             กรุณารอสักครู่ ระบบกำลังสื่อสารกับ ECU...
+U+2001_U+2028                             รถเกียร์
+U+2001_U+2029                             ◢ ระบบจัดการรหัสกล่อง ECU : คอนโซลควบคุมหลัก ◣
+U+2001_U+202A                             ◢ หมวดหมู่ : รถเกียร์ [ MANUAL ]
+U+2001_U+202B                             ◢ หมวดหมู่ : รถออโต้ [ AUTO ]
+U+2001_U+202C                             ค้นหาสายธารข้อมูลรหัสพาร์ท
+U+2001_U+202D                             PartCode
+U+2001_U+202E                             รหัสพาร์ท / รุ่นรถ
+U+2001_U+202F                             EcmId
+U+2001_U+2032                             หมายเลข ECM ID
+U+2001_U+2033                             START
+U+2001_U+2035                             StartOffset
+U+2001_U+2036                             CksumOffset
+U+2001_U+203E                             CHKSUM
+U+2001_U+2047                             ◢ บันทึกข้อมูลทั้งหมดลงฐานข้อมูลหลัก ◣
+U+2001_U+2048                             ◢ 
+U+2001_U+2049                              ◣
+U+2001_U+204A                             ◤ รหัสพาร์ท / รุ่นรถ ◢
+U+2001_U+204B                             ◤ หมายเลขลายเซ็น ECM_ID ◢
+U+2001_U+204C                             ◤ ตำแหน่งเริ่มหน่วยความจำ (HEX) ◢
+U+2001_U+204D                             ◤ ตำแหน่งเช็คซัม (CHECKSUM) ◢
+U+2001_U+204E                             ◢ เพิ่มข้อมูลใหม่ ◣
+U+2001_U+204F                             ◢ บันทึกการแก้ไข ◣
+U+2001_U+2050                             ◢ ลบข้อมูลนี้ออก ◣
+U+2001_U+2051                             รถออโต้
+U+2001_U+2052                             ◢ ยืนยันการลบไฟล์ชุดนี้ออกจากสารบบหรือไม่? ◣
+U+2001_U+2053                             MASTER_CORE_SECURITY
+U+2001_U+2054                             บันทึกรหัสกล่องลงโปรแกรม
+U+2001_U+2055                             บันทึกรหัสกล่องลงโปรแกรมสำเร็จ
+U+2001_U+2056                             ล้มเหลว: 
+U+2001_U+2057                             ระบบแก้ไขข้อมูลหลัก
+U+2001_U+2058                             ระบบย่อยรถออโต้
+U+2001_U+2059                             ระบบย่อยรถเกียร์
+U+2001_U+205A                             MZA
+U+2001_U+205B                             ระบบเซนซิทีฟคุมการยิงหอบ (GHOST CAM SYSTEM)
+U+2001_U+205C                             🤖 MZABot_Ai // CORE
+U+2001_U+205D                             lblBotMsg
+U+2001_U+205E                             กำลังรอรับคำสั่งจูน...
+U+2001_U+205F                             กรุณาเลือกไฟล์ .BIN
+U+2001_U+2060                             ค้นหาไฟล์
+U+2001_U+2061                             รออัพเดท
+U+2001_U+2062                             EXECUTE / บันทึกยิงหอบ
+U+2001_U+2063                             [ กำหนดองศาลิ้นปีกผีเสื้อ / TPS ]
+U+2001_U+2064                             0%
+U+2001_U+206A                             3%
+U+2001_U+206B                             5%
+U+2001_U+206C                             8%
+U+2001_U+206D                             12%
+U+2001_U+206E                             TPS 
+U+2001_U+206F                             [ ล็อครอบเดินเบายิงหอบ / RPM ]
+U+2001_U+3000                             1800
+U+2002                                    ECU Files(*.ECU)|*.ECU
+U+2002_U+00A0                             2000
+U+2002_U+1680                             2500
+U+2002_U+2000                             3000
+U+2002_U+2001                             3500
+U+2002_U+2002                              RPM
+U+2002_U+2003                             [ เลือกระดับความดุดัน / GHOST CAM ]
+U+2002_U+2004                             หอบระดับ 1
+U+2002_U+2005                             หอบระดับ 2
+U+2002_U+2006                             หอบระดับ 3
+U+2002_U+2007                             หอบระดับ 4
+U+2002_U+2008                             หอบระดับ 5
+U+2002_U+2009                             MZA TUNER CORE // V1.0.0.X
+U+2002_U+200A                             0x{0:X4}
+U+2002_U+200B                             MEM_{0}
+U+2002_U+2010                             [TARGET : LOCKED]
+U+2002_U+2011                             Gasoline
+U+2002_U+2012                             NA
+U+2002_U+2013                             Bahnschrift SemiBold
+U+2002_U+2014                             TARGET HP
+U+2002_U+2015                             CYLINDERS
+U+2002_U+2022                             FUEL
+U+2002_U+2024                             E85
+U+2002_U+2025                             ASPI
+U+2002_U+2027                             Turbo
+U+2002_U+2028                             300
+U+2002_U+2029                             4
+U+2002_U+202A                             INJECTOR FLOW CALCULATOR
+U+2002_U+202B                             REQUIRED CC/MIN
+U+2002_U+202C                             {0:F0}
+U+2002_U+202D                             REQUIRED LB/HR
+U+2002_U+202E                             {0:F1}
+U+2002_U+202F                             FLOW SCALE (0 - 2200cc)
+U+2002_U+2032                             Bahnschrift
+U+2002_U+2033                             เลือกไฟล์ครบ 2 ตัว
+U+2002_U+2035                             MZATUNER BINARY SYSTEM // JOINER MODULE
+U+2002_U+2036                             คลิกเลือกไฟล์จูน (32KB)...
+U+2002_U+203E                             เลือก Bin
+U+2002_U+2047                             คลิกเลือกไฟล์เต็ม (64KB)...
+U+2002_U+2048                             เลือกไฟล์เต็ม
+U+2002_U+2049                             สร้างไฟล์ BIN
+U+2002_U+204A                             MZATUNER_OS_LOADED
+U+2002_U+204B                             BIN Files|*.bin
+U+2002_U+204C                             กรุณาเลือกไฟล์ให้ครบทั้ง 2 ตัว!
+U+2002_U+204D                             ไฟล์ตัวเต็มต้องมีขนาด 64KB!
+U+2002_U+204E                             BIN|*.bin
+U+2002_U+204F                             _MZATUNER_FIXED.bin
+U+2002_U+2050                             สร้างไฟล์ BIN สำเร็จ!
+U+2002_U+2051                             เกิดข้อผิดพลาด: 
+U+2002_U+2052                             ANTI
+U+2002_U+2053                             devenv
+U+2002_U+2054                             Goodbye Master. Shutting down.
+U+2002_U+2055                             > INITIALIZING MZA-TUNER 2026...
+U+2002_U+2056                             > SEARCHING FTDI INTERFACE...
+U+2002_U+2057                             > FTDI D2XX DRIVER DETECTED [OK]
+U+2002_U+2058                             > AUTHENTICATING LICENSE KEY...
+U+2002_U+2059                             > MEMORY OFFSET MAPPING: 0x8000-0xFFFF
+U+2002_U+205A                             > K-LINE PROTOCOL STACK LOADED
+U+2002_U+205B                             > WARMING UP ISO-9141 BUS... [OK]
+U+2002_U+205C                             > SYNCING ECU DATABASE...
+U+2002_U+205D                             > SYSTEM STABLE. ACCESS GRANTED.
+U+2002_U+205E                             _Line
+U+2002_U+205F                             label_batrei
+U+2002_U+2060                             TxtBatteryVolt
+U+2002_U+2061                             modernBatteryGauge
+U+2002_U+2062                             กำลังเขียน : 
+U+2002_U+2063                             F2
+U+2002_U+2064                              KB / 
+U+2002_U+206A                              KB (
+U+2002_U+206B                             %)
+U+2002_U+206C                             อัดไฟล์สำเร็จ!! ปิดเปิดกุญแจ ใหม่อีกครั้ง
+U+2002_U+206D                             X
+U+2002_U+206E                             Address 
+U+2002_U+206F                              bytes 
+U+2002_U+3000                             กำลังส่งสัญญาณปลุกกล่อง Shindengen...
+U+2003                                    C:\Program Files\HxD\HXD.exe
+U+2003_U+00A0                             กำลังตรวจสอบ Seed/Key...
+U+2003_U+1680                             กำลังเริ่ม ประมวลผล
+U+2003_U+2000                             เสร็จสิ้นการประมวลผล เริ่มเขียนไฟล์
+U+2003_U+2001                             การเขียนไฟล์ล้มเหลว, ECM บล็อค
+U+2003_U+2002                             ฮอนด้า แฟลช
+U+2003_U+2003                             การเขียนไฟล์ ล้มเหลว 
+U+2003_U+2004                             การตรวจสอบ ล้มเหลว Seed/Key
+U+2003_U+2005                             กำลังส่งสัญญาณปลุกกล่อง ECU...
+U+2003_U+2006                             กำลังประมวลผลเตรียมอัดไฟล์...
+U+2003_U+2007                             ประมวลผลสำเร็จ กำลังเริ่มเขียนไฟล์...
+U+2003_U+2008                             ล้มเหลว: ECM บล็อค
+U+2003_U+2009                             เชื่อมต่อเตรียมอัดไฟล์ล้มเหลว
+U+2003_U+200A                             ECU Connected.
+U+2003_U+200B                             OFF
+U+2003_U+2010                             กรุณาเชื่อมต่อรถ/เปิดกุญแจรถ !!
+U+2003_U+2011                             ON
+U+2003_U+2012                             {0}/{1}
+U+2003_U+2013                             เชื่อมต่อไม่สำเร็จ
+U+2003_U+2014                             ตรวจสอบสาย/สวิตช์ แล้วลองใหม่
+U+2003_U+2015                             เข้าสู่โหมด Security แล้ว
+U+2003_U+2022                             ปิดแล้ว ✅ กรุณาเปิดสวิตช์กุญแจ (ON)
+U+2003_U+2024                             ส่งคำสั่งพิเศษเรียบร้อย ✅
+U+2003_U+2025                             กำลังทำการล็อคข้อมูล (Anti-Read)...
+U+2003_U+2027                             MZA-TUNER | FLASHERNEW 2026
+U+2003_U+2028                             MZA_SHIELD_2026_ULTRA_PRO
+U+2003_U+2029                             MZA SHIELD
+U+2003_U+202A                             ระบบล็อคข้อมูล (Deep Lock) ทำงานเรียบร้อย
+U+2003_U+202B                             0000
+U+2003_U+202C                             !!! ว้ายๆ กล่องไปดิ้ !!!
+U+2003_U+202D                             auto
+U+2003_U+202E                             !!! อัพเดทรหัสกล่องบ้างนะ !!!
+U+2003_U+202F                             4000
+U+2003_U+2032                             7600
+U+2003_U+2033                             DFEF
+U+2003_U+2035                             0
+U+2003_U+2036                             8000
+U+2003_U+203E                             E0000
+U+2003_U+2047                             B000
+U+2003_U+2048                             3FFF8
+U+2003_U+2049                             7FFF8
+U+2003_U+204A                             FFFF8
+U+2003_U+204B                             10000
+U+2003_U+204C                             A000
+U+2003_U+204D                             programName.dat
+U+2003_U+204E                             Default Program Name
+U+2003_U+204F                             Background.dat
+U+2003_U+2050                             เริ่มทำงาน - MZATUNER
+U+2003_U+2051                             กรุณาเปิดสวิตช์กุญแจรถ (ON) แล้วรอระบบเชื่อมต่อ
+U+2003_U+2052                             Open bin file
+U+2003_U+2053                             Bin file (*.bin)|*.bin
+U+2003_U+2054                             {0} ({1:F2} KB)
+U+2003_U+2055                             .bin
+U+2003_U+2056                             ไฟล์ที่เลือกไม่ใช่ .bin
+U+2003_U+2057                             (กรุณาเลือกไฟล์ BIN) ..
+U+2003_U+2058                             ชื่อไฟล์ : 
+U+2003_U+2059                              | 
+U+2003_U+205A                             ขนาดไฟล์ : {0:F2} KB |  | 
+U+2003_U+205B                             คำเตือน !! โปรดตรวจสอบ ก่อนอัดไฟล์ อีกที เพื่อกันกล่องหลับหรือเสียหาย 
+U+2003_U+205C                             คำเตือนเกี่ยวกับไฟล์
+U+2003_U+205D                             https://www.facebook.com/profile.php?id=100086932872601
+U+2003_U+205E                             https://www.facebook.com/juniel.pontongan/
+U+2003_U+205F                             Microsoft New Tai Lue
+U+2003_U+2060                             TxtEcmId
+U+2003_U+2061                             TxtFlashCount
+U+2003_U+2062                             Times New Roman
+U+2003_U+2063                             TxtConnStat
+U+2003_U+2064                             LblConnection
+U+2003_U+206A                             Connection:
+U+2003_U+206B                             LblChecksumOffset
+U+2003_U+206C                             เช็คซั่มออฟเซ็ค
+U+2003_U+206D                             LblStartOffset
+U+2003_U+206E                             สตาร์ทออฟเซ็ต
+U+2003_U+206F                             TbChecksumOffset
+U+2003_U+3000                             TbStartOffset
+U+2004                                    Microsoft Sans Serif
+U+2004_U+00A0                             Microsoft Tai Le
+U+2004_U+1680                             TbFileName
+U+2004_U+2000                             กรุณาเลือกไฟล์ BIN ..
+U+2004_U+2001                             pictureBox2
+U+2004_U+2002                             TxtPartCode
+U+2004_U+2003                             Microsoft YaHei
+U+2004_U+2004                             BtnWrite
+U+2004_U+2005                             อัดไฟล์ลงกล่อง ECU
+U+2004_U+2006                             pictureBox5
+U+2004_U+2007                             HONDA PART CODE
+U+2004_U+2008                             pictureBox6
+U+2004_U+2009                             pictureBox7
+U+2004_U+200A                             TxtPb
+U+2004_U+200B                             สถานะการชื่อกุญแจ :
+U+2004_U+2010                             🛡จำนวนการอัด : 
+U+2004_U+2011                             label4
+U+2004_U+2012                             📈 : ไอดีกล่องอีซียู : 
+U+2004_U+2013                             ไฟลToolStripMenuItem
+U+2004_U+2014                             ไฟล์
+U+2004_U+2015                             เปลยนชอโปรแกรมToolStripMenuItem
+U+2004_U+2022                             เปลยนรปToolStripMenuItem1
+U+2004_U+2024                             ปลดรหสXDFADXToolStripMenuItem
+U+2004_U+2025                             แปลงไฟลECUACGToolStripMenuItem
+U+2004_U+2027                             เลอกไฟลแฟชรToolStripMenuItem
+U+2004_U+2028                             เลือกไฟล์ Bin
+U+2004_U+2029                             ตดตงไดรเวอรToolStripMenuItem1
+U+2004_U+202A                             รสตารทโปรแกรมToolStripMenuItem
+U+2004_U+202B                             อพเดทรหสกลองลาสดToolStripMenuItem
+U+2004_U+202C                             อัพเดทรหัสกล่องล่าสุด
+U+2004_U+202D                             ไฟลเดมโรงงานToolStripMenuItem
+U+2004_U+202E                             ไฟลโมสำหรบมอใหมToolStripMenuItem
+U+2004_U+202F                             toolStripMenuItem1
+U+2004_U+2032                             ลบออโตToolStripMenuItem
+U+2004_U+2033                             รเซตกลองToolStripMenuItem
+U+2004_U+2035                             ลบออโตToolStripMenuItem1
+U+2004_U+2036                             รีเช็ตกล่อง
+U+2004_U+203E                             ลบโคตToolStripMenuItem
+U+2004_U+2047                             ลบโค็ต
+U+2004_U+2048                             ลบแฟลชเคาทShindengenToolStripMenuItem
+U+2004_U+2049                             ลบแฟลชเคาท์Shindengen
+U+2004_U+204A                             ดดดาตาToolStripMenuItem
+U+2004_U+204B                             จนโปรToolStripMenuItem
+U+2004_U+204C                             เปดจนโปรToolStripMenuItem
+U+2004_U+204D                             ลงทะเบยนToolStripMenuItem
+U+2004_U+204E                             อพเดทจนโปรToolStripMenuItem
+U+2004_U+204F                             ลอคฝงชนToolStripMenuItem
+U+2004_U+2050                             เพมรหสกลองToolStripMenuItem
+U+2004_U+2051                             อพเดทโปรแกรมToolStripMenuItem
+U+2004_U+2052                             ACG/ECU TO BIN
+U+2004_U+2053                             pictureBox1
+U+2004_U+2054                             groupBox3
+U+2004_U+2055                             button11
+U+2004_U+2056                             ➕ เพิ่มรหัสกล่องโปรแกรม
+U+2004_U+2057                             button28
+U+2004_U+2058                             ⚙️ ดูดไฟล์รถเกียร์ 48 - 64
+U+2004_U+2059                             button15
+U+2004_U+205A                             ⚙️ ลบจำนวนการอัดรถเกียร์
+U+2004_U+205B                             button21
+U+2004_U+205C                             น้ำมัน TPS 0
+U+2004_U+205D                             groupBox9
+U+2004_U+205E                             0.0 V
+U+2004_U+205F                             label_batTitle
+U+2004_U+2060                             🔋แบตเตอรรี่:
+U+2004_U+2061                             checkBox1
+U+2004_U+2062                             ออฟเซ็ตแบบแมนนวล
+U+2004_U+2063                             CbFastWrite
+U+2004_U+2064                             เขียนไฟล์เร็ว
+U+2004_U+206A                             button12
+U+2004_U+206B                             รีสตาร์ทโปรแกรม
+U+2004_U+206C                             button20
+U+2004_U+206D                             อัดไฟล์
+U+2004_U+206E                             button19
+U+2004_U+206F                             button26
+U+2004_U+3000                             🔄 Resset
+U+2005                                    button2
+U+2005_U+00A0                             PbProgress
+U+2005_U+1680                             sx1
+U+2005_U+2000                             button22
+U+2005_U+2001                             ดูดไฟล์ 48-64 KB
+U+2005_U+2002                             ไฟลToolStripMenuItem1
+U+2005_U+2003                             🗂️ ไฟล์
+U+2005_U+2004                             เกยวกบโปรแกรมToolStripMenuItem
+U+2005_U+2005                             ℹ️ เกี่ยวกับโปรแกรม
+U+2005_U+2006                             ตดตอสอบถามปญหาToolStripMenuItem
+U+2005_U+2007                             📞 ติดต่อสอบถาม/ปัญหา
+U+2005_U+2008                             อพเดทตรวจสอบเวอรชนToolStripMenuItem
+U+2005_U+2009                             🔄 อัพเดท/ตรวจสอบเวอร์ชั่น
+U+2005_U+200A                             เปลยนสโปรแกรมToolStripMenuItem
+U+2005_U+200B                             🎨 เปลี่ยนสีโปรแกรม
+U+2005_U+2010                             ปรบเปลยนแตงโลโกToolStripMenuItem
+U+2005_U+2011                             🖼️ ปรับเปลี่ยนแต่งโลโก้
+U+2005_U+2012                             ตงคาชอโปรแกรมToolStripMenuItem
+U+2005_U+2013                             ⚙️ ตั้งค่าชื่อโปรแกรม
+U+2005_U+2014                             ตดตงไดรเวอรFTDIToolStripMenuItem
+U+2005_U+2015                             🔌 ติดตั้งไดรเวอร์ (FTDI)
+U+2005_U+2022                             เปดโปรแกรมTunerProRTToolStripMenuItem
+U+2005_U+2024                             🚀 เปิดโปรแกรม TunerPro RT
+U+2005_U+2025                             ลงทะเบยนTunerProToolStripMenuItem
+U+2005_U+2027                             🔑 ลงทะเบียน TunerPro
+U+2005_U+2028                             ตดตงTunerProRTToolStripMenuItem
+U+2005_U+2029                             📥 ติดตั้ง TunerPro RT
+U+2005_U+202A                             ตดตงTunerProRTTHToolStripMenuItem
+U+2005_U+202B                             📥 ติดตั้ง  TunerPro RT TH
+U+2005_U+202C                             แปลงไฟลECUACGToolStripMenuItem1
+U+2005_U+202D                             🧬 แปลงไฟล์ ECU - ACG
+U+2005_U+202E                             ปลดรหสXDFADXToolStripMenuItem1
+U+2005_U+202F                             🔓 ปลดรหัส XDF - ADX
+U+2005_U+2032                             เพมรหสกลองโปรแกรมToolStripMenuItem
+U+2005_U+2033                             🛵 จัดการรถ
+U+2005_U+2035                             จดการรถToolStripMenuItem
+U+2005_U+2036                             ลบโคดToolStripMenuItem
+U+2005_U+203E                             ❌ ลบโค้ด
+U+2005_U+2047                             รเซตกลองECUToolStripMenuItem
+U+2005_U+2048                             ♻️ รีเซ็ตกล่อง ECU
+U+2005_U+2049                             ดดาตารถToolStripMenuItem
+U+2005_U+204A                             📊 ดูดาต้ารถ
+U+2005_U+204B                             อานขอมลจากรถV1ToolStripMenuItem
+U+2005_U+204C                             📊 อ่านข้อมูลจากรถ V.1
+U+2005_U+204D                             อานขอมลจากรถV2ToolStripMenuItem
+U+2005_U+204E                             📈 อ่านข้อมูลจากรถ V.2
+U+2005_U+204F                             ลอคดดลอคโหมดToolStripMenuItem
+U+2005_U+2050                             🔓 ล็อคดูด - ล็อคโหมด
+U+2005_U+2051                             ฟToolStripMenuItem
+U+2005_U+2052                             🚀 ฟังชั่นพิเศษ
+U+2005_U+2053                             ลบจำนวนการอดรถออโตToolStripMenuItem
+U+2005_U+2054                             🧹 ลบจำนวนการอัดรถออโต้
+U+2005_U+2055                             ลบจำนวนการอดรถเกยรToolStripMenuItem
+U+2005_U+2056                             ดดไฟลรถเกยร4864ToolStripMenuItem
+U+2005_U+2057                             คอนเนกเพอเขาสดดไฟลสถานนะอยขวาบนToolStripMenuItem
+U+2005_U+2058                             ⚙️ คอนเน็กเพื่อเข้าสู่ดูดไฟล์ !! สถานนะอยุ่ขวาบน  !!
+U+2005_U+2059                             คำToolStripMenuItem
+U+2005_U+205A                             ⚙️ คำนวนหัวฉีดรถ
+U+2005_U+205B                             ตดตอไฟล32KBเปน64KBToolStripMenuItem
+U+2005_U+205C                             ⚙️ ตัดต่อไฟล์ 32KB เป้น 64KB
+U+2005_U+205D                             จนยงออโตToolStripMenuItem
+U+2005_U+205E                             ⚙️ ช่วยจูนยิงอัตโนมัติ 
+U+2005_U+205F                             ปลดการจายนำมนTPS0ToolStripMenuItem
+U+2005_U+2060                             ⚙️ ปลดการจ่ายน้ำมัน TPS 0%
+U+2005_U+2061                             ชวยจนหอบToolStripMenuItem
+U+2005_U+2062                             ⚙️ ช่วยจูนหอบ
+U+2005_U+2063                             menuStrip1
+U+2005_U+2064                             label5
+U+2005_U+206A                             label5.Text
+U+2005_U+206B                             pnlTitleBar
+U+2005_U+206C                             pbAppLogo
+U+2005_U+206D                             lblAppTitle
+U+2005_U+206E                             เส’เอ็ม สามย่าน
+U+2005_U+206F                             btnMinCustom
+U+2005_U+3000                             —
+U+2006                                    ACG TO BIN
+U+2006_U+00A0                             btnCloseCustom
+U+2006_U+1680                             label6
+U+2006_U+2000                             STATUS:
+U+2006_U+2001                             $this.Icon
+U+2006_U+2002                             FormMain
+U+2006_U+2003                             C:\MZATUNER\data.ini
+U+2006_U+2004                             ไม่พบไฟล์จ้อมูล
+U+2006_U+2005                             ;
+U+2006_U+2006                             khPartCode
+U+2006_U+2007                             khEcmId
+U+2006_U+2008                             khStartOffset
+U+2006_U+2009                             khCksumOffset
+U+2006_U+200A                             shPartCode
+U+2006_U+200B                             shEcmId
+U+2006_U+2010                             สวัสดีครับ
+U+2006_U+2011                             Bahnschrift SemiBold Condensed
+U+2006_U+2012                             Copperplate Gothic Bold
+U+2006_U+2013                             RESET ECM DONE
+U+2006_U+2014                             Reset ECM
+U+2006_U+2015                             Please turn OFF/ON the ignition keyfor 10 seconds
+U+2006_U+2022                             ลบโค๊ดสำเร็จ
+U+2006_U+2024                             ลบโค๊ด
+U+2006_U+2025                             โปรดปิดกุญแจ 5วินาทีแล้วกดปุ่มOK
+U+2006_U+2027                             รีเซ็ทแฟลชเคาท์
+U+2006_U+2028                             เปิดกุญแจ 5วินาทีแล้วกดปุ่มOK
+U+2006_U+2029                             ลบแฟลชเคาท์!!สำเร็จ!!
+U+2006_U+202A                             Bin file(*.bin) | *.bin|ACG Files(*.acg)|*.acg|ECU Files(*.ECU)|*.ECU
+U+2006_U+202B                             https://www.dropbox.com/t/92lfOkTA0htZ9doI
+U+2006_U+202C                             INI files (*.ini)|*.ini|All files (*.*)|*.*
+U+2006_U+202D                             data.ini
+U+2006_U+202E                             ดาวน์โหลดเสร็จสมบูรณ์แล้วที่ 
+U+2006_U+202F                             เกิดข้อผิดพลาดในการดาวน์โหลด: 
+U+2006_U+2032                             เปลี่ยนชื่อโปรแกรม
+U+2006_U+2033                             C:\MZATUNER
+U+2006_U+2035                             กรุณาใส่ชื่อโปรแกรมใหม่:
+U+2006_U+2036                             เปลี่ยนชื่อสำเร็จ!
+U+2006_U+203E                             แจ้งเตือน
+U+2006_U+2047                             Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif
+U+2006_U+2048                             Select an Image
+U+2006_U+2049                             ไฟล์ภาพเก่าของเดิม, ต้องการเปลื่ยนรูปทับไฟล์นี้ไหม?
+U+2006_U+204A                             คำเตือน
+U+2006_U+204B                             เปลี่ยนรูปสำเร็จ!!
+U+2006_U+204C                             ตั้งต่า
+U+2006_U+204D                             เปลี่ยนรูปไม่สำเร็จ!! | 
+U+2006_U+204E                             S.exe
+U+2006_U+204F                             "
+U+2006_U+2050                             runas
+U+2006_U+2051                             C:\Program Files (x86)\TunerPro RT\TunerPro.exe
+U+2006_U+2052                             ไฟล์ไม่พบ: 
+U+2006_U+2053                             MZATUNER.tpk
+U+2006_U+2054                             https://www.tunerpro.net/download/SetupTunerProRT_v500_10044.exe
+U+2006_U+2055                             SetupTunerProRT_v500_10044.exe
+U+2006_U+2056                             https://ftdichip.com/wp-content/uploads/2025/03/CDM2123620_Setup.zip
+U+2006_U+2057                             CDM2123620_Setup.zip
+U+2006_U+2058                             lockdeta.exe
+U+2006_U+2059                             WindowsFormsApp2.exe
+U+2006_U+205A                             กรุณา ปิด และ เปิด สวิตช์กุญแจ (OFF - ON) | ค้างไว้เป็นเวลา 5 วินาที
+U+2006_U+205B                             ลบจำนวนการ Flash
+U+2006_U+205C                             รีเซ็ตจำนวนการ Flash เรียบร้อยแล้ว | กรุณา ปิด และ เปิด สวิตช์กุญแจ (OFF - ON) | อีกครั้งเป็นเวลา 5 วินาที
+U+2006_U+205D                             รีเซ็ต ECM เรียบร้อยแล้ว
+U+2006_U+205E                             รีเซ็ต ECM
+U+2006_U+205F                             กรุณา ปิด และ เปิด กุญแจรถใหม่อีกครั้ง | แล้วรอประมาณ 10 วินาที
+U+2006_U+2060                             ตั้งค่ารหัสผ่าน ECU (Security Mode)
+U+2006_U+2061                             🔑 แก้ไข PASSWORD
+U+2006_U+2062                             ตำแหน่งที่ 1 :
+U+2006_U+2063                             ตำแหน่งที่ 2 :
+U+2006_U+2064                             ตกลง
+U+2006_U+206A                             ยกเลิก
+U+2006_U+206B                             0x
+U+2006_U+206C                             h
+U+2006_U+206D                             C:\MZATUNER\MZA_TUNER_FLASH_2026.exe
+U+2006_U+206E                             MZA_TUNER_FLASH_2026.lnk
+U+2006_U+206F                             $ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('
+U+2006_U+3000                             '); $s.TargetPath = '
+U+2007                                    button3
+U+2007_U+00A0                             '; $s.WorkingDirectory = '
+U+2007_U+1680                             '; $s.Save()
+U+2007_U+2000                             powershell
+U+2007_U+2001                             -ExecutionPolicy Bypass -WindowStyle Hidden -Command "
+U+2007_U+2002                             https://web.facebook.com/Thanadol2022/
+U+2007_U+2003                             ไม่สามารถเปิดลิงก์ได้: 
+U+2007_U+2004                             headerColor.dat
+U+2007_U+2005                             button
+U+2007_U+2006                             buttonColors.dat
+U+2007_U+2007                             {0},{1}
+U+2007_U+2008                             ไม่สามารถบันทึกสีได้: 
+U+2007_U+2009                             โหลดสีล้มเหลว: 
+U+2007_U+200A                             Open Binary File
+U+2007_U+200B                             ไฟล์ที่เลือกไม่ใช่รูปแบบ .bin กรุณาตรวจสอบใหม่
+U+2007_U+2010                             ไม่สามารถอ่านไฟล์ได้เนื่องจาก: 
+U+2007_U+2011                             Warning. Checksum invalid.
+U+2007_U+2012                             ตรวจพบว่า Checksum ของไฟล์ไม่ถูกต้อง! | ต้องการให้ระบบแก้ไขให้โดยอัตโนมัติหรือไม่?
+U+2007_U+2013                             Checksum Warning
+U+2007_U+2014                             Checksum fixed successfully.
+U+2007_U+2015                             แก้ไข Checksum เรียบร้อยแล้ว
+U+2007_U+2022                             Checksum verified.
+U+2007_U+2024                             แจ้งเตือน - MZATUNER
+U+2007_U+2025                             ล้างข้อมูลไฟล์ .bin เรียบร้อย
+U+2007_U+2027                             ไม่พบข้อมูลไฟล์ที่เลือก กรุณาลองใหม่อีกครั้ง
+U+2007_U+2028                             ข้อผิดพลาด
+U+2007_U+2029                             {0:N2} KB
+U+2007_U+202A                             {0:N2} MB
+U+2007_U+202B                             สำเร็จ - MZATUNER
+U+2007_U+202C                             เลือกไฟล์สำเร็จ เริ่มอัดได้เลย
+U+2007_U+202D                             Binary file loaded successfully.
+U+2007_U+202E                             กรุณาเลือกไฟล์ .bin ก่อน
+U+2007_U+202F                             Warning
+U+2007_U+2032                             กำลังเตรียมความพร้อม... กรุณารอระบบเชื่อมต่อ
+U+2007_U+2033                             FB: เส’เอ็ม สามย่าน
+U+2007_U+2035                             ECU Write operation started. Please do not disconnect.
+U+2007_U+2036                             จำหน่าย ไฟล์รีแมพ สายรีแมพ โปรแกรมรีแมพ
+U+2007_U+203E                             เวอร์ชัน: 
+U+2007_U+2047                              | ผู้พัฒนา: 
+U+2007_U+2048                              | ติดต่อ: 
+U+2007_U+2049                              |  | 
+U+2007_U+204A                             เกี่ยวกับโปรแกรม
+U+2007_U+204B                             http://mza-tuner.site/TunerProRTTH.exe
+U+2007_U+204C                             TunerProRTTH.exe
+U+2007_U+204D                             Thread ยังไม่ยอมจบเอง อาจมีปัญหาในการคืน resource
+U+2007_U+204E                             Failed to initialize FTDI
+U+2007_U+204F                             Error in sceToolStripMenuItem_Click: 
+U+2007_U+2050                             C:\MZATUNER\DATA\By.ช่างลิงกล่องซิ่ง\MultiGaugesHondaMonitor.exe
+U+2007_U+2051                             ไม่สามารถเปิดโปรแกรมได้: 
+U+2007_U+2052                              | กรุณาติดต่อ FB : เส’เอ็ม สามย่าน
+U+2007_U+2053                             เกิดข้อผิดพลาด
+U+2007_U+2054                             ❌ ไม่พบไฟล์ที่ต้องการใช้งาน ❌ |  | กรุณาติดต่อ FB: เส’เอ็ม สามย่าน | ค่าบริการอัพเดทระบบ: 100 บาท |  | ---------------------------------- | กรุงไทย: 232-0816-100 (ธนดล แนมนิล) | พร้อมเพย์: 095-213-4102 | ---------------------------------- |  | ต้องการเปิดไปหน้า Facebook เพื่อส่งสลิปเลยหรือไม่?
+U+2007_U+2055                             ดูดดาต้า V2 - แจ้งเตือน
+U+2007_U+2056                             ไม่สามารถเปิดเบราว์เซอร์ได้: 
+U+2007_U+2057                             Knob/Ignition Key OFF - ON | For 5 Seconds
+U+2007_U+2058                             Delete Flash Count
+U+2007_U+2059                             Reset Flash Count Completed | Knob/Ignition Key OFF - ON | For 5 Seconds
+U+2007_U+205A                             MAN-TURBO & MZA-TUNER | 
+U+2007_U+205B                             FB: เส’เอ็ม สามย่าน & Man-Turbo Remap
+U+2007_U+205C                             http://mza-tuner.site/MZA_TUNER_FLASH_2026.exe
+U+2007_U+205D                             MZA_TUNER_FLASH_2026.exe
+U+2007_U+205E                             MZA_TUNER.lnk
+U+2007_U+205F                             mza_update_temp.exe
+U+2007_U+2060                             /k cls & title MZA TUNER - Update Manager 2026 & echo. & echo  =============================================== & echo  [ MZA TUNER AUTO UPDATE SYSTEM ] & echo  =============================================== & echo. & if not exist "
+U+2007_U+2061                             " (mkdir "
+U+2007_U+2062                             ") else (echo  [1/4] Cleaning old version... & if exist "
+U+2007_U+2063                             " del /f /q "
+U+2007_U+2064                             ") & echo  Done. & echo. & echo  [2/4] Downloading latest updates... & curl -L -# 
+U+2007_U+206A                              -o "
+U+2007_U+206B                             " & echo. & echo  [3/4] Installing system files to C:\MZATUNER... & move /Y "
+U+2007_U+206C                             " "
+U+2007_U+206D                             " >nul & echo  Done. & echo. & echo  [4/4] Updating desktop shortcut... & powershell -ExecutionPolicy Bypass -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut('
+U+2007_U+206E                             ');$s.TargetPath='
+U+2007_U+206F                             ';$s.WorkingDirectory='
+U+2007_U+3000                             ';$s.Save()" & echo  Done. & echo. & echo  ----------------------------------------------- & echo  [ SUCCESS ] Update completed successfully! & echo  The application will restart in 3 seconds... & timeout /t 3 >nul & start "" "
+U+2008                                    HXD EDITOR
+U+2008_U+00A0                             " & exit
+U+2008_U+1680                             cmd.exe
+U+2008_U+2000                             Update Failed: 
+U+2008_U+2001                             MZA Update Error
+U+2008_U+2002                             ❌ ไม่พบไฟล์ S.exe ❌ | กรุณานำไฟล์ S.exe มาวางไว้ในโฟลเดอร์โปรแกรมครับ
+U+2008_U+2003                             ไม่สามารถเปิดระบบ V1 ได้
+U+2008_U+2004                             เกิดข้อผิดพลาดในการเข้าสู่ระบบ V1: 
+U+2008_U+2005                             ❌ ไม่พบไฟล์ lockdeta.exe ฝังอยู่ในระบบ | กรุณาตรวจสอบการตั้งค่าโปรเจกต์ครับ
+U+2008_U+2006                             ไม่สามารถเปิด lockdeta.exe ได้: 
+U+2008_U+2007                             อัพเดทข้อมูลรหัสกล่องสำเร็จ
+U+2008_U+2008                             ไม่สามารถเปิดตัวจัดการรหัสกล่องได้: 
+U+2008_U+2009                             C:\MZATUNER\programName.dat
+U+2008_U+200A                             Trebuchet MS
+U+2008_U+200B                             เปลี่ยนสีธีมโปรแกรมสำเร็จ! (CHROMA_SYNC)
+U+2008_U+2010                             เปลี่ยนสีธีมสำเร็จ! (CHROMA_SYNC)
+U+2008_U+2011                             MZA-TUNER SYSTEM
+U+2008_U+2012                             ยินดีต้อนรับเข้าสู่โปรแกรม MZA-TUNER
+U+2008_U+2013                             อัดไฟล์เสร็จสิ้น!! ปิดเปิดกุญแจใหม่อีกครั้ง
+U+2008_U+2014                             Write operation complete. Please cycle the ignition key.
+U+2008_U+2015                             Write operation failed. Please check connection and try again.
+U+2008_U+2022                             การเขียนไฟล์ลงECMล้มเหลว!! | กรุณาปิดเปิดกุญแจแล้วลองอีกครั้ง
+U+2008_U+2024                             ฮอนด้าแฟลช
+U+2008_U+2025                             ECU Disconnected.
+U+2008_U+2027                             vv
+U+2008_U+2028                             M
+U+2008_U+2029                             48KB ROM
+U+2008_U+202A                             64KB ROM
+U+2008_U+202B                             📂 เลือกไฟล์ .bin (ต้นฉบับ)
+U+2008_U+202C                             [-] ใช้งาน (แพทช์ข้อมูล)
+U+2008_U+202D                             [+] บันทึกไฟล์ออก
+U+2008_U+202E                             MZA CC CALCULATOR PRO
+U+2008_U+202F                             {0:F1} CC
+U+2008_U+2032                             ENGINE DISPLACEMENT RESULT
+U+2008_U+2033                             ชัก (มม.):
+U+2008_U+2035                             ลูกสูบ (มม.):
+U+2008_U+2036                             [ PRO TYPING ENABLED ]
+U+2008_U+203E                             Drag the File to Select ..
+U+2008_U+2047                             Bin files (*.bin)|*.bin|All files (*.*)|*.*
+U+2008_U+2048                             RPM
+U+2008_U+2049                             A
+U+2008_U+204A                             %
+U+2008_U+204B                             F1
+U+2008_U+204C                             V
+U+2008_U+204D                             :
+U+2008_U+204E                              (
+U+2008_U+204F                             )
+U+2008_U+2050                             ID{0:D4}
+U+2008_U+2051                             c:\MZATUNER\data.ini
+U+2008_U+2052                             MZA_TUNER_2026_SINGLE_INSTANCE_MUTEX
+U+2008_U+2053                             โปรแกรม MZA-TUNER กำลังทำงานอยู่แล้ว ไม่สามารถเปิดซ้อนได้ครับ!
+U+2008_U+2054                             แจ้งเตือนระบบ
+U+2008_U+2055                             กำลังเริ่มต้นระบบ MZA-TUNER...
+U+2008_U+2056                             กำลังโหลดข้อมูลตารางแมพเครื่องยนต์...
+U+2008_U+2057                             ตรวจสอบความปลอดภัยและสิทธิ์การใช้งาน...
+U+2008_U+2058                             กำลังเปิดหน้าหลัก HFT v2.0...
+U+2008_U+2059                             ระบบความปลอดภัยปฏิเสธการเข้าใช้งาน (Security Check Failed) | กรุณาติดต่อผู้ดูแลระบบเพื่อขอรหัสปลดล็อค
+U+2008_U+205A                             MZA-TUNER SECURITY
+U+2008_U+205B                             ตรวจพบข้อผิดพลาดร้ายแรงขณะเริ่มโปรแกรม: |  | 
+U+2008_U+205C                             MZA-TUNER CRITICAL ERROR
+U+2008_U+205D                             Security Violation
+U+2008_U+205E                             SYSTEM_MALWARE_DEBUGGER_DETECTED | โปรโตคอลความปลอดภัยสั่งระงับการทำงานทันที!
+U+2008_U+205F                             System Integrity Check
+U+2008_U+2060                             UNSUPPORTED_ENVIRONMENT_VM | โปรแกรมไม่สามารถทำงานบนเครื่องเสมือนเพื่อความปลอดภัยของข้อมูล
+U+2008_U+2061                             \temp\
+U+2008_U+2062                             \artifact\
+U+2008_U+2063                             HBl8veffgNnIgeT8ht7oidLGjNTpj8jQUpPM35bPypnC2pzF3J85CWI7NmU+Hg==
+U+2008_U+2064                             System Security Breach
+U+2008_U+206A                             CRITICAL_ERROR: ILLEGAL_MODIFICATION_DETECTED | ตรวจพบการแก้ไขไฟล์โดยไม่ได้รับอนุญาต (Metadata Tampering) | ระบบจะปิดการทำงานเพื่อป้องกันความเสียหาย!
+U+2008_U+206B                             MZA-TUNER: 
+U+2008_U+206C                             dnspy
+U+2008_U+206D                             x64dbg
+U+2008_U+206E                             x32dbg
+U+2008_U+206F                             ollydbg
+U+2008_U+3000                             ida64
+U+2009                                    button1
+U+2009_U+00A0                             idag
+U+2009_U+1680                             idaw
+U+2009_U+2000                             scylla
+U+2009_U+2001                             reclass
+U+2009_U+2002                             cheatengine
+U+2009_U+2003                             processhacker
+U+2009_U+2004                             de4dot
+U+2009_U+2005                             fiddler
+U+2009_U+2006                             charles
+U+2009_U+2007                             wireshark
+U+2009_U+2008                             httpanalyzer
+U+2009_U+2009                             httpdebug
+U+2009_U+200A                             analyzer
+U+2009_U+200B                             sniffer
+U+2009_U+2010                             Select * from Win32_ComputerSystem
+U+2009_U+2011                             Manufacturer
+U+2009_U+2012                             Model
+U+2009_U+2013                             microsoft corporation
+U+2009_U+2014                             virtual
+U+2009_U+2015                             vmware
+U+2009_U+2022                             virtualbox
+U+2009_U+2024                             C:\windows\System32\Drivers\VBoxMouse.sys
+U+2009_U+2025                             C:\windows\System32\Drivers\VBoxGuest.sys
+U+2009_U+2027                             C:\windows\System32\Drivers\VBoxSF.sys
+U+2009_U+2028                             C:\windows\System32\Drivers\VBoxVideo.sys
+U+2009_U+2029                             C:\windows\System32\vboxdisp.dll
+U+2009_U+202A                             C:\windows\System32\vboxhook.dll
+U+2009_U+202B                             GARBAGE
+U+2009_U+202C                             De4Dot_Trap
+U+2009_U+202D                             กำลังเริ่มระบบ MZA-TUNER...
+U+2009_U+202E                             เวอร์ชัน 2.0.26 พรีเมียม
+U+2009_U+202F                             พัฒนาโดยทีมงาน MZA-TUNER TEAM © 2026
+U+2009_U+2032                             Green-Button-PNG
+U+2009_U+2033                             tik
+U+2009_U+2035                             honda-motorcycles-logo-wing-10
+U+2009_U+2036                             รีเซ็ตสำเร็จ
+U+2009_U+203E                             ยืนยันผลลัพธ์
+U+2009_U+2047                             x2
+U+2009_U+2048                             เลือกตำแหน่งและชื่อไฟล์สำหรับบันทึก EEPROM
+U+2009_U+2049                             File EEPROM READ ID
+U+2009_U+204A                             {0} {1:dd-MM-yyyy}.bin
+U+2009_U+204B                             Default
+U+2009_U+204C                             Binary files (*.bin)|*.bin|All files (*.*)|*.*
+U+2009_U+204D                             bin
+U+2009_U+204E                             Data berhasil disimpan ke: 
+U+2009_U+204F                             Gagal menyimpan file: 
+U+2009_U+2050                             ผู้ใช้ยกเลิกการบันทึกไฟล์
+U+2009_U+2051                             {0} %
+U+2009_U+2052                             {0} Detik
+U+2009_U+2053                             {0:F1} s
+U+2009_U+2054                             [{0:F4}] 0 > [{1}]
+U+2009_U+2055                             [{0:F4}] 0 < [{1}]
+U+2009_U+2056                             {0} s
+U+2009_U+2057                             {0}?t={1}
+U+2009_U+2058                             http://82.26.104.124/mza-tuner/is_blacklisted.php?hwid=
+U+2009_U+2059                             ❌ ตรวจพบความผิดปกติ ใบอนุญาตการใช้งานถูกระงับเพื่อความปลอดภัย
+U+2009_U+205A                             แจ้งเตือนความปลอดภัย
+U+2009_U+205B                             คัดลอกสำเร็จ
+U+2009_U+205C                             ไม่สามารถคัดลอกได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง
+U+2009_U+205D                             ข้อผิดพลาด: รหัสปลดล็อคไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง
+U+2009_U+205E                             ยืนยันตัวตนไม่สำเร็จ
+U+2009_U+205F                             คำเตือนความปลอดภัย: ตรวจพบการพยายามเข้าระบบไม่ถูกต้องหลายครั้ง ระบบจะระงับการทำงานหากยังพบข้อผิดพลาด
+U+2009_U+2060                             คำเตือนความปลอดภัย
+U+2009_U+2061                             มาตรการความปลอดภัยทำงาน: เริ่มใช้โปรโตคอลป้องกันการแฮก ระบบจำกัดการเข้าถึงโดยสมบูรณ์!
+U+2009_U+2062                             เปิดใช้งานระบบล็อกความปลอดภัย
+U+2009_U+2063                             ระบบ: กำลังลบไฟล์ข้อมูลเก่า
+U+2009_U+2064                             โหมด: ค้นหากล่อง ECU | สถานะ: กำลังรอ... | เวลา: {0} วินาที
+U+2009_U+206A                             กรุณาเชื่อมต่อพอร์ต (Open Port) ก่อนครับ!
+U+2009_U+206B                             กรุณาบิดกุญแจ OFF แล้ว ON ค้างไว้ 5 วินาที | จากนั้นกด OK เพื่อเริ่มการลบ
+U+2009_U+206C                             รีเซ็ต Flash Count และเขียนไฟล์สำเร็จ!
+U+2009_U+206D                             Success 100%
+U+2009_U+206E                             BIN Files (*.bin)|*.bin
+U+2009_U+206F                             กรุณาเลือกไฟล์ .BIN ที่ต้องการจูน
+U+2009_U+3000                             ER
+U+200A                                    ECU TO BIN
+U+200A_U+00A0                             00
+U+200A_U+1680                             --- ไม่พบผู้แชร์ในระบบ (ยังไม่มีไฟล์ถูกอัพโหลด) ---
+U+200A_U+2000                             กำลังเชื่อมต่อกับเซิร์ฟเวอร์คลาวด์ MZATUNER...
+U+200A_U+2001                             เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์
+U+200A_U+2002                             กรุณาเลือกไฟล์สกุล .bin เท่านั้น
+U+200A_U+2003                             BIN files (*.bin)|*.bin|All files (*.*)|*.*
+U+200A_U+2004                             ลากไฟล์มาวางตรงนี้ | หรือคลิกเพื่อเลือกไฟล์
+U+200A_U+2005                             Arial Black
+U+200A_U+2006                             Showcard Gothic
+U+200A_U+2007                             TUNER
+U+200A_U+2008                             M Z A T U N E R   E D I T I O N
+U+200A_U+2009                             ---
+U+200A_U+200A                             _
+U+200A_U+200B                             BIN Files (*.bin)|*.bin|All Files (*.*)|*.*
+U+200A_U+2010                             /
+U+200A_U+2011                             https://mza-tuner.site/Sharefiles/
+U+200A_U+2012                             ดาวน์โหลดและบันทึกไฟล์สําเร็จแล้วครับ!
+U+200A_U+2013                             MZATUNER
+U+200A_U+2014                             ไม่สามารถดาวน์โหลดไฟล์ได้: 
+U+200A_U+2015                             SYSTEM
+U+200A_U+2022                             กำลังดึงข้อมูลโฟลเดอร์ 
+U+200A_U+2024                             ...
+U+200A_U+2025                             กำลังเชื่อมต่อเซิร์ฟเวอร์ส่วนกลาง...
+U+200A_U+2027                             รอสักครู่...
+U+200A_U+2028                             https://82.26.104.124/Sharefiles/
+U+200A_U+2029                             href="([^"/]+)"
+U+200A_U+202A                             ?C=
+U+200A_U+202B                             Parent Directory
+U+200A_U+202C                             .hex
+U+200A_U+202D                             .zip
+U+200A_U+202E                             .rar
+U+200A_U+202F                             .txt
+U+200A_U+2032                             ผู้จูนทางคลาวด์
+U+200A_U+2033                             ระบบคลาวด์
+U+200A_U+2035                             D2
+U+200A_U+2036                             ยังไม่มีไฟล์แชร์บนเซิร์ฟเวอร์
+U+200A_U+203E                             เชื่อมต่อเซิร์ฟเวอร์ไม่ได้: 
+U+200A_U+2047                             โหลดไฟล์ .bin
+U+200A_U+2048                             เจาะระบบแทรกโค้ด... {0}%
+U+200A_U+2049                             กำลังคำนวณค่า...
+U+200A_U+204A                             กำลังเขียนทับข้อมูล ROM
+U+200A_U+204B                             ซิงค์ตารางยิงหอบตารางที่: {0}
+U+200A_U+204C                             เคลียร์แคชระบบเตรียมใช้งาน...
+U+200A_U+204D                             การจูนหอบสำเร็จสมบูรณ์!
+U+200A_U+204E                             เริ่มกระบวนการ / บันทึกยิงหอบ
+U+200A_U+204F                             คำสั่งจูนหอบสำเร็จ! ระดับ GHOST CAM ถูกฝังลงใน ROM รหัสนี้พร้อมใช้งานแล้ว
+U+200A_U+2050                             MZATUNER EDGE
+U+200A_U+2051                             กรุณาเลือกไฟล์ .BIN เป้าหมายให้ถูกต้องก่อนครับ!
+U+200A_U+2052                             ALERT
+U+200A_U+2053                             การเขียน ไฟล์ เสร็จสิ้น | ผล = ล้มเหลว!! | โปรด ปิดเปิดกุญแจ ใหม่อีกครั้ง
+U+200A_U+2054                             การเขียนไฟล์เสร็จสิ้น
+U+200A_U+2055                             อัดไฟล์สำเร็จ!! ปิดเปิดกุญแจใหม่อีกครั้ง
+U+200A_U+2056                             ลบ ล้มเหลว, ECM บล็อค
+U+200A_U+2057                             การเชื่อมต่อล้มเหลว กรุณาลองใหม่อีกครั้ง
+U+200A_U+2058                             ต่ำมาก
+U+200A_U+2059                             อ่อนนิดๆ
+U+200A_U+205A                             ปกติ
+U+200A_U+205B                             Over
+U+200A_U+205C                              V  {0:F1} ({1})
+U+200A_U+205D                             {0:F1} V
+U+200A_U+205E                             label_batStatus
+U+200A_U+205F                             Worker crashed
+U+200A_U+2060                             เกิดข้อผิดพลาดในเธรดสื่อสาร
+U+200A_U+2061                             DEC: {0} {1}   HEX: {2:X2} {3:X2}   ASCII: '{4}{5}'
+U+200A_U+2062                             STATUS: รอข้อมูลรหัสผ่าน (Hex 2 หลัก)
+U+200A_U+2063                             [^\u0000-\u007F\u0E00-\u0E7F]+
+U+200A_U+2064                             กำลังเรียกใช้งาน: 
+U+200A_U+206A                             คุณต้องการรีสตาร์ทโปรแกรมใช่หรือไม่?
+U+200A_U+206B                             ยืนยันการรีสตาร์ท
+U+200A_U+206C                             กรุณาปิดสวิตซ์กุญแจก่อน แล้วกด OK เพื่อเข้าสู่โหมดปลอดภัย
+U+200A_U+206D                             รอเปิดสวิตซ์ กุญแจ.....
+U+200A_U+206E                             ไม่สามารถเข้าสู่โหมด Security ได้ ❌
+U+200A_U+206F                             ล้มเหลว
+U+200A_U+3000                             ลบ FlashCount สำเร็จ ✅ |  | กรุณาปิดสวิตซ์กุญแจ แล้วเปิดใหม่ | ระบบจะรีเฟรชโปรแกรมใหม่
+U+200B                                    rctLockFile
+U+200B_U+00A0                             เกิดข้อผิดพลาด ❌ | 
+U+200B_U+1680                             กรุณาปิดสวิตซ์กุญแจก่อน แล้วกด OK เพื่อดำเนินการต่อ
+U+200B_U+2000                             ยกเลิกการทำงานแล้ว ❌
+U+200B_U+2001                             รอปุ่มเป็นสีเขียว และ เปิดสวิตซ์กุญแจเพื่อเข้าสู่โหมด Security 
+U+200B_U+2002                             License ไม่ถูกต้อง หรือหมดอายุ ❌ | 
+U+200B_U+2003                             คุณต้องการลบโค้ดใช่หรือไม่?
+U+200B_U+2004                             ยืนยันการทำงาน
+U+200B_U+2005                             ผลการทำงาน
+U+200B_U+2006                             ปลดการจ่ายน้ำมัน TPS 0 % (MZATUNER EDGE)
+U+200B_U+2007                             BIN Files (*.bin)|*.bin|All files (*.*)|*.*
+U+200B_U+2008                             📁 
+U+200B_U+2009                             โหลดไฟล์สำเร็จ: {0} | (ขนาด: {1} KB)
+U+200B_U+200A                             พบข้อผิดพลาดในการอ่านไฟล์: 
+U+200B_U+200B                             ERROR
+U+200B_U+2010                             กรุณาเลือกไฟล์ต้นฉบับก่อนครับ!
+U+200B_U+2011                             ไฟล์ต้นฉบับมีขนาดเล็กเกินไป ไม่ใช่สมอง 48KB ที่สมบูรณ์!
+U+200B_U+2012                             แพทช์ปลดน้ำมัน (48KB) ที่ตำแหน่ง 0x8F12 เรียบร้อยแล้ว! | ค่าที่ถูกเขียน: แถว 1 = {0:X4}, แถว 2 = {1:X4} |  | (อย่าลืมกดปุ่มบันทึกไฟล์ออกด้วยนะครับ)
+U+200B_U+2013                             กรุณากรอกตัวเลขในช่องให้ถูกต้อง!
+U+200B_U+2014                             ไฟล์ต้นฉบับมีขนาดเล็กเกินไป ไม่ใช่สมอง 64KB ที่สมบูรณ์!
+U+200B_U+2015                             แพทช์ปลดน้ำมัน (64KB) ที่ตำแหน่ง 0x99A5 (Offset ของ 0x19A5) เรียบร้อยแล้ว! | ค่าที่ถูกเขียน: แถว 1 = {0:X4}, แถว 2 = {1:X4} |  | (อย่าลืมกดปุ่มบันทึกไฟล์ออกด้วยนะครับ)
+U+200B_U+2022                             ไม่มีข้อมูลไฟล์ให้บันทึก กรุณาโหลดไฟล์ก่อนครับ!
+U+200B_U+2024                             MOD_TPS_
+U+200B_U+2025                             บันทึกไฟล์สำเร็จเรียบร้อย! | 
+U+200B_U+2027                             ไม่สามารถบันทึกไฟล์ได้: 
+U+200B_U+2028                             กรุณาเลือกไฟล์ในตาราง (ด้านซ้าย) ที่ต้องการจะบันทึกก่อนนะครับ!
+U+200B_U+2029                             ลืมแนบไฟล์ครับ! กรุณาเลือกไฟล์ก่อนอัพโหลด
+U+200B_U+202A                             ชื่อผู้จูน
+U+200B_U+202B                             กรุณาใส่ชื่อผู้จูนหรือสำนักก่อนครับ
+U+200B_U+202C                             กำลังอัพโหลด...
+U+200B_U+202D                             https://82.26.104.124/Sharefiles/upload.php
+U+200B_U+202E                             ?tuner=
+U+200B_U+202F                             &details=
+U+200B_U+2032                             &ecu=
+U+200B_U+2033                             อัพโหลดเรียบร้อย! ขอบคุณที่แบ่งปันสังคมจูนเนอร์ครับ
+U+200B_U+2035                             POST
+U+200B_U+2036                             เกิดข้อผิดพลาดในการส่งไฟล์: | 
+U+200B_U+203E                              | (ต้องสร้างไฟล์ upload.php บน Server ของคุณด้วยนะครับ)
+U+200B_U+2047                             System Ready. Welcome Master.
+U+2010                                    rtbBin
+U+2011                                    groupBox1
+U+2012                                    ข้อมูลที่แปลงสำเร็จแล้ว
+U+2013                                    Form3
+U+2014                                    แปลงไฟล์ .ACG&.ECUเป็น BIN
+U+2015                                    Debugger Detected (Managed)
+U+2022                                    Debugger Detected (Native)
+U+2024                                    vboxservice
+U+2025                                    vboxtray
+U+2027                                    vmtoolsd
+U+2028                                    vgauthservice
+U+2029                                    vmacthlp
+U+202A                                    xenservice
+U+202B                                    vmsrvc
+U+202C                                    vmusrvc
+U+202D                                    Virtual Machine / Sandbox Detected
+U+202E                                    SELECT ProcessorId FROM Win32_Processor
+U+202F                                    ProcessorId
+U+2032                                    SELECT SerialNumber FROM Win32_BaseBoard
+U+2033                                    UNKNOWN_ID
+U+2035                                    SerialNumber
+U+2036                                    ระบบรักษาความปลอดภัย: 
+U+203E                                     | โปรแกรมจะปิดตัวลงเพื่อป้องกันลิขสิทธิ์
+U+2047                                    MZA_TUNER_FLASH Security
+U+2048                                    ×
+U+2049                                    Arial
+U+204A                                    FILE_PATH_INPUT
+U+204B                                    KEY_OPEN
+U+204C                                    KEY_MODIFY
+U+204D                                    ◢ เลือกไฟล์ ◣
+U+204E                                    ◢ ปลดรหัส ◣
+U+204F                                    ◢ เซฟไฟล์ ◣
+U+2050                                    Consolas
+U+2051                                    [
+U+2052                                    ]
+U+2053                                    Impact
+U+2054                                    $9Ad0$!#*)1QqPow^
+U+2055                                    TunerPro
+U+2056                                    Microsoft Enhanced Cryptographic Provider v1.0
+U+2057                                    
+U+2058                                    ADXHEADER
+U+2059                                    XDFHEADER
+U+205A                                    รหัสพาสเวิร์ดไม่ถูกต้อง โปรดลองใหม่
+U+205B                                    Error
+U+205C                                    openpassword
+U+205D                                        <openpassword>
+U+205E                                    </openpassword>
+U+205F                                    modifypassword
+U+2060                                        <modifypassword>
+U+2061                                    </modifypassword>
+U+2062                                    <flags>0x
+U+2063                                    .adx
+U+2064                                        <flags>0x1</flags> | 
+U+206A                                        <flags>0x10000</flags> | 
+U+206B                                     | 
+U+206C                                    เลือกไฟล์
+U+206D                                    ADX or XDF file|*.adx;*.xdf
+U+206E                                    ไฟล์นี้ไม่มีรหัสพาสเวิร์ด | โปรดเลือกไฟล์ที่ติดรหัสผ่าน
+U+206F                                    ข้อมูล
+U+3000                                    เปิดไฟล์ล้มเหลว: 

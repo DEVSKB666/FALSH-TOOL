@@ -1,0 +1,48 @@
+[package]
+name        = "loy-bridge"
+version     = "0.1.0"
+description = "TCP/JSON bridge daemon for LOY-TUNER (FTDI K-Line forwarder)"
+authors     = ["You <you@example.com>"]
+edition     = "2021"
+rust-version = "1.74"
+
+[[bin]]
+name = "loy-bridge"
+path = "src/main.rs"
+
+[dependencies]
+# Protocol + CLI
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap       = { version = "4.5", features = ["derive"] }
+
+# Errors + logging
+anyhow            = "1"
+thiserror         = "1"
+tracing           = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+# Shared core types (EcuVariant, byte sequences) - pulled from the
+# workspace `core` crate to avoid duplication.
+mza_tuner = { package = "mza-tuner-rs", path = "../core", default-features = false }
+
+# FTDI hardware (optional - turned off by the `mock` feature).
+# Two backends because the same cable might be bound to either driver:
+#  * libftd2xx -> talks to FTDI's official D2XX driver (ftd2xx.dll)
+#  * rusb      -> talks via libusb (works with WinUSB / libusbK after Zadig)
+libftd2xx = { version = "0.32", optional = true }
+rusb      = { version = "0.9", features = ["vendored"], optional = true }
+
+[features]
+# Default build talks to a real FTDI dongle through both drivers - the
+# daemon picks per-request based on the `backend` field.
+default  = ["hardware"]
+hardware = ["dep:libftd2xx", "dep:rusb"]
+# `mock` turns the FTDI driver into a deterministic in-memory stub so
+# the daemon can be exercised end-to-end without any cable plugged in.
+mock     = []
+
+[lints.rust]
+# Doc warnings are nice for a long-lived crate but noisy during the
+# initial port - keep them as warnings, not errors.
+missing_docs = "warn"

@@ -1,0 +1,49 @@
+[package]
+name        = "mza-tuner-app"
+version     = "0.1.0"
+description = "MZA-Tuner GUI - Honda ECU flasher"
+authors     = ["You <you@example.com>"]
+edition     = "2021"
+rust-version = "1.74"
+
+[lib]
+name = "mza_tuner_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri        = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs     = "2"
+tauri-plugin-store  = "2"
+
+# crypto / shared core (re-uses the workspace `core` crate)
+# the package on disk is `mza-tuner-rs` but its [lib] name is `mza_tuner`,
+# so we ref it by package + rename it for the `extern crate` lookup.
+mza_tuner = { package = "mza-tuner-rs", path = "../../core", default-features = false }
+
+# misc
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "1"
+log = "0.4"
+
+# FTDI - two backends, app picks at runtime depending on which driver
+# is bound to the device:
+#  * libftd2xx -> talks to FTDI's official D2XX driver (ftd2xx.dll)
+#  * rusb      -> talks via libusb (works with WinUSB / libusbK after Zadig)
+libftd2xx = "0.32"
+# `vendored` builds libusb from source as part of `cargo build` so we
+# don't depend on whatever (potentially broken / wrong-arch) libusb-1.0
+# happens to be on the user's PATH. Requires CMake on the build host.
+rusb      = { version = "0.9", features = ["vendored"] }
+
+[features]
+# Default Tauri 2 features used by the runtime.
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+# Release profile lives at the workspace root - see ../../Cargo.toml.

@@ -1,0 +1,24 @@
+# Cargo workspace root.
+#
+# Holds two Rust crates:
+#   * core/             - reusable library + `mzactl` CLI (no GUI, no hardware)
+#   * app/src-tauri/    - Tauri 2 desktop app that depends on `core` for crypto
+#                         and on `libftd2xx` for K-Line hardware I/O.
+#
+# Sharing a single `target/` folder makes incremental builds across both
+# crates a *lot* faster.
+
+[workspace]
+resolver = "2"
+members = [
+    "core",
+    "app/src-tauri",
+    "bridge",
+]
+
+# Profile tweaks apply to every workspace member.
+[profile.release]
+opt-level     = 3
+lto           = true
+codegen-units = 1
+strip         = true

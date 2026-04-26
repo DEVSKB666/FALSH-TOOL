@@ -1,0 +1,10 @@
+[package]
+name = "honda_scanner"
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "honda_scanner"
+path = "src/main.rs"
+
+[workspace]
