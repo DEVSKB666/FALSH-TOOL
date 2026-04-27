@@ -38,6 +38,14 @@ pub trait KLine: Send {
         self.send(frame)?;
         self.recv(0, timeout)
     }
+
+    /// Drop any bytes still buffered in the FTDI's RX/TX queues.
+    /// Used between chunks of long bulk-read sessions to mirror the
+    /// `FT_Purge(handle, 3)` call in the C# original `method_22`. The
+    /// default no-op keeps mock transports working without changes.
+    fn purge(&mut self) -> Result<(), TransportError> {
+        Ok(())
+    }
 }
 
 /// Concrete implementation that drives the FTDI chip directly.
@@ -134,6 +142,13 @@ impl FtdiKLine {
 }
 
 impl KLine for FtdiKLine {
+    fn purge(&mut self) -> Result<(), TransportError> {
+        // FT_Purge(handle, 3) - mirrors the cleanup the C# original
+        // does after every method_22 call.
+        self.ftdi.purge_all()?;
+        Ok(())
+    }
+
     fn send(&mut self, frame: &[u8]) -> Result<(), TransportError> {
         if let Some(app) = &self.logger {
             kline_log::tx(app, frame);

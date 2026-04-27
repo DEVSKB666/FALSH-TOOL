@@ -317,6 +317,11 @@ fn dump_rom_shinden_inner(
         frame[8] = (256u32.wrapping_sub(sum & 0xFF) & 0xFF) as u8;
 
         let resp = try_send(t, &frame, log, "sh-rom", Duration::from_millis(300))?;
+        // FT_Purge(handle, 3) after every chunk - the C# `method_22`
+        // does this and without it stale RX bytes from the previous
+        // chunk poison the next round_trip on real ECUs (e.g. K2TA-T02
+        // would only ever return one chunk before going silent).
+        let _ = t.purge();
 
         // Match the C# original (`MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
         //

@@ -294,6 +294,15 @@ impl LibusbKLine {
 }
 
 impl KLine for LibusbKLine {
+    fn purge(&mut self) -> Result<(), TransportError> {
+        // Drain whatever the FTDI still has buffered + clear our local
+        // RX cache so the next round_trip starts from a clean slate -
+        // matches the `FT_Purge(handle, 3)` call the C# original makes
+        // after every send/recv cycle.
+        self.purge_all()?;
+        self.rx_buf.clear();
+        Ok(())
+    }
     fn send(&mut self, frame: &[u8]) -> Result<(), TransportError> {
         let n = self.bulk_write(frame)?;
         if n != frame.len() {

@@ -341,6 +341,16 @@ impl LibusbKLine {
 }
 
 impl KLine for LibusbKLine {
+    fn purge(&mut self) -> Result<(), TransportError> {
+        // FT_Purge(handle, 3) - mirrors the cleanup the C# original
+        // does after every method_22 call. Also clears our local RX
+        // cache so leftover header bytes don't bleed into the next
+        // chunk.
+        self.purge_all()?;
+        self.rx_buf.clear();
+        Ok(())
+    }
+
     fn send(&mut self, frame: &[u8]) -> Result<(), TransportError> {
         if let Some(app) = &self.logger {
             kline_log::tx(app, frame);

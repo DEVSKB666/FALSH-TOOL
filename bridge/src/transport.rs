@@ -44,6 +44,14 @@ pub trait KLine {
         self.send(frame)?;
         self.recv(0, timeout)
     }
+
+    /// Drop any bytes still buffered in the FTDI's RX/TX queues.
+    /// Used between chunks of long bulk-read sessions to mirror the
+    /// `FT_Purge(handle, 3)` call in the C# original `method_22`. The
+    /// default no-op keeps mock transports working without changes.
+    fn purge(&mut self) -> Result<(), TransportError> {
+        Ok(())
+    }
 }
 
 /// One entry returned by [`list_ports`].
@@ -154,6 +162,11 @@ mod real {
     }
 
     impl KLine for FtdiKLine {
+        fn purge(&mut self) -> Result<(), TransportError> {
+            // FT_Purge(handle, 3) - mirrors the cleanup the C# original
+            // does after every method_22 call.
+            self.ftdi.purge_all().map_err(|e| TransportError::Ftdi(e.to_string()))
+        }
         fn send(&mut self, frame: &[u8]) -> Result<(), TransportError> {
             self.ftdi.write_all(frame).map_err(|e| TransportError::Io(e.to_string()))
         }

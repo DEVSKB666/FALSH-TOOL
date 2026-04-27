@@ -222,10 +222,19 @@ fn dump_rom_shinden_inner(
             Ok(r) => r,
             Err(TransportError::Io(msg)) if msg.contains("recv") => {
                 log.push(format!("[shinden] silent at offset {offset} ({msg}) - stopping"));
+                let _ = t.purge();
                 break;
             }
-            Err(e) => return Err(e),
+            Err(e) => {
+                let _ = t.purge();
+                return Err(e);
+            }
         };
+        // FT_Purge(handle, 3) after every chunk - the C# `method_22`
+        // does this and without it stale RX bytes from the previous
+        // chunk poison the next round_trip on real ECUs (e.g. K2TA-T02
+        // would only ever return one chunk).
+        let _ = t.purge();
 
         // Match the C# original (`MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
         //
