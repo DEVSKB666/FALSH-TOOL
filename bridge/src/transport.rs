@@ -83,6 +83,17 @@ mod real {
     impl FtdiKLine {
         /// Open device `index` and run the wakeup + 10_400 baud handover.
         pub fn open(index: u32, log: &mut Vec<String>) -> Result<Self, TransportError> {
+            Self::open_inner(index, log, true)
+        }
+
+        /// Open without the bit-bang wakeup pulse (TyN-Shop live-data
+        /// path - the ECU stays silent if it's been pulsed into KWP
+        /// fast-init mode but expects bare UART `K_CONNECT`).
+        pub fn open_bare(index: u32, log: &mut Vec<String>) -> Result<Self, TransportError> {
+            Self::open_inner(index, log, false)
+        }
+
+        fn open_inner(index: u32, log: &mut Vec<String>, wakeup_pulse: bool) -> Result<Self, TransportError> {
             // Preserve the underlying FTDI error string so the operator
             // can distinguish "DEVICE_NOT_FOUND" (cable unplugged) from
             // "DEVICE_NOT_OPENED" (held by VCP / another process) -
@@ -114,17 +125,28 @@ mod real {
             ftdi.set_latency_timer(Duration::from_millis(8))       .map_err(|e| TransportError::Ftdi(e.to_string()))?;
             log.push("[d2xx] 921600 baud, 8N1, latency 8ms".into());
 
-            // Bit-bang wakeup: pull K-line low for 25 ms then high.
-            ftdi.set_bit_mode(0x01, BitMode::AsyncBitbang)         .map_err(|e| TransportError::Ftdi(e.to_string()))?;
-            let _ = ftdi.write_all(&[0x00]);
-            std::thread::sleep(Duration::from_millis(25));
-            let _ = ftdi.write_all(&[0x01]);
-            std::thread::sleep(Duration::from_millis(25));
+            if wakeup_pulse {
+                // Honda KWP fast-init wakeup pulse - byte-for-byte port
+                // of `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_30`.
+                // 70 ms LOW (NOT 25 ms) followed immediately by HIGH.
+                ftdi.set_bit_mode(0x01, BitMode::AsyncBitbang)         .map_err(|e| TransportError::Ftdi(e.to_string()))?;
+                let _ = ftdi.write_all(&[0x00]);
+                std::thread::sleep(Duration::from_millis(70));
+                let _ = ftdi.write_all(&[0x01]);
+                ftdi.set_bit_mode(0x00, BitMode::Reset)                .map_err(|e| TransportError::Ftdi(e.to_string()))?;
+                log.push("[d2xx] sent KWP fast-init wakeup pulse (70 ms LOW)".into());
+            } else {
+                log.push("[d2xx] skipping wakeup pulse (bare K-Line open)".into());
+            }
 
-            // Back to UART at K-Line speed.
-            ftdi.set_bit_mode(0x00, BitMode::Reset)                .map_err(|e| TransportError::Ftdi(e.to_string()))?;
+            // Back to UART at K-Line speed; the 130 ms post-handover
+            // `Thread.Sleep` from the C# original is what actually
+            // gets the ECU listening before the first KWP frame.
             ftdi.set_baud_rate(10_400)                             .map_err(|e| TransportError::Ftdi(e.to_string()))?;
             ftdi.purge_all()                                       .map_err(|e| TransportError::Ftdi(e.to_string()))?;
+            if wakeup_pulse {
+                std::thread::sleep(Duration::from_millis(130));
+            }
             log.push("[d2xx] handover to 10400 baud K-Line".into());
 
             Ok(Self { ftdi })
@@ -208,6 +230,12 @@ mod mock {
             log.push(format!("[mock] opened device #{index}"));
             log.push("[mock] no real K-Line - returning canned bytes".into());
             Ok(Self { tick: 0 })
+        }
+
+        /// Mock companion to `FtdiKLine::open_bare` - identical behaviour
+        /// since there's no real K-Line to pulse anyway.
+        pub fn open_bare(index: u32, log: &mut Vec<String>) -> Result<Self, TransportError> {
+            Self::open(index, log)
         }
     }
 
@@ -298,22 +326,53 @@ pub fn list_ports() -> Result<Vec<DeviceInfo>, TransportError> {
 /// A trait object you can drop straight into the EEPROM helpers.
 pub type DynKLine = Box<dyn KLine>;
 
-/// Open the right transport for `(backend, index)`. Centralises the
-/// dispatch so `server.rs` doesn't need to know which backends are
-/// compiled in.
+/// Open the right transport for `(backend, index)` with the standard
+/// KWP fast-init wakeup pulse. Use this for the EEPROM tool and any
+/// other Honda KWP-2000 session.
 pub fn open_kline(
     index: u32,
     backend: &str,
     log: &mut Vec<String>,
 ) -> Result<DynKLine, TransportError> {
+    open_kline_inner(index, backend, log, true)
+}
+
+/// Open the transport without the bit-bang wakeup pulse - the K-Line
+/// stays at its idle level so the ECU never enters Honda KWP fast-init
+/// mode. Reserved for any future protocol that talks over plain UART
+/// (e.g. TyN-Shop S.exe `K_CONNECT`); not currently wired into any
+/// caller because the proven Honda live-data path uses the pulse.
+#[allow(dead_code)]
+pub fn open_kline_bare(
+    index: u32,
+    backend: &str,
+    log: &mut Vec<String>,
+) -> Result<DynKLine, TransportError> {
+    open_kline_inner(index, backend, log, false)
+}
+
+fn open_kline_inner(
+    index: u32,
+    backend: &str,
+    log: &mut Vec<String>,
+    wakeup_pulse: bool,
+) -> Result<DynKLine, TransportError> {
     match backend {
         #[cfg(all(feature = "hardware", not(feature = "mock")))]
-        "libusb" => Ok(Box::new(crate::libusb_ftdi::LibusbKLine::open(index, log)?)),
+        "libusb" => Ok(if wakeup_pulse {
+            Box::new(crate::libusb_ftdi::LibusbKLine::open(index, log)?)
+        } else {
+            Box::new(crate::libusb_ftdi::LibusbKLine::open_bare(index, log)?)
+        }),
 
         // "d2xx" is the historical default - keep it as the fallback
         // so requests that omit the backend field still work.
         #[cfg(all(feature = "hardware", not(feature = "mock")))]
-        "d2xx" | "" => Ok(Box::new(real::FtdiKLine::open(index, log)?)),
+        "d2xx" | "" => Ok(if wakeup_pulse {
+            Box::new(real::FtdiKLine::open(index, log)?)
+        } else {
+            Box::new(real::FtdiKLine::open_bare(index, log)?)
+        }),
 
         #[cfg(feature = "mock")]
         _ => Ok(Box::new(mock::FtdiKLine::open(index, log)?)),

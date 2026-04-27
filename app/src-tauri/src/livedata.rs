@@ -45,10 +45,13 @@ const fn frame(prefix: [u8; 4]) -> [u8; 5] {
     [prefix[0], prefix[1], prefix[2], prefix[3], 0]
 }
 
-// TyN-Shop legacy commands - kept only so the `disconnect()` helper can
-// still emit a graceful close on ECUs that recognise it. Stock Honda
-// ECUs ignore these (they're not part of the S.exe protocol).
-const K_DISCONNECT_BODY: [u8; 4] = [0x2C, 0x64, 0x73, 0x23];
+// Honda KWP wakeup + establish frames - byte-for-byte port of
+// `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31` (`array` and
+// `array2`), which is the proven Honda live-data path on real Keihin
+// ECUs. Both frames use the standard "whole-frame sums to 0 mod 256"
+// checksum, the same convention the EEPROM tool follows.
+const HONDA_WAKEUP:    [u8; 4] = [0xFE, 0x04, 0x72, 0x8C];
+const HONDA_ESTABLISH: [u8; 5] = [0x72, 0x05, 0x00, 0xF0, 0x99];
 
 // Live-data table requests - byte 4 is the table id. S.exe queries 0x16,
 // 0x17, 0x11, 0x13, 0x20 etc.; we currently use 0x17 + 0x20 because the
@@ -56,19 +59,9 @@ const K_DISCONNECT_BODY: [u8; 4] = [0x2C, 0x64, 0x73, 0x23];
 const TABLE_16_BODY:     [u8; 4] = [0x72, 0x05, 0x71, 0x17];
 const TABLE_20_BODY:     [u8; 4] = [0x72, 0x05, 0x71, 0x20];
 
-/// Honda KWP "wakeup" + "establish communication" frames - same as the
-/// EEPROM init in `eeprom.rs` and the very first frames S.exe sends.
-/// Without this handshake the K-Line stays silent and the FTDI only
-/// sees its own TX echo bouncing back on the single-wire bus.
-const HONDA_WAKEUP:    [u8; 4] = [0xFE, 0x04, 0x72, 0x8C];
-const HONDA_ESTABLISH: [u8; 5] = [0x72, 0x05, 0x00, 0xF0, 0x99];
-
-/// Full Keihin "start diagnostic session" handshake. Adding these to
-/// the live-data init gets the ECU into the same state the EEPROM
-/// tool puts it in - which is the only state we have proof works on
-/// real Honda Keihin ECUs in the field.
-const KH_START_DIAG: [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x9E, 0x8D, 0x9A, 0x86, 0x90, 0x8A, 0x8C, 0x9B, 0x88];
-const KH_FOLLOWUP:   [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x92, 0x9E, 0x86, 0x96, 0x8B, 0x8D, 0x86, 0xC0, 0x6A];
+/// Inter-frame pause inside a poll cycle. Mirrors the
+/// `TIME.SLEEP(.03)` step in TynShop.adx's MONITOR macro.
+const POLL_PAUSE_MS: u64 = 30;
 
 /// Try-send wrapper that tolerates a recv timeout (silent ECU) by
 /// returning an empty Vec instead of propagating the error. Real
@@ -111,36 +104,36 @@ pub fn poll_once(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<(Vec<u8>, Vec<u8>), TransportError> {
-    let table_16   = with_checksum(frame(TABLE_16_BODY));
-    let table_20   = with_checksum(frame(TABLE_20_BODY));
+    let table_16 = with_checksum(frame(TABLE_16_BODY));
+    let table_20 = with_checksum(frame(TABLE_20_BODY));
 
     log.push(format!("[livedata] poll - {} {}",
         hex(&table_16), hex(&table_20)));
 
-    // Full Keihin diagnostic handshake - mirrors `eeprom.rs` so the
-    // live-data session enters the same state the proven EEPROM tool
-    // puts the ECU in. Inter-frame pause matches that path too
-    // (`STEP_PAUSE_MS = 150`); shorter pauses occasionally race the
-    // FTDI 8 ms latency window and cost a reply.
-    const PAUSE_MS: u64 = 150;
-    let _ = try_send(t, &HONDA_WAKEUP)?;    sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &HONDA_ESTABLISH)?; sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &KH_START_DIAG)?;   sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &KH_FOLLOWUP)?;     sleep_ms(PAUSE_MS);
+    // Honda KWP wakeup + establish, then poll the two tables. This is
+    // the byte sequence MZA_TUNER_FLASH_2026 sends in
+    // `GForm12.cs::method_31` and that has been proven on real Keihin
+    // hardware. Empty replies are best-effort: a silent ECU just
+    // gives us echo and we keep going so the operator sees every
+    // outgoing frame.
+    let _ = try_send(t, &HONDA_WAKEUP)?;
+    sleep_ms(POLL_PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH)?;
+    sleep_ms(POLL_PAUSE_MS);
 
     let resp16 = try_send(t, &table_16)?;
-    sleep_ms(PAUSE_MS);
+    sleep_ms(POLL_PAUSE_MS);
 
     let resp20 = try_send(t, &table_20)?;
 
     Ok((resp16, resp20))
 }
 
-/// Like `poll_once` but skips the WAKEUP/ESTABLISH handshake. Use this
-/// for steady-state polling once a session is already established (the
-/// ECU stays "awake" for ~2 s after the last frame). Saves ~400 ms per
-/// poll vs. `poll_once` which is the difference between a stutter-free
-/// 2-3 Hz feed and a sluggish 1 Hz one.
+/// Like `poll_once` but skips the `K_CONNECT` handshake. Use this for
+/// steady-state polling once a session is already established (the
+/// ECU stays in monitor mode after the initial K_CONNECT + DELAY2).
+/// Saves ~1.5 s per poll vs. `poll_once` which is the difference
+/// between a stutter-free 2-3 Hz feed and a sluggish 0.5 Hz one.
 pub fn poll_tables(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
@@ -152,38 +145,27 @@ pub fn poll_tables(
         hex(&table_16), hex(&table_20)));
 
     let resp16 = try_send(t, &table_16)?;
-    sleep_ms(30);
+    sleep_ms(POLL_PAUSE_MS);
 
     let resp20 = try_send(t, &table_20)?;
 
     Ok((resp16, resp20))
 }
 
-/// Run the full Honda Keihin diagnostic handshake. Called once when
+/// Run the Honda KWP wakeup+establish handshake. Called once when
 /// the live-data session is opened (and again any time a poll comes
 /// back fully empty, suggesting the ECU's session timed out).
 ///
-/// Mirrors `eeprom.rs::read_eeprom_keihin`'s init prefix - the only
-/// sequence we have field-proven on real Honda Keihin ECUs.
+/// Byte-for-byte port of `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31`.
 pub fn establish(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<(), TransportError> {
-    const PAUSE_MS: u64 = 150;
-    log.push("[livedata] establish - WAKEUP + ESTABLISH + START_DIAG + FOLLOWUP".to_string());
-    let _ = try_send(t, &HONDA_WAKEUP)?;    sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &HONDA_ESTABLISH)?; sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &KH_START_DIAG)?;   sleep_ms(PAUSE_MS);
-    let _ = try_send(t, &KH_FOLLOWUP)?;     sleep_ms(PAUSE_MS);
-    Ok(())
-}
-
-/// Send the final `K_DISCONNECT` so the ECU drops out of monitor
-/// mode cleanly. Errors are non-fatal - we always close the port
-/// after this regardless.
-pub fn disconnect(t: &mut dyn KLine) -> Result<(), TransportError> {
-    let frame = with_checksum(frame(K_DISCONNECT_BODY));
-    let _ = t.round_trip(&frame, FRAME_TIMEOUT);
+    log.push("[livedata] establish - WAKEUP + ESTABLISH".into());
+    let _ = try_send(t, &HONDA_WAKEUP)?;
+    sleep_ms(POLL_PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH)?;
+    sleep_ms(POLL_PAUSE_MS);
     Ok(())
 }
 
@@ -206,6 +188,10 @@ mod tests {
         let t20 = with_checksum(frame(TABLE_20_BODY));
         assert_eq!(t20, [0x72, 0x05, 0x71, 0x20, 0xF8]);
         assert_eq!(t20.iter().map(|b| *b as u32).sum::<u32>() % 256, 0);
+
+        // Honda KWP wakeup + establish - the proven C# original frames.
+        assert_eq!(HONDA_WAKEUP.iter().map(|b| *b as u32).sum::<u32>() % 256, 0);
+        assert_eq!(HONDA_ESTABLISH.iter().map(|b| *b as u32).sum::<u32>() % 256, 0);
 
         let dis = with_checksum(frame(K_DISCONNECT_BODY));
         assert_eq!(dis, [0x2C, 0x64, 0x73, 0x23, 0xDA]);

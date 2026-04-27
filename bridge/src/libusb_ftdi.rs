@@ -113,10 +113,23 @@ pub struct LibusbKLine {
 }
 
 impl LibusbKLine {
-    /// Open the `index`-th FTDI device visible to libusb (matching the
-    /// same ordering as [`list`]) and run the wakeup + 10_400 baud
-    /// handover.
+    /// Open the `index`-th FTDI device with the standard Honda KWP
+    /// fast-init pulse on the K-Line bus. Required for the EEPROM
+    /// tool's KWP-2000 session.
     pub fn open(index: u32, log: &mut Vec<String>) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, true)
+    }
+
+    /// Open without the bit-bang wakeup pulse - just configures UART
+    /// at 10_400 baud. Required for the TyN-Shop live-data protocol,
+    /// which sends its own `K_CONNECT` byte sequence over plain UART
+    /// and gets confused (i.e. the ECU stays silent) if the bus has
+    /// already been pulsed into KWP fast-init mode.
+    pub fn open_bare(index: u32, log: &mut Vec<String>) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, false)
+    }
+
+    fn open_inner(index: u32, log: &mut Vec<String>, wakeup_pulse: bool) -> Result<Self, TransportError> {
         log.push(format!("[libusb] opening device #{index}"));
 
         let ctx = Context::new().map_err(|e| TransportError::Io(e.to_string()))?;
@@ -166,17 +179,30 @@ impl LibusbKLine {
         me.set_latency(8)?;
         log.push("[libusb] initial config: 921600 8N1, latency 8ms".into());
 
-        // Bit-bang wakeup pulse (mirrors `transport.rs::FtdiKLine::open`).
-        me.set_bitmode(0x01, BITMODE_BITBANG)?;
-        let _ = me.bulk_write(&[0x00]);
-        std::thread::sleep(Duration::from_millis(25));
-        let _ = me.bulk_write(&[0x01]);
-        std::thread::sleep(Duration::from_millis(25));
-        me.set_bitmode(0x00, BITMODE_RESET)?;
+        if wakeup_pulse {
+            // Honda KWP fast-init wakeup pulse - byte-for-byte port of
+            // `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_30`. 70 ms
+            // LOW (NOT 25 ms - Honda needs the longer pulse) followed
+            // immediately by HIGH and a bit-mode reset.
+            me.set_bitmode(0x01, BITMODE_BITBANG)?;
+            let _ = me.bulk_write(&[0x00]);
+            std::thread::sleep(Duration::from_millis(70));
+            let _ = me.bulk_write(&[0x01]);
+            me.set_bitmode(0x00, BITMODE_RESET)?;
+            log.push("[libusb] sent KWP fast-init wakeup pulse (70 ms LOW)".into());
+        } else {
+            log.push("[libusb] skipping wakeup pulse (bare K-Line open)".into());
+        }
 
-        // Down-shift to K-Line speed and purge any garbage.
+        // Down-shift to K-Line speed, purge, then 130 ms settle - the
+        // post-handover `Thread.Sleep(130)` from the C# original.
+        // Skipping it leaves the ECU in a half-initialised state and
+        // the first KWP frame goes into the void.
         me.set_baud(10_400)?;
         me.purge_all()?;
+        if wakeup_pulse {
+            std::thread::sleep(Duration::from_millis(130));
+        }
         log.push("[libusb] handover to 10400 baud K-Line".into());
 
         Ok(me)

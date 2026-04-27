@@ -49,12 +49,35 @@ pub struct FtdiKLine {
 }
 
 impl FtdiKLine {
-    /// Open `index` and run the wakeup + 10_400-baud handover that the
-    /// original `Form_EepromTool` does in `Initialize()`.
+    /// Open `index` with the standard Honda KWP fast-init wakeup pulse -
+    /// what `Form_EepromTool::Initialize()` does in the original C# code
+    /// and what the EEPROM tool path needs.
     pub fn open(
         index: u32,
         log: &mut Vec<String>,
         logger: Option<AppHandle>,
+    ) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, logger, true)
+    }
+
+    /// Open without the bit-bang wakeup pulse. Reserved for any
+    /// future protocol that talks over plain UART (e.g. TyN-Shop
+    /// S.exe `K_CONNECT`); not currently wired into any caller because
+    /// the proven Honda live-data path uses the pulsed `open()`.
+    #[allow(dead_code)]
+    pub fn open_bare(
+        index: u32,
+        log: &mut Vec<String>,
+        logger: Option<AppHandle>,
+    ) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, logger, false)
+    }
+
+    fn open_inner(
+        index: u32,
+        log: &mut Vec<String>,
+        logger: Option<AppHandle>,
+        wakeup_pulse: bool,
     ) -> Result<Self, TransportError> {
         if let Some(app) = &logger {
             kline_log::info(app, format!("[d2xx] opening device #{index}"));
@@ -72,17 +95,35 @@ impl FtdiKLine {
             kline_log::info(app, "[d2xx] 921600 baud, 8N1, latency 8ms");
         }
 
-        // Bit-bang wakeup: pull the K-line low for ~25 ms then high.
-        ftdi.set_bit_mode(0x01, BitMode::AsyncBitbang)?;
-        let _ = ftdi.write_all(&[0x00]);
-        std::thread::sleep(Duration::from_millis(25));
-        let _ = ftdi.write_all(&[0x01]);
-        std::thread::sleep(Duration::from_millis(25));
+        if wakeup_pulse {
+            // Honda KWP fast-init wakeup pulse - byte-for-byte port of
+            // `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_30` (the
+            // proven C# original). Pulls K-Line LOW for 70 ms (NOT
+            // 25 ms - Honda ECUs need the longer pulse to register).
+            ftdi.set_bit_mode(0x01, BitMode::AsyncBitbang)?;
+            let _ = ftdi.write_all(&[0x00]);
+            std::thread::sleep(Duration::from_millis(70));
+            let _ = ftdi.write_all(&[0x01]);
+            ftdi.set_bit_mode(0x00, BitMode::Reset)?;
+            log.push("[d2xx] sent KWP fast-init wakeup pulse (70 ms LOW)".to_string());
+            if let Some(app) = &logger {
+                kline_log::info(app, "[d2xx] sent KWP fast-init wakeup pulse (70 ms LOW)");
+            }
+        } else {
+            log.push("[d2xx] skipping wakeup pulse (bare K-Line open)".to_string());
+            if let Some(app) = &logger {
+                kline_log::info(app, "[d2xx] skipping wakeup pulse (bare K-Line open)");
+            }
+        }
 
-        // Back to UART at K-Line speed.
-        ftdi.set_bit_mode(0x00, BitMode::Reset)?;
+        // Back to UART at K-Line speed; the 130 ms post-handover
+        // `Thread.Sleep` from the C# original lets the ECU settle
+        // before the first KWP frame hits the bus.
         ftdi.set_baud_rate(10_400)?;
         ftdi.purge_all()?;
+        if wakeup_pulse {
+            std::thread::sleep(Duration::from_millis(130));
+        }
         log.push("[d2xx] handover to 10400 baud K-Line".to_string());
         if let Some(app) = &logger {
             kline_log::info(app, "[d2xx] handover to 10400 baud K-Line - ready");

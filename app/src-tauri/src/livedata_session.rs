@@ -45,7 +45,11 @@ pub struct LivePollDto {
 /// Internal per-session state - the live FTDI handle and a watermark
 /// of when the last successful TABLE reply landed (used to decide
 /// whether to re-issue the KWP handshake).
-struct Session {
+///
+/// Marked `pub(crate)` so the `LiveSessionState` newtype below (which
+/// is `pub` because Tauri's `manage()` requires it) doesn't trip the
+/// "more private than item" lint.
+pub(crate) struct Session {
     transport:        Box<dyn KLine + Send>,
     last_reply_at:    Instant,
     /// Watermark of the most recent automatic re-establish. Used to
@@ -77,6 +81,11 @@ pub fn livedata_start(
 
     kline_log::info(&app, format!("--- Live data session START on {} #{} ---", backend, idx));
 
+    // The bit-bang wakeup pulse is what physically wakes the K-Line
+    // bus driver inside the ECU - without it the ECU never even
+    // listens, and `K_CONNECT` falls into a silent void. Use the
+    // standard `open` (which runs the pulse) and follow it with the
+    // TyN-Shop `K_CONNECT + DELAY2` handshake in `establish()`.
     let mut transport: Box<dyn KLine + Send> = match backend.as_str() {
         "libusb" => Box::new(LibusbKLine::open(idx, &mut log, Some(app.clone())).map_err(|e| e.to_string())?),
         _        => Box::new(FtdiKLine::open(idx, &mut log, Some(app.clone())).map_err(|e| e.to_string())?),

@@ -54,6 +54,11 @@ const CTRL_TIMEOUT: Duration = Duration::from_millis(200);
 // ---------------------------------------------------------------------
 
 /// Public summary of every libusb-visible FTDI device.
+///
+/// `bus` / `addr` / `vid` / `pid` are surfaced via the `Debug` impl
+/// only - the GUI doesn't render them yet, so silence the dead-field
+/// lint without dropping the data.
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct LibusbDeviceInfo {
     pub bus:    u8,
@@ -123,12 +128,36 @@ pub struct LibusbKLine {
 }
 
 impl LibusbKLine {
-    /// Open the `index`-th FTDI device visible to libusb (matching
-    /// the same ordering as [`list`]).
+    /// Open the `index`-th FTDI device with the standard Honda KWP
+    /// fast-init wakeup pulse - required for the EEPROM tool's KWP
+    /// session.
     pub fn open(
         index: u32,
         log: &mut Vec<String>,
         logger: Option<AppHandle>,
+    ) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, logger, true)
+    }
+
+    /// Open without the bit-bang wakeup pulse - just configures UART
+    /// at 10_400 baud. Reserved for any future protocol that talks
+    /// over plain UART (e.g. TyN-Shop S.exe `K_CONNECT`). Not wired
+    /// to any caller right now because the proven Honda live-data
+    /// path uses the pulsed `open()`.
+    #[allow(dead_code)]
+    pub fn open_bare(
+        index: u32,
+        log: &mut Vec<String>,
+        logger: Option<AppHandle>,
+    ) -> Result<Self, TransportError> {
+        Self::open_inner(index, log, logger, false)
+    }
+
+    fn open_inner(
+        index: u32,
+        log: &mut Vec<String>,
+        logger: Option<AppHandle>,
+        wakeup_pulse: bool,
     ) -> Result<Self, TransportError> {
         if let Some(app) = &logger {
             kline_log::info(app, format!("[libusb] opening device #{index}"));
@@ -187,17 +216,37 @@ impl LibusbKLine {
             kline_log::info(app, "[libusb] 921600 baud, 8N1, latency 8ms");
         }
 
-        // Bit-bang wakeup pulse (mirrors `transport.rs::FtdiKLine::open`).
-        me.set_bitmode(0x01, BITMODE_BITBANG)?;
-        let _ = me.bulk_write(&[0x00]);
-        std::thread::sleep(Duration::from_millis(25));
-        let _ = me.bulk_write(&[0x01]);
-        std::thread::sleep(Duration::from_millis(25));
-        me.set_bitmode(0x00, BITMODE_RESET)?;
+        if wakeup_pulse {
+            // Honda KWP fast-init wakeup pulse - byte-for-byte port of
+            // `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_30` (the
+            // proven-on-real-hardware C# original). Pulls K-Line LOW
+            // for 70 ms then immediately drops bit-bang back to UART;
+            // the post-handover 130 ms `Thread.Sleep` lets the ECU
+            // settle into KWP-2000 diag mode before the first frame
+            // hits the bus.
+            me.set_bitmode(0x01, BITMODE_BITBANG)?;
+            let _ = me.bulk_write(&[0x00]);
+            std::thread::sleep(Duration::from_millis(70));
+            let _ = me.bulk_write(&[0x01]);
+            me.set_bitmode(0x00, BITMODE_RESET)?;
+            log.push("[libusb] sent KWP fast-init wakeup pulse (70 ms LOW)".into());
+            if let Some(app) = &me.logger {
+                kline_log::info(app, "[libusb] sent KWP fast-init wakeup pulse (70 ms LOW)");
+            }
+        } else {
+            log.push("[libusb] skipping wakeup pulse (bare K-Line open)".into());
+            if let Some(app) = &me.logger {
+                kline_log::info(app, "[libusb] skipping wakeup pulse (bare K-Line open)");
+            }
+        }
 
-        // Down-shift to K-Line speed and purge any garbage.
+        // Down-shift to K-Line speed, purge any garbage and let the
+        // ECU settle (130 ms - matches the original C# `Thread.Sleep`).
         me.set_baud(10_400)?;
         me.purge_all()?;
+        if wakeup_pulse {
+            std::thread::sleep(Duration::from_millis(130));
+        }
         log.push("[libusb] handover to 10400 baud K-Line".into());
         if let Some(app) = &me.logger {
             kline_log::info(app, "[libusb] handover to 10400 baud K-Line - ready");

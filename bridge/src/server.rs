@@ -185,6 +185,11 @@ fn handle_read_live_sample(params: Value) -> Result<Value> {
     let mut log = Vec::new();
 
     info!(device_index, backend = %backend, "read_live_sample start");
+    // Live data uses Honda KWP `WAKEUP + ESTABLISH + TABLE_xx` -
+    // same byte sequence + 70 ms / 130 ms wakeup timing the C#
+    // original (`GForm12.cs::method_30 + method_31`) uses, which is
+    // proven on real Keihin hardware. The EEPROM path uses the same
+    // `open_kline` so both share the bit-bang pulse.
     let mut transport = open_kline(device_index, &backend, &mut log)
         .map_err(|e| anyhow::anyhow!(e))?;
 
