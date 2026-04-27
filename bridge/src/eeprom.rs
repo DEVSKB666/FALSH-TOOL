@@ -125,33 +125,39 @@ pub fn dump_rom_shinden_64k(
     dump_rom_shinden_inner(t, log, /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32_768, "ROM Dump 64K")
 }
 
-/// **Experimental** 256 KB dump - byte 4 of the read frame (which the
-/// Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
-/// selector and we sweep pages `0x00 .. 0x03`, each covering the full
-/// 16-bit `0x0000..0xFFFF` address space.
+/// **Experimental** ≤128 KB dump - byte 4 of the read frame (which
+/// the Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
+/// selector and we sweep pages `0x00..0x03`. Each page reads the
+/// proven `0x8000..0xFFFF` upper-half range (32 KB) so the first page
+/// is effectively the existing `dump_rom_shinden_64k`.
 ///
-/// This is a guess: the original C# tool's `int_2 == 524288` /
-/// `int_2 == 1048576` paths only configure the FLASH-write text
-/// boxes, never a 256K+ READ. If the ECU does not actually
-/// bank-switch on byte 4 you'll just get the same 64 K page back
-/// four times - useful as a probe, but the resulting `.bin` will
-/// not be valid ROM data.
+/// This is a guess - the original C# tool only references 256K+ ROM
+/// sizes for FLASH-write, never READ. Outcomes:
+///
+/// - **Pages 0/1/2/3 differ** → ECU actually bank-switches on
+///   byte[4] and you have a real 128 KB dump
+/// - **All four pages identical** → byte[4] is ignored and the ECU
+///   handed you the same 32 KB four times in a row (probe data)
+/// - **Page 0 returns 0 bytes** → the ECU did not ACK at all; the
+///   chunked-read protocol does not apply to this device (different
+///   family - probably Keihin / SH7058 - which needs a separate
+///   dump routine we haven't implemented)
 pub fn dump_rom_shinden_256k_experimental(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
     log.push(
-        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 64 KB on byte[4]".into(),
+        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 32 KB on byte[4]".into(),
     );
-    let mut out: Vec<u8> = Vec::with_capacity(262_144);
+    let mut out: Vec<u8> = Vec::with_capacity(131_072);
     for page in 0u8..4u8 {
         let label = format!("ROM Dump 256K page {page:#04X}");
         let chunk = dump_rom_shinden_inner(
             t,
             log,
             /*page=*/ page,
-            /*start_hi=*/ 0x00,
-            /*total=*/ 65_536,
+            /*start_hi=*/ 0x80,
+            /*total=*/ 32_768,
             &label,
         )?;
         if chunk.is_empty() {

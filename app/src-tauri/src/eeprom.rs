@@ -217,22 +217,30 @@ pub fn dump_rom_shinden_64k(t: &mut dyn KLine, log: &mut Vec<String>, app: Optio
     dump_rom_shinden_inner(t, log, app, /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32768, "ROM Dump 64K")
 }
 
-/// **Experimental** 256 KB dump - byte 4 of the read frame (which the
-/// Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
-/// selector and we sweep pages `0x00..0x03`, each covering the full
-/// 16-bit `0x0000..0xFFFF` address space. The original C# tool only
-/// references 256K+ sizes for FLASH-write, never READ - so this is a
-/// guess. If the ECU does not actually bank-switch on byte 4 the
-/// resulting `.bin` will just be the same 64 KB four times over.
+/// **Experimental** ≤128 KB dump - byte 4 of the read frame (which
+/// the Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
+/// selector and we sweep pages `0x00..0x03`. Each page reads the
+/// proven `0x8000..0xFFFF` upper-half range (32 KB) - the first page
+/// is effectively the existing 64K dump.
+///
+/// Outcomes:
+/// - **Pages 0/1/2/3 differ** → ECU bank-switches on byte[4] and we
+///   really do have 128 KB
+/// - **All four pages identical** → byte[4] is ignored and we got the
+///   same 32 KB four times (probe data)
+/// - **Page 0 returns 0 bytes** → ECU is not Shinden / chunked-read
+///   protocol does not apply (probably Keihin SH7058, needs a
+///   separate dump routine)
 pub fn dump_rom_shinden_256k_experimental(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
     app: Option<&AppHandle>,
 ) -> Result<Vec<u8>, TransportError> {
     log.push(
-        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 64 KB on byte[4]".into(),
+        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 32 KB on byte[4]".into(),
     );
-    let mut out: Vec<u8> = Vec::with_capacity(262_144);
+    let total = 131_072u64;
+    let mut out: Vec<u8> = Vec::with_capacity(total as usize);
     for page in 0u8..4u8 {
         let label = format!("ROM Dump 256K page {page:#04X}");
         let chunk = dump_rom_shinden_inner(
@@ -240,8 +248,8 @@ pub fn dump_rom_shinden_256k_experimental(
             log,
             app,
             /*page=*/ page,
-            /*start_hi=*/ 0x00,
-            /*total=*/ 65_536,
+            /*start_hi=*/ 0x80,
+            /*total=*/ 32_768,
             &label,
         )?;
         if chunk.is_empty() {
@@ -252,7 +260,7 @@ pub fn dump_rom_shinden_256k_experimental(
         }
         out.extend_from_slice(&chunk);
         if let Some(app) = app {
-            kline_log::progress(app, "ROM Dump 256K", out.len() as u64, 262_144u64);
+            kline_log::progress(app, "ROM Dump 256K", out.len() as u64, total);
         }
     }
     log.push(format!(
