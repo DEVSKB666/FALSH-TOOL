@@ -35,8 +35,15 @@ const fn frame(prefix: [u8; 4]) -> [u8; 5] {
 const TABLE_16_BODY: [u8; 4] = [0x72, 0x05, 0x71, 0x17];
 const TABLE_20_BODY: [u8; 4] = [0x72, 0x05, 0x71, 0x20];
 
-const HONDA_WAKEUP:    [u8; 4] = [0xFE, 0x04, 0x72, 0x8C];
-const HONDA_ESTABLISH: [u8; 5] = [0x72, 0x05, 0x00, 0xF0, 0x99];
+const HONDA_WAKEUP:    [u8; 4]  = [0xFE, 0x04, 0x72, 0x8C];
+const HONDA_ESTABLISH: [u8; 5]  = [0x72, 0x05, 0x00, 0xF0, 0x99];
+
+// Full Keihin "start diagnostic session" handshake - same bytes the
+// EEPROM tool uses successfully. Adding these to the live-data init
+// is needed by ECUs that drop the KWP session after ESTABLISH unless
+// they see a proper StartDiagnosticSession + SecurityAccess frame.
+const KH_START_DIAG: [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x9E, 0x8D, 0x9A, 0x86, 0x90, 0x8A, 0x8C, 0x9B, 0x88];
+const KH_FOLLOWUP:   [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x92, 0x9E, 0x86, 0x96, 0x8B, 0x8D, 0x86, 0xC0, 0x6A];
 
 /// Try-send wrapper with verbose per-frame logging. The Honda K-Line
 /// is a single-wire bus, so the FTDI reads back the bytes it just
@@ -102,10 +109,14 @@ pub fn poll_once(
 
     log.push("[livedata] poll cycle begin".into());
 
-    // Honda KWP wakeup/establish - best-effort (silent ECU just gives
-    // us empty replies and we keep going).
+    // Full Keihin diagnostic handshake - same sequence the proven
+    // EEPROM read uses. Empty payloads are best-effort: a silent ECU
+    // just gives us nothing back and we keep going so the operator
+    // sees every outgoing frame on the wire even when the bus is dead.
     let _ = try_send(t, &HONDA_WAKEUP,    log, "wakeup")?;    sleep_ms(PAUSE_MS);
     let _ = try_send(t, &HONDA_ESTABLISH, log, "establish")?; sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_START_DIAG,   log, "kh-startdiag")?; sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_FOLLOWUP,     log, "kh-followup")?;  sleep_ms(PAUSE_MS);
 
     let resp16 = try_send(t, &table_16, log, "table16")?;
     sleep_ms(PAUSE_MS);

@@ -63,6 +63,13 @@ const TABLE_20_BODY:     [u8; 4] = [0x72, 0x05, 0x71, 0x20];
 const HONDA_WAKEUP:    [u8; 4] = [0xFE, 0x04, 0x72, 0x8C];
 const HONDA_ESTABLISH: [u8; 5] = [0x72, 0x05, 0x00, 0xF0, 0x99];
 
+/// Full Keihin "start diagnostic session" handshake. Adding these to
+/// the live-data init gets the ECU into the same state the EEPROM
+/// tool puts it in - which is the only state we have proof works on
+/// real Honda Keihin ECUs in the field.
+const KH_START_DIAG: [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x9E, 0x8D, 0x9A, 0x86, 0x90, 0x8A, 0x8C, 0x9B, 0x88];
+const KH_FOLLOWUP:   [u8; 13] = [0x91, 0x91, 0x0D, 0xDF, 0x92, 0x9E, 0x86, 0x96, 0x8B, 0x8D, 0x86, 0xC0, 0x6A];
+
 /// Try-send wrapper that tolerates a recv timeout (silent ECU) by
 /// returning an empty Vec instead of propagating the error. Real
 /// device / USB faults still propagate.
@@ -110,17 +117,19 @@ pub fn poll_once(
     log.push(format!("[livedata] poll - {} {}",
         hex(&table_16), hex(&table_20)));
 
-    // Standard Honda KWP wakeup/establish (same frames the EEPROM tool
-    // and S.exe use). Both are best-effort: a silent ECU just produces
-    // an empty reply and we keep going so the operator sees every
-    // outgoing frame on the wire even when the bus is dead.
-    let _ = try_send(t, &HONDA_WAKEUP)?;
-    sleep_ms(30);
-    let _ = try_send(t, &HONDA_ESTABLISH)?;
-    sleep_ms(30);
+    // Full Keihin diagnostic handshake - mirrors `eeprom.rs` so the
+    // live-data session enters the same state the proven EEPROM tool
+    // puts the ECU in. Inter-frame pause matches that path too
+    // (`STEP_PAUSE_MS = 150`); shorter pauses occasionally race the
+    // FTDI 8 ms latency window and cost a reply.
+    const PAUSE_MS: u64 = 150;
+    let _ = try_send(t, &HONDA_WAKEUP)?;    sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH)?; sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_START_DIAG)?;   sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_FOLLOWUP)?;     sleep_ms(PAUSE_MS);
 
     let resp16 = try_send(t, &table_16)?;
-    sleep_ms(30);
+    sleep_ms(PAUSE_MS);
 
     let resp20 = try_send(t, &table_20)?;
 
@@ -150,18 +159,22 @@ pub fn poll_tables(
     Ok((resp16, resp20))
 }
 
-/// Run just the Honda KWP wakeup+establish handshake. Called once when
+/// Run the full Honda Keihin diagnostic handshake. Called once when
 /// the live-data session is opened (and again any time a poll comes
 /// back fully empty, suggesting the ECU's session timed out).
+///
+/// Mirrors `eeprom.rs::read_eeprom_keihin`'s init prefix - the only
+/// sequence we have field-proven on real Honda Keihin ECUs.
 pub fn establish(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<(), TransportError> {
-    log.push("[livedata] establish - WAKEUP + ESTABLISH".to_string());
-    let _ = try_send(t, &HONDA_WAKEUP)?;
-    sleep_ms(30);
-    let _ = try_send(t, &HONDA_ESTABLISH)?;
-    sleep_ms(30);
+    const PAUSE_MS: u64 = 150;
+    log.push("[livedata] establish - WAKEUP + ESTABLISH + START_DIAG + FOLLOWUP".to_string());
+    let _ = try_send(t, &HONDA_WAKEUP)?;    sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH)?; sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_START_DIAG)?;   sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &KH_FOLLOWUP)?;     sleep_ms(PAUSE_MS);
     Ok(())
 }
 
