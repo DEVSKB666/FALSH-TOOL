@@ -15,7 +15,7 @@
 //! `read_live_sample` for `livedata_poll`.
 
 use std::sync::Mutex;
-use std::time::Instant;
+use std::time::{Duration, Instant};
 use serde::Serialize;
 use tauri::{AppHandle, State};
 
@@ -23,6 +23,12 @@ use crate::kline_log;
 use crate::libusb_ftdi::LibusbKLine;
 use crate::livedata as livedata_mod;
 use crate::transport::{FtdiKLine, KLine};
+
+/// Cool-down between auto re-establishes triggered by silent polls.
+/// Without this we'd spam WAKEUP + ESTABLISH + START_DIAG + FOLLOWUP
+/// on every empty tick (~600 ms each), dragging the apparent poll
+/// rate down to a crawl while the ECU is unreachable.
+const REESTABLISH_COOLDOWN: Duration = Duration::from_millis(2_000);
 
 /// One live-data sample returned by `livedata_poll`.
 #[derive(Serialize, Clone)]
@@ -42,6 +48,10 @@ pub struct LivePollDto {
 struct Session {
     transport:        Box<dyn KLine + Send>,
     last_reply_at:    Instant,
+    /// Watermark of the most recent automatic re-establish. Used to
+    /// throttle the WAKEUP/ESTABLISH/START_DIAG/FOLLOWUP burst when
+    /// the ECU is silent so we don't waste 600 ms on every poll.
+    last_reestablish_at: Instant,
     /// True until the very first successful reply lands, after which
     /// re-init is only triggered on consecutive empty polls.
     pending_first:    bool,
@@ -78,6 +88,7 @@ pub fn livedata_start(
     *guard = Some(Session {
         transport,
         last_reply_at: Instant::now(),
+        last_reestablish_at: Instant::now(),
         pending_first: true,
     });
 
@@ -104,16 +115,25 @@ pub fn livedata_poll(
         .map_err(|e| e.to_string())?;
 
     // If both empty, the ECU has dropped the session. Re-establish and
-    // try once more. We only ever do this once per call to keep the
-    // worst-case latency bounded.
+    // retry once - but throttle the retry so a permanently silent bus
+    // doesn't drag every poll out by 600 ms+ of wasted handshake.
     if t16.is_empty() && t20.is_empty() {
-        kline_log::info(&app, "[livedata] empty reply -> re-establishing");
-        livedata_mod::establish(session.transport.as_mut(), &mut log).map_err(|e| e.to_string())?;
-        let (a, b) = livedata_mod::poll_tables(session.transport.as_mut(), &mut log)
-            .map_err(|e| e.to_string())?;
-        t16 = a;
-        t20 = b;
-        re_established = true;
+        let cooled_down = session.last_reestablish_at.elapsed() >= REESTABLISH_COOLDOWN;
+        if cooled_down {
+            kline_log::info(&app, "[livedata] empty reply -> re-establishing");
+            livedata_mod::establish(session.transport.as_mut(), &mut log).map_err(|e| e.to_string())?;
+            let (a, b) = livedata_mod::poll_tables(session.transport.as_mut(), &mut log)
+                .map_err(|e| e.to_string())?;
+            t16 = a;
+            t20 = b;
+            re_established = true;
+            session.last_reestablish_at = Instant::now();
+        } else {
+            // ECU still silent within the cool-down window; skip the
+            // expensive handshake and just report the empty sample so
+            // the UI keeps ticking.
+            kline_log::info(&app, "[livedata] empty reply (within re-establish cool-down)");
+        }
     }
 
     if !t16.is_empty() || !t20.is_empty() {
