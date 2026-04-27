@@ -425,6 +425,17 @@ function OpModalBody({ def, onClose }: { def: OpDef; onClose: () => void }) {
     const startedAt = Date.now();
 
     try {
+      // Drop any persistent live-data session that was holding the FTDI
+      // open (e.g. user just came back from /livedata). Without this the
+      // dump/eeprom path opens a stale handle that inherits a half-
+      // finished KWP session and the ECU stops ACKing. The bridge does
+      // the same thing server-side; this covers the local path.
+      try {
+        await tauri.livedataStop();
+      } catch {
+        /* fine - no session to stop */
+      }
+
       const idx = selected?.index ?? 0;
       // For local mode `selected.backend` is `"d2xx"` or `"libusb"`;
       // for bridge mode it's `"bridge"` and the *daemon-side* backend

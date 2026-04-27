@@ -58,6 +58,23 @@ fn live_session() -> &'static Mutex<Option<LiveSession>> {
     LIVE_SESSION.get_or_init(|| Mutex::new(None))
 }
 
+/// Drop the cached persistent live-data session if any. Used by every
+/// "one-shot" handler that needs exclusive access to the FTDI handle
+/// (read_eeprom, dump_rom). Without this the cached transport from
+/// the previous LiveData feed keeps the device busy and the new
+/// `open_kline` either fails to claim the interface or - worse -
+/// inherits a half-finished KWP session, leaving the ECU silent.
+fn drop_live_session(log: &mut Vec<String>) {
+    if let Ok(mut guard) = live_session().lock() {
+        if guard.take().is_some() {
+            log.push("[bridge] dropped cached live-data session before exclusive op".into());
+            // Give the ECU a beat to drop out of monitor mode and the
+            // FTDI driver to release the bulk endpoints.
+            std::thread::sleep(Duration::from_millis(120));
+        }
+    }
+}
+
 /// Start listening on `bind_addr`. Blocks forever (or until the OS
 /// closes the listening socket).
 pub fn run(bind_addr: &str) -> Result<()> {
@@ -351,6 +368,7 @@ fn handle_read_eeprom(params: Value) -> Result<Value> {
     let mut log = Vec::new();
 
     info!(?p.variant, device_index, backend = %backend, "read_eeprom start");
+    drop_live_session(&mut log);
     let mut transport = open_kline(device_index, &backend, &mut log)
         .map_err(|e| anyhow::anyhow!(e))?;
 
@@ -386,6 +404,7 @@ fn handle_dump_rom(params: Value) -> Result<Value> {
     let mut log = Vec::new();
 
     info!(size = %size, device_index, backend = %backend, "dump_rom start");
+    drop_live_session(&mut log);
     let mut transport = open_kline(device_index, &backend, &mut log)
         .map_err(|e| anyhow::anyhow!(e))?;
 
