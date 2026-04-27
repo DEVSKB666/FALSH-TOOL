@@ -559,23 +559,20 @@ pub fn read_ecm_id(
         .collect::<Vec<_>>()
         .join(" ");
 
-    // Heuristic: scan for the first run of 5 bytes that aren't all 0x00
-    // / 0xFF padding - that's where Honda's ECU signature lives in the
-    // ESTABLISH reply. The leading bytes are usually the protocol
-    // header (0x72, length, service id) which we want to skip.
-    let ecm_id = reply
-        .windows(5)
-        .skip(2)
-        .find(|w| {
-            let zeros = w.iter().filter(|b| **b == 0).count();
-            let ones  = w.iter().filter(|b| **b == 0xFF).count();
-            zeros < 3 && ones < 3
-        })
-        .map(|w| {
-            w.iter()
+    // Honda KWP convention from `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31`:
+    // the response to `72 07 72 00 00 05 10` carries the 5-byte ECM
+    // signature at indices `5..=9` (`array10[5..10]`). Echo strip
+    // already happened in `try_send`, so the same offset applies here.
+    let ecm_id = if reply.len() >= 10 {
+        Some(
+            reply[5..10]
+                .iter()
                 .map(|b| format!("{:02X}", b))
-                .collect::<String>()
-        });
+                .collect::<String>(),
+        )
+    } else {
+        None
+    };
 
     Ok(EcmIdDto {
         raw_hex,

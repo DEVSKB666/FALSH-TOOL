@@ -169,20 +169,32 @@ pub fn establish(
     Ok(())
 }
 
-/// Run WAKEUP + ESTABLISH and return the (echo-stripped) ECU response
-/// to the ESTABLISH frame. Honda's ESTABLISH reply contains the ECM
-/// identification bytes - the exact layout varies between Keihin and
-/// Shinden families, so callers (or the UI) decide how to slice it.
+/// Honda KWP ECM-ID query - byte-for-byte port of the
+/// `array3 = { 114, 7, 114, 0, 0, 5, 16 }` frame the C# original
+/// (`MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31`) sends inside
+/// its livedata loop. Reply is 10+ bytes with the 5-byte ECM
+/// signature at indices `5..=9`.
+const HONDA_ECM_ID_QUERY: [u8; 7] = [0x72, 0x07, 0x72, 0x00, 0x00, 0x05, 0x10];
+
+/// Run WAKEUP + ESTABLISH + ECM_ID_QUERY and return the
+/// (echo-stripped) reply to the ECM-ID query. Honda Keihin/Shinden
+/// ECUs answer with at least 10 bytes; the 5-byte signature lives
+/// at indices `5..=9` of the response.
 pub fn read_ecm_id(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
-    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH (capture reply)".into());
+    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH + ECM_ID query".into());
     let _ = try_send(t, &HONDA_WAKEUP)?;
     sleep_ms(POLL_PAUSE_MS);
-    let reply = try_send(t, &HONDA_ESTABLISH)?;
+    let _ = try_send(t, &HONDA_ESTABLISH)?;
     sleep_ms(POLL_PAUSE_MS);
-    log.push(format!("[livedata] establish reply ({} B): {}", reply.len(), hex(&reply)));
+    let reply = try_send(t, &HONDA_ECM_ID_QUERY)?;
+    log.push(format!(
+        "[livedata] ecm_id reply ({} B): {}",
+        reply.len(),
+        hex(&reply)
+    ));
     Ok(reply)
 }
 

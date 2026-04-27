@@ -462,19 +462,20 @@ fn handle_read_ecm_id(params: Value) -> Result<Value> {
         .collect::<Vec<_>>()
         .join(" ");
 
-    // Heuristic: skip the first 2 bytes (KWP header) and find the
-    // first 5-byte window that isn't dominated by 0x00 / 0xFF padding.
-    // Honda's ECM signature lives in that range on Keihin / Shinden
-    // ECUs alike.
-    let ecm_id = reply
-        .windows(5)
-        .skip(2)
-        .find(|w| {
-            let zeros = w.iter().filter(|b| **b == 0).count();
-            let ones  = w.iter().filter(|b| **b == 0xFF).count();
-            zeros < 3 && ones < 3
-        })
-        .map(|w| w.iter().map(|b| format!("{:02X}", b)).collect::<String>());
+    // Honda KWP convention from `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31`:
+    // the response to `72 07 72 00 00 05 10` carries the 5-byte ECM
+    // signature at indices `5..=9`. Echo strip already happened in
+    // `try_send`, so the same offset applies here.
+    let ecm_id = if reply.len() >= 10 {
+        Some(
+            reply[5..10]
+                .iter()
+                .map(|b| format!("{:02X}", b))
+                .collect::<String>(),
+        )
+    } else {
+        None
+    };
 
     let elapsed = started.elapsed().as_millis() as u64;
     info!(elapsed_ms = elapsed, ?ecm_id, "read_ecm_id done");

@@ -176,22 +176,30 @@ pub fn establish(
     Ok(())
 }
 
-/// Run WAKEUP + ESTABLISH and return the (echo-stripped) ECU response
-/// to the ESTABLISH frame so the caller can extract the Honda ECM
-/// signature. Mirror of the local app's `livedata::read_ecm_id`.
+/// Honda KWP ECM-ID query - byte-for-byte port of
+/// `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::method_31`'s `array3`.
+/// Reply is 10+ bytes with the 5-byte ECM signature at indices
+/// `5..=9`.
+const HONDA_ECM_ID_QUERY: [u8; 7] = [0x72, 0x07, 0x72, 0x00, 0x00, 0x05, 0x10];
+
+/// Run WAKEUP + ESTABLISH + ECM_ID_QUERY and return the
+/// (echo-stripped) reply to the ECM-ID query so the caller can pluck
+/// out the 5-byte signature at offset 5. Mirror of the local app's
+/// `livedata::read_ecm_id`.
 pub fn read_ecm_id(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
     const POLL_PAUSE_MS: u64 = 30;
 
-    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH (capture reply)".into());
+    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH + ECM_ID query".into());
     let _ = try_send(t, &HONDA_WAKEUP, log, "wakeup")?;
     sleep_ms(POLL_PAUSE_MS);
-    let reply = try_send(t, &HONDA_ESTABLISH, log, "establish")?;
+    let _ = try_send(t, &HONDA_ESTABLISH, log, "establish")?;
     sleep_ms(POLL_PAUSE_MS);
+    let reply = try_send(t, &HONDA_ECM_ID_QUERY, log, "ecm_id")?;
     log.push(format!(
-        "[livedata] establish reply ({} B): {}",
+        "[livedata] ecm_id reply ({} B): {}",
         reply.len(),
         hex(&reply)
     ));
