@@ -106,23 +106,33 @@ pub fn read_eeprom_shinden(t: &mut dyn KLine, log: &mut Vec<String>) -> Result<V
 
 const ROM_FRAME_TIMEOUT: Duration = Duration::from_millis(300);
 
-/// Dump the upper 48 KB of the Shinden ROM (`start_hi=0x40`, total
-/// 49 152 bytes). Mirror of `app/src-tauri/src/eeprom.rs::dump_rom_shinden_48k`.
+/// Dump the upper 48 KB of the Shinden ROM. Lenient: header-only
+/// ACK responses (5..=24 bytes) skip the payload extract but the
+/// loop keeps going. Mirrors `MZA_TUNER_FLASH_2026/ns0/GForm3.cs::method_15`.
 pub fn dump_rom_shinden_48k(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, /*page=*/ 0x00, /*start_hi=*/ 0x40, /*total=*/ 49_152, "ROM Dump 48K")
+    dump_rom_shinden_inner(
+        t, log,
+        /*page=*/ 0x00, /*start_hi=*/ 0x40, /*total=*/ 49_152,
+        /*strict_26=*/ false, "ROM Dump 48K",
+    )
 }
 
 /// Dump the upper 32 KB of the Shinden ROM (label "64K" in the
-/// original UI; `start_hi=0x80`, total 32 768 bytes). Mirror of
-/// `app/src-tauri/src/eeprom.rs::dump_rom_shinden_64k`.
+/// original UI). Strict: any reply size other than exactly 26 bytes
+/// stops the dump immediately (matches the C# original
+/// `method_14`'s `reply_size != 26` guard).
 pub fn dump_rom_shinden_64k(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32_768, "ROM Dump 64K")
+    dump_rom_shinden_inner(
+        t, log,
+        /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32_768,
+        /*strict_26=*/ true, "ROM Dump 64K",
+    )
 }
 
 /// **Experimental** ≤128 KB dump - byte 4 of the read frame (which
@@ -158,6 +168,7 @@ pub fn dump_rom_shinden_256k_experimental(
             /*page=*/ page,
             /*start_hi=*/ 0x80,
             /*total=*/ 32_768,
+            /*strict_26=*/ true,
             &label,
         )?;
         if chunk.is_empty() {
@@ -178,6 +189,7 @@ fn dump_rom_shinden_inner(
     page: u8,
     start_hi: u8,
     total: usize,
+    strict_26: bool,
     label: &str,
 ) -> Result<Vec<u8>, TransportError> {
     log.push(format!(
@@ -215,31 +227,46 @@ fn dump_rom_shinden_inner(
             Err(e) => return Err(e),
         };
 
-        // Match the C# original (`method_15` / `method_14` in
-        // `MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
+        // Match the C# original (`MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
         //
-        //   - `reply_size <= 4` → real timeout / dead bus, stop the loop
-        //   - `reply_size <= 24` → header-only ACK with no payload, just
-        //     skip extraction this round and ask for the next chunk
-        //   - `reply_size > 24`  → 12 data bytes at indices 13..=24
+        //   `method_15` (48K, lenient):
+        //     - `reply <= 4`  → dead bus, stop
+        //     - `5..=24`      → header-only ACK, skip extract & continue
+        //     - `> 24`        → 12 data bytes at indices 13..=24
         //
-        // The earlier Rust port stopped at `<= 24` which is why even one
-        // short ACK aborted the whole dump on real ECUs.
-        if resp.len() <= 4 {
-            log.push(format!(
-                "[shinden] silent at offset {offset} (len={}) - stopping",
-                resp.len()
-            ));
-            break;
-        }
-        if resp.len() > 24 {
-            let take_end = resp.len().min(25);
-            out.extend_from_slice(&resp[13..take_end]);
+        //   `method_14` (64K, strict):
+        //     - `reply != 26` → save partial & stop entirely
+        //     - `reply == 26` → 12 data bytes at indices 13..=24
+        //
+        // The earlier Rust port stopped at `<= 24` for both, which is
+        // why a single short ACK aborted the dump on real ECUs.
+        if strict_26 {
+            if resp.len() != 26 {
+                log.push(format!(
+                    "[shinden] reply size {} != 26 at offset {} - stopping (strict)",
+                    resp.len(),
+                    offset
+                ));
+                break;
+            }
+            out.extend_from_slice(&resp[13..25]);
         } else {
-            log.push(format!(
-                "[shinden] short ACK at offset {offset} (len={}) - skipping payload",
-                resp.len()
-            ));
+            if resp.len() <= 4 {
+                log.push(format!(
+                    "[shinden] silent at offset {offset} (len={}) - stopping",
+                    resp.len()
+                ));
+                break;
+            }
+            if resp.len() > 24 {
+                let take_end = resp.len().min(25);
+                out.extend_from_slice(&resp[13..take_end]);
+            } else {
+                log.push(format!(
+                    "[shinden] short ACK at offset {offset} (len={}) - skipping payload",
+                    resp.len()
+                ));
+            }
         }
 
         offset += 12;
