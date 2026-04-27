@@ -308,14 +308,32 @@ fn dump_rom_shinden_inner(
 
         let resp = try_send(t, &frame, log, "sh-rom", Duration::from_millis(300))?;
 
-        // The original code expects a 26-byte response and keeps bytes 13..24
-        // (12 data bytes per packet).
-        if resp.len() <= 24 {
-            log.push(format!("[shinden] short response at offset {offset} (len={}) - stopping", resp.len()));
+        // Match the C# original (`method_14` / `method_15` in
+        // `MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
+        //
+        //   - `reply_size <= 4` → real timeout / dead bus, stop the loop
+        //   - `reply_size <= 24` → header-only ACK without payload, just
+        //     skip extraction this round and ask for the next chunk
+        //   - `reply_size > 24`  → 12 data bytes at indices 13..=24
+        //
+        // The previous Rust port stopped at `<= 24` which is why every
+        // short ACK aborted the dump on real ECUs (e.g. K2TA-T02).
+        if resp.len() <= 4 {
+            log.push(format!(
+                "[shinden] silent at offset {offset} (len={}) - stopping",
+                resp.len()
+            ));
             break;
         }
-        let take_end = resp.len().min(25); // bytes 13..=24 inclusive
-        out.extend_from_slice(&resp[13..take_end]);
+        if resp.len() > 24 {
+            let take_end = resp.len().min(25); // bytes 13..=24 inclusive
+            out.extend_from_slice(&resp[13..take_end]);
+        } else {
+            log.push(format!(
+                "[shinden] short ACK at offset {offset} (len={}) - skipping payload",
+                resp.len()
+            ));
+        }
 
         if let Some(app) = app {
             kline_log::progress(app, label, out.len() as u64, total as u64);

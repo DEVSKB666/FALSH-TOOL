@@ -215,17 +215,32 @@ fn dump_rom_shinden_inner(
             Err(e) => return Err(e),
         };
 
-        // The C# original keeps bytes 13..=24 (12 data bytes per packet)
-        // after the 13-byte header that includes the echo + ACK.
-        if resp.len() <= 24 {
+        // Match the C# original (`method_15` / `method_14` in
+        // `MZA_TUNER_FLASH_2026/ns0/GForm3.cs`):
+        //
+        //   - `reply_size <= 4` → real timeout / dead bus, stop the loop
+        //   - `reply_size <= 24` → header-only ACK with no payload, just
+        //     skip extraction this round and ask for the next chunk
+        //   - `reply_size > 24`  → 12 data bytes at indices 13..=24
+        //
+        // The earlier Rust port stopped at `<= 24` which is why even one
+        // short ACK aborted the whole dump on real ECUs.
+        if resp.len() <= 4 {
             log.push(format!(
-                "[shinden] short response at offset {offset} (len={}) - stopping",
+                "[shinden] silent at offset {offset} (len={}) - stopping",
                 resp.len()
             ));
             break;
         }
-        let take_end = resp.len().min(25);
-        out.extend_from_slice(&resp[13..take_end]);
+        if resp.len() > 24 {
+            let take_end = resp.len().min(25);
+            out.extend_from_slice(&resp[13..take_end]);
+        } else {
+            log.push(format!(
+                "[shinden] short ACK at offset {offset} (len={}) - skipping payload",
+                resp.len()
+            ));
+        }
 
         offset += 12;
         if offset % 1_536 == 0 {
