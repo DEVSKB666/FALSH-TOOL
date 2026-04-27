@@ -38,20 +38,43 @@ const TABLE_20_BODY: [u8; 4] = [0x72, 0x05, 0x71, 0x20];
 const HONDA_WAKEUP:    [u8; 4] = [0xFE, 0x04, 0x72, 0x8C];
 const HONDA_ESTABLISH: [u8; 5] = [0x72, 0x05, 0x00, 0xF0, 0x99];
 
-/// Try-send wrapper that tolerates a recv timeout (silent ECU) by
-/// returning an empty Vec instead of propagating the error. The Honda
-/// K-Line is a single-wire bus, so the FTDI reads back the bytes it
-/// just transmitted *before* the ECU's reply - we strip that TX echo
-/// here so callers see only the actual ECU response.
-fn try_send(t: &mut dyn KLine, frame: &[u8]) -> Result<Vec<u8>, TransportError> {
+/// Try-send wrapper with verbose per-frame logging. The Honda K-Line
+/// is a single-wire bus, so the FTDI reads back the bytes it just
+/// transmitted *before* the ECU's reply - we strip that TX echo here
+/// so callers see only the actual ECU response.
+///
+/// Logs both the raw RX (echo + reply) and the post-strip payload so
+/// the operator can tell whether the ECU is silent (only echo bounces
+/// back) or whether the reply layout differs from what we expected.
+fn try_send(
+    t: &mut dyn KLine,
+    frame: &[u8],
+    log: &mut Vec<String>,
+    label: &str,
+) -> Result<Vec<u8>, TransportError> {
+    log.push(format!("[livedata] tx {label}: {}", hex(frame)));
     match t.round_trip(frame, FRAME_TIMEOUT) {
-        Ok(mut r) => {
-            if r.len() >= frame.len() && r[..frame.len()] == *frame {
-                r.drain(..frame.len());
-            }
-            Ok(r)
+        Ok(r) => {
+            log.push(format!("[livedata] rx {label} raw ({} B): {}", r.len(), hex(&r)));
+            let stripped = if r.len() >= frame.len() && r[..frame.len()] == *frame {
+                r[frame.len()..].to_vec()
+            } else {
+                // No echo prefix - either the FTDI swallowed it or the
+                // bytes haven't drained yet. Pass the full buffer through
+                // and let the caller / parser decide.
+                r
+            };
+            log.push(format!(
+                "[livedata] rx {label} payload ({} B): {}",
+                stripped.len(),
+                hex(&stripped)
+            ));
+            Ok(stripped)
         }
-        Err(TransportError::Io(msg)) if msg.contains("recv") => Ok(Vec::new()),
+        Err(TransportError::Io(msg)) if msg.contains("recv") => {
+            log.push(format!("[livedata] rx {label}: <silent>"));
+            Ok(Vec::new())
+        }
         Err(e) => Err(e),
     }
 }
@@ -63,28 +86,36 @@ fn sleep_ms(ms: u64) {
 /// One full live-data poll: WAKEUP + ESTABLISH + TABLE_16 + TABLE_20.
 /// Returns the raw (echo-stripped) ECU replies. Either may be empty if
 /// the ECU did not answer that particular query.
+///
+/// Inter-frame timing matches `eeprom.rs` (`STEP_PAUSE_MS = 150`) -
+/// shorter pauses occasionally cost a reply on Windows where USB
+/// scheduling jitter can compress two adjacent frames into the same
+/// 8 ms FTDI latency window, confusing the ECU's KWP state machine.
 pub fn poll_once(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<(Vec<u8>, Vec<u8>), TransportError> {
+    const PAUSE_MS: u64 = 150;
+
     let table_16 = with_checksum(frame(TABLE_16_BODY));
     let table_20 = with_checksum(frame(TABLE_20_BODY));
 
+    log.push("[livedata] poll cycle begin".into());
+
+    // Honda KWP wakeup/establish - best-effort (silent ECU just gives
+    // us empty replies and we keep going).
+    let _ = try_send(t, &HONDA_WAKEUP,    log, "wakeup")?;    sleep_ms(PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH, log, "establish")?; sleep_ms(PAUSE_MS);
+
+    let resp16 = try_send(t, &table_16, log, "table16")?;
+    sleep_ms(PAUSE_MS);
+    let resp20 = try_send(t, &table_20, log, "table20")?;
+
     log.push(format!(
-        "[livedata] poll - WAKEUP/ESTABLISH then {} {}",
-        hex(&table_16),
-        hex(&table_20)
+        "[livedata] poll cycle done - table16={} B, table20={} B",
+        resp16.len(),
+        resp20.len()
     ));
-
-    // Honda KWP wakeup/establish (best-effort).
-    let _ = try_send(t, &HONDA_WAKEUP)?;
-    sleep_ms(30);
-    let _ = try_send(t, &HONDA_ESTABLISH)?;
-    sleep_ms(30);
-
-    let resp16 = try_send(t, &table_16)?;
-    sleep_ms(30);
-    let resp20 = try_send(t, &table_20)?;
 
     Ok((resp16, resp20))
 }
