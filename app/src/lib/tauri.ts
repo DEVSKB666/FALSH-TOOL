@@ -394,6 +394,36 @@ export const tauri = {
     return (await getInvoke())<void>('livedata_stop');
   },
 
+  /** Read the Honda ECM ID off the bench. Sends WAKEUP + ESTABLISH
+   *  and returns both the full hex-encoded reply (`raw_hex`) and a
+   *  best-guess 5-byte ECM signature (`ecm_id`). Useful for the
+   *  Home page "ECM ID" row. */
+  async readEcmId(deviceIndex = 0, backend: 'd2xx' | 'libusb' = 'd2xx') {
+    return (await getInvoke())<{
+      raw_hex: string;
+      ecm_id: string | null;
+      duration_ms: number;
+    }>('read_ecm_id', { deviceIndex, backend });
+  },
+
+  /** Read the Honda ECM ID via a remote `loy-bridge` daemon. Same
+   *  return shape as the local `readEcmId`. */
+  async readEcmIdViaBridge(
+    url: string,
+    deviceIndex = 0,
+    daemonBackend: 'd2xx' | 'libusb' = 'd2xx',
+  ) {
+    return (await getInvoke())<{
+      raw_hex: string;
+      ecm_id: string | null;
+      duration_ms: number;
+    }>('read_ecm_id_via_bridge', {
+      url,
+      deviceIndex,
+      daemonBackend,
+    });
+  },
+
   /** Read one live-data sample via a remote `loy-bridge` daemon. The
    *  daemon opens its own FTDI, runs the full WAKEUP+ESTABLISH+TABLE_17
    *  +TABLE_20 cycle, and returns the same `LiveSampleDto` shape as the
@@ -535,6 +565,13 @@ async function mockInvoke<T>(
     case 'livedata_start':
     case 'livedata_stop':
       return undefined as unknown as T;
+    case 'read_ecm_id':
+    case 'read_ecm_id_via_bridge':
+      return {
+        raw_hex: '72 0B 71 01 04 08 0F 01 00 00 00',
+        ecm_id: '0104080F01',
+        duration_ms: 100,
+      } as unknown as T;
     case 'livedata_poll':
       return {
         table16: [],

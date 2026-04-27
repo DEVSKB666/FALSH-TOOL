@@ -143,6 +143,33 @@ pub struct DumpRomResult {
     pub log: Vec<String>,
 }
 
+/// Parameters for `read_ecm_id`. Same shape as `ReadLiveSampleParams`.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub struct ReadEcmIdParams {
+    #[serde(default)]
+    pub device_index: Option<u32>,
+    #[serde(default)]
+    pub backend: Option<String>,
+}
+
+/// Result payload of `read_ecm_id`. Mirrors the local app's
+/// `EcmIdDto` so the frontend can share decoder logic verbatim.
+#[derive(Debug, Serialize)]
+pub struct ReadEcmIdResult {
+    /// Hex-encoded raw bytes (echo already stripped) of the ECU's
+    /// reply to the ESTABLISH frame.
+    pub raw_hex:     String,
+    /// Best-guess 5-byte slice of the reply that holds the Honda
+    /// ECM signature. `null` if the ECU was silent or returned an
+    /// all-zero / all-FF reply (no useful info).
+    pub ecm_id:      Option<String>,
+    /// End-to-end duration in ms.
+    pub duration_ms: u64,
+    /// Per-step log lines from the daemon.
+    pub log:         Vec<String>,
+}
+
 /// Result payload of `read_live_sample`. Mirrors the local
 /// `LiveSampleDto` so the frontend parser can be shared verbatim.
 #[derive(Debug, Serialize)]

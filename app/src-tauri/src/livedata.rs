@@ -169,6 +169,23 @@ pub fn establish(
     Ok(())
 }
 
+/// Run WAKEUP + ESTABLISH and return the (echo-stripped) ECU response
+/// to the ESTABLISH frame. Honda's ESTABLISH reply contains the ECM
+/// identification bytes - the exact layout varies between Keihin and
+/// Shinden families, so callers (or the UI) decide how to slice it.
+pub fn read_ecm_id(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH (capture reply)".into());
+    let _ = try_send(t, &HONDA_WAKEUP)?;
+    sleep_ms(POLL_PAUSE_MS);
+    let reply = try_send(t, &HONDA_ESTABLISH)?;
+    sleep_ms(POLL_PAUSE_MS);
+    log.push(format!("[livedata] establish reply ({} B): {}", reply.len(), hex(&reply)));
+    Ok(reply)
+}
+
 fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|b| format!("{:02X}", b)).collect::<Vec<_>>().join(" ")
 }

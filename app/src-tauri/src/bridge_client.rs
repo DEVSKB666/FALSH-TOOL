@@ -208,6 +208,32 @@ pub fn dump_rom(
     )
 }
 
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct EcmIdResultDto {
+    pub raw_hex:     String,
+    pub ecm_id:      Option<String>,
+    pub duration_ms: u64,
+    pub log:         Vec<String>,
+}
+
+/// Convenience: `read_ecm_id` over the bridge. Drops any cached
+/// live-data session daemon-side, runs WAKEUP+ESTABLISH and returns
+/// the captured reply.
+pub fn read_ecm_id(
+    url: &str,
+    device_index: u32,
+    backend: &str,
+) -> Result<EcmIdResultDto, BridgeError> {
+    call::<EcmIdResultDto>(
+        url,
+        "read_ecm_id",
+        json!({
+            "device_index": device_index,
+            "backend":      backend,
+        }),
+    )
+}
+
 /// Convenience: `read_live_sample` over the bridge. The daemon opens
 /// the FTDI, runs WAKEUP + ESTABLISH + TABLE_17 + TABLE_20, and closes
 /// in one shot - so each call costs ~1 s end-to-end. The frontend's

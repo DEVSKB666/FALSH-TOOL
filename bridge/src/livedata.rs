@@ -176,6 +176,28 @@ pub fn establish(
     Ok(())
 }
 
+/// Run WAKEUP + ESTABLISH and return the (echo-stripped) ECU response
+/// to the ESTABLISH frame so the caller can extract the Honda ECM
+/// signature. Mirror of the local app's `livedata::read_ecm_id`.
+pub fn read_ecm_id(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    const POLL_PAUSE_MS: u64 = 30;
+
+    log.push("[livedata] read_ecm_id - WAKEUP + ESTABLISH (capture reply)".into());
+    let _ = try_send(t, &HONDA_WAKEUP, log, "wakeup")?;
+    sleep_ms(POLL_PAUSE_MS);
+    let reply = try_send(t, &HONDA_ESTABLISH, log, "establish")?;
+    sleep_ms(POLL_PAUSE_MS);
+    log.push(format!(
+        "[livedata] establish reply ({} B): {}",
+        reply.len(),
+        hex(&reply)
+    ));
+    Ok(reply)
+}
+
 fn hex(bytes: &[u8]) -> String {
     bytes
         .iter()

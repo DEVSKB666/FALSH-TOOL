@@ -34,6 +34,7 @@ pub fn run() {
             commands::update_ecu_entry,
             commands::delete_ecu_entry,
             commands::read_live_sample,
+            commands::read_ecm_id,
             livedata_session::livedata_start,
             livedata_session::livedata_poll,
             livedata_session::livedata_stop,
@@ -42,6 +43,7 @@ pub fn run() {
             commands::read_eeprom_via_bridge,
             commands::read_live_sample_via_bridge,
             commands::dump_rom_via_bridge,
+            commands::read_ecm_id_via_bridge,
         ])
         .setup(|_app| {
             #[cfg(debug_assertions)]

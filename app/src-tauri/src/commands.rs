@@ -514,6 +514,76 @@ pub fn read_live_sample(
     })
 }
 
+#[derive(Serialize, Clone)]
+pub struct EcmIdDto {
+    /// Whole hex-encoded ESTABLISH reply (after TX echo strip). Useful
+    /// for debugging the on-wire bytes.
+    pub raw_hex:     String,
+    /// 5-byte slice that *probably* holds the Honda ECM signature.
+    /// The exact offset varies between Keihin and Shinden families;
+    /// the helper picks the first 5 bytes that look like a printable
+    /// non-zero hex string. Empty if the ECU was silent.
+    pub ecm_id:      Option<String>,
+    /// End-to-end duration in ms.
+    pub duration_ms: u64,
+}
+
+/// Read the Honda ECM ID off the bench. Sends WAKEUP + ESTABLISH and
+/// hex-encodes the reply so the UI can display it under the "ECM ID"
+/// row on the Home page.
+#[tauri::command(async)]
+pub fn read_ecm_id(
+    app: AppHandle,
+    device_index: Option<u32>,
+    backend: Option<String>,
+) -> Result<EcmIdDto, String> {
+    let idx     = device_index.unwrap_or(0);
+    let backend = backend.unwrap_or_else(|| "d2xx".to_string());
+    let started = Instant::now();
+    let mut log = Vec::new();
+
+    let mut transport: Box<dyn KLine> = match backend.as_str() {
+        "libusb" => Box::new(LibusbKLine::open(idx, &mut log, Some(app.clone())).map_err(|e| e.to_string())?),
+        _        => Box::new(FtdiKLine::open(idx, &mut log, Some(app.clone())).map_err(|e| e.to_string())?),
+    };
+
+    let reply = livedata_mod::read_ecm_id(transport.as_mut(), &mut log)
+        .map_err(|e| e.to_string())?;
+    for line in &log {
+        kline_log::info(&app, line.clone());
+    }
+
+    let raw_hex = reply
+        .iter()
+        .map(|b| format!("{:02X}", b))
+        .collect::<Vec<_>>()
+        .join(" ");
+
+    // Heuristic: scan for the first run of 5 bytes that aren't all 0x00
+    // / 0xFF padding - that's where Honda's ECU signature lives in the
+    // ESTABLISH reply. The leading bytes are usually the protocol
+    // header (0x72, length, service id) which we want to skip.
+    let ecm_id = reply
+        .windows(5)
+        .skip(2)
+        .find(|w| {
+            let zeros = w.iter().filter(|b| **b == 0).count();
+            let ones  = w.iter().filter(|b| **b == 0xFF).count();
+            zeros < 3 && ones < 3
+        })
+        .map(|w| {
+            w.iter()
+                .map(|b| format!("{:02X}", b))
+                .collect::<String>()
+        });
+
+    Ok(EcmIdDto {
+        raw_hex,
+        ecm_id,
+        duration_ms: started.elapsed().as_millis() as u64,
+    })
+}
+
 /// Read one live-data sample via a remote `loy-bridge` daemon. The
 /// daemon opens its own FTDI, runs the Honda KWP wakeup + establish +
 /// TABLE_17 + TABLE_20 sequence, and returns the raw (echo-stripped)
@@ -724,6 +794,47 @@ pub fn dump_rom(
         bytes: Some(bytes),
         duration_ms: elapsed,
         log,
+    })
+}
+
+/// Read the Honda ECM ID via a remote `loy-bridge` daemon. Same
+/// return shape as the local `read_ecm_id`. `daemon_backend`
+/// selects which transport the daemon uses to open the device
+/// (defaults to `"d2xx"`).
+#[tauri::command(async)]
+pub fn read_ecm_id_via_bridge(
+    app: AppHandle,
+    url: String,
+    device_index: Option<u32>,
+    daemon_backend: Option<String>,
+) -> Result<EcmIdDto, String> {
+    let started = Instant::now();
+    let backend = daemon_backend.unwrap_or_else(|| "d2xx".to_string());
+
+    kline_log::info(
+        &app,
+        format!("--- read_ecm_id via bridge @ {} (daemon backend: {}) ---", url, backend),
+    );
+
+    let res = bridge_client::read_ecm_id(&url, device_index.unwrap_or(0), &backend)
+        .map_err(|e| e.to_string())?;
+
+    for line in &res.log {
+        kline_log::info(&app, line.clone());
+    }
+    kline_log::info(
+        &app,
+        format!(
+            "--- read_ecm_id via bridge done in {} ms (raw={}) ---",
+            started.elapsed().as_millis(),
+            res.raw_hex
+        ),
+    );
+
+    Ok(EcmIdDto {
+        raw_hex: res.raw_hex,
+        ecm_id: res.ecm_id,
+        duration_ms: res.duration_ms,
     })
 }
 

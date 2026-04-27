@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Activity,
   CheckCircle2,
@@ -21,17 +21,17 @@ import {
   Wrench,
   Zap,
   ZapOff,
-} from "lucide-react";
-import { useSettings } from "@/lib/settings";
-import { useConnection } from "@/lib/connection";
-import { sound } from "@/lib/sounds";
-import { toast } from "@/components/toast";
-import { AppShell } from "@/components/app-shell";
-import { SplashScreen } from "@/components/splash-screen";
-import { ConnectionPanel } from "@/components/connection-panel";
-import { KlineLogPanel } from "@/components/kline-log-panel";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import { useSettings } from '@/lib/settings';
+import { useConnection } from '@/lib/connection';
+import { sound } from '@/lib/sounds';
+import { toast } from '@/components/toast';
+import { AppShell } from '@/components/app-shell';
+import { SplashScreen } from '@/components/splash-screen';
+import { ConnectionPanel } from '@/components/connection-panel';
+import { KlineLogPanel } from '@/components/kline-log-panel';
+import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export default function HomePage() {
   const showSplash = useSettings((s) => s.showSplash);
@@ -57,44 +57,55 @@ export default function HomePage() {
 }
 
 function Dashboard() {
-  const appName    = useSettings((s) => s.appName);
-  const tagline    = useSettings((s) => s.tagline);
-  const logo       = useSettings((s) => s.logoDataUrl);
+  const appName = useSettings((s) => s.appName);
+  const tagline = useSettings((s) => s.tagline);
+  const logo = useSettings((s) => s.logoDataUrl);
 
-  const status     = useConnection((s) => s.status);
+  const status = useConnection((s) => s.status);
   const flashCount = useConnection((s) => s.flashCount);
-  const ecuId      = useConnection((s) => s.ecuId);
+  const ecuId = useConnection((s) => s.ecuId);
+  const refreshEcmId = useConnection((s) => s.refreshEcuId);
+
+  // First time we see "connected" with no ecuId yet, fire WAKEUP+
+  // ESTABLISH and stash the 5-byte signature so the "ECM ID" row on
+  // the dashboard stops saying "ยังไม่ได้อ่าน". Best-effort - the
+  // store's refreshEcuId() swallows any errors.
+  useEffect(() => {
+    if (status === 'connected' && !ecuId) {
+      void refreshEcmId();
+    }
+  }, [status, ecuId, refreshEcmId]);
 
   // File picker state - kept local since it doesn't need to be global yet.
-  const [binFile, setBinFile]   = useState<File | null>(null);
+  const [binFile, setBinFile] = useState<File | null>(null);
   const [progress, setProgress] = useState(0);
-  const [running, setRunning]   = useState(false);
+  const [running, setRunning] = useState(false);
 
-  const connected = status === "connected";
+  const connected = status === 'connected';
 
   function onPickBin(file: File | null) {
     if (file) {
       setBinFile(file);
       sound.click();
-      toast.success("เลือกไฟล์แล้ว", file.name);
+      toast.success('เลือกไฟล์แล้ว', file.name);
     }
   }
 
   async function startFlash() {
     if (!connected) {
       sound.error();
-      toast.error("ยังไม่ได้เชื่อมต่อ ECM", "กดปุ่มเชื่อมต่อก่อนเริ่ม");
+      toast.error('ยังไม่ได้เชื่อมต่อ ECM', 'กดปุ่มเชื่อมต่อก่อนเริ่ม');
       return;
     }
     if (!binFile) {
       sound.error();
-      toast.error("ยังไม่ได้เลือกไฟล์ BIN", "กดปุ่ม 'เลือกไฟล์' ด้านขวา");
+      toast.error('ยังไม่ได้เลือกไฟล์ BIN', "กดปุ่ม 'เลือกไฟล์' ด้านขวา");
       return;
     }
     setRunning(true);
     setProgress(0);
     sound.click();
-    toast.info("เริ่มอัดไฟล์", binFile.name);
+    toast.info('เริ่มอัดไฟล์', binFile.name);
     // Mock progress (replace with real Tauri event listener later)
     for (let p = 0; p <= 100; p += 5) {
       await new Promise((r) => setTimeout(r, 90));
@@ -102,7 +113,10 @@ function Dashboard() {
     }
     setRunning(false);
     sound.success();
-    toast.success("อัดไฟล์เสร็จสมบูรณ์", `${binFile.name} (${(binFile.size / 1024).toFixed(1)} KB)`);
+    toast.success(
+      'อัดไฟล์เสร็จสมบูรณ์',
+      `${binFile.name} (${(binFile.size / 1024).toFixed(1)} KB)`,
+    );
   }
 
   return (
@@ -113,7 +127,12 @@ function Dashboard() {
       {/* Main 2-column area */}
       <div className="grid flex-1 grid-cols-1 gap-5 lg:grid-cols-[1.15fr_1fr]">
         <BannerCard logo={logo} appName={appName} />
-        <EcuInfoCard ecuId={ecuId} appName={appName} tagline={tagline} flashCount={flashCount} />
+        <EcuInfoCard
+          ecuId={ecuId}
+          appName={appName}
+          tagline={tagline}
+          flashCount={flashCount}
+        />
       </div>
 
       {/* Connection bar - lives ONLY on the home page; the underlying
@@ -140,7 +159,7 @@ function Dashboard() {
         onRemove={() => {
           if (binFile) {
             sound.warning();
-            toast.warning("ลบไฟล์ออกจากรายการ", binFile.name);
+            toast.warning('ลบไฟล์ออกจากรายการ', binFile.name);
           }
           setBinFile(null);
         }}
@@ -152,36 +171,36 @@ function Dashboard() {
 // ---------------- Top status row ---------------------
 
 function TopStatusRow() {
-  const autoConnect    = useSettings((s) => s.autoConnect);
+  const autoConnect = useSettings((s) => s.autoConnect);
   const setAutoConnect = useSettings((s) => s.setAutoConnect);
-  const soundEnabled    = useSettings((s) => s.soundEnabled);
+  const soundEnabled = useSettings((s) => s.soundEnabled);
   const setSoundEnabled = useSettings((s) => s.setSoundEnabled);
 
   return (
     <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-border/60 bg-card/50 p-3 ring-1 ring-black/10 backdrop-blur-md">
       <Pill icon={ShieldCheck} label="License" value="Active" tone="ok" />
-      <Pill icon={Wrench}      label="Fix HW"  value="พร้อม"   tone="ok" />
-      <Pill icon={Sparkles}    label="Speed Up" value="High" tone="ok" />
+      <Pill icon={Wrench} label="Fix HW" value="พร้อม" tone="ok" />
+      <Pill icon={Sparkles} label="Speed Up" value="High" tone="ok" />
       <div className="ml-auto flex items-center gap-2">
         <ToggleChip
           icon={autoConnect ? Zap : ZapOff}
           active={autoConnect}
-          label={autoConnect ? "Auto-connect" : "Manual"}
+          label={autoConnect ? 'Auto-connect' : 'Manual'}
           onClick={() => {
             sound.click();
             setAutoConnect(!autoConnect);
-            toast.info(autoConnect ? "ปิด Auto-connect" : "เปิด Auto-connect");
+            toast.info(autoConnect ? 'ปิด Auto-connect' : 'เปิด Auto-connect');
           }}
         />
         <ToggleChip
           icon={soundEnabled ? Volume2 : VolumeX}
           active={soundEnabled}
-          label={soundEnabled ? "Sound On" : "Mute"}
+          label={soundEnabled ? 'Sound On' : 'Mute'}
           onClick={() => {
             // Play one click only when ENABLING (so muting is silent).
             if (!soundEnabled) sound.click();
             setSoundEnabled(!soundEnabled);
-            toast.info(soundEnabled ? "ปิดเสียง" : "เปิดเสียง");
+            toast.info(soundEnabled ? 'ปิดเสียง' : 'เปิดเสียง');
           }}
         />
       </div>
@@ -198,17 +217,20 @@ function Pill({
   icon: typeof ShieldCheck;
   label: string;
   value: string;
-  tone: "ok" | "warn" | "err";
+  tone: 'ok' | 'warn' | 'err';
 }) {
   const dot =
-    tone === "ok"   ? "bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]" :
-    tone === "warn" ? "bg-amber-500"  : "bg-red-500";
+    tone === 'ok'
+      ? 'bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]'
+      : tone === 'warn'
+        ? 'bg-amber-500'
+        : 'bg-red-500';
   return (
     <div className="inline-flex items-center gap-2 rounded-full bg-muted/50 px-3 py-1 text-xs font-medium ring-1 ring-border/40">
       <Icon className="h-3.5 w-3.5 text-muted-foreground" />
       <span className="text-muted-foreground">{label}</span>
       <span>{value}</span>
-      <span className={cn("h-1.5 w-1.5 rounded-full", dot)} />
+      <span className={cn('h-1.5 w-1.5 rounded-full', dot)} />
     </div>
   );
 }
@@ -229,10 +251,10 @@ function ToggleChip({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition ring-1",
+        'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition ring-1',
         active
-          ? "bg-primary/15 text-primary ring-primary/40"
-          : "bg-muted/40 text-muted-foreground ring-border/40 hover:text-foreground",
+          ? 'bg-primary/15 text-primary ring-primary/40'
+          : 'bg-muted/40 text-muted-foreground ring-border/40 hover:text-foreground',
       )}
     >
       <Icon className="h-3.5 w-3.5" />
@@ -243,7 +265,13 @@ function ToggleChip({
 
 // ---------------- Banner card ---------------------
 
-function BannerCard({ logo, appName }: { logo: string | null; appName: string }) {
+function BannerCard({
+  logo,
+  appName,
+}: {
+  logo: string | null;
+  appName: string;
+}) {
   return (
     <Card className="relative overflow-hidden">
       {/* Gradient halo */}
@@ -264,11 +292,16 @@ function BannerCard({ logo, appName }: { logo: string | null; appName: string })
             animate={{ rotate: [0, 4, -4, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
           >
-            <Zap className="h-16 w-16 text-primary-foreground" strokeWidth={2.4} />
+            <Zap
+              className="h-16 w-16 text-primary-foreground"
+              strokeWidth={2.4}
+            />
           </motion.div>
         )}
         <div className="text-center">
-          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">Tuner</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">
+            Tuner
+          </p>
           <h2 className="mt-1 text-2xl font-bold tracking-tight">{appName}</h2>
         </div>
       </CardContent>
@@ -290,19 +323,21 @@ function EcuInfoCard({
   flashCount: number;
 }) {
   const rows: Array<[string, string]> = [
-    ["Brand",     appName],
-    ["Family",    "Honda Keihin / Shinden"],
-    ["ECM ID",    ecuId ?? "ยังไม่ได้อ่าน"],
-    ["Flashes",   String(flashCount).padStart(4, "0")],
-    ["Protocol",  "K-Line / KWP2000"],
-    ["Baud",      "10,400 bps"],
+    ['Brand', appName],
+    ['Family', 'Honda Keihin / Shinden'],
+    ['ECM ID', ecuId ?? 'ยังไม่ได้อ่าน'],
+    ['Flashes', String(flashCount).padStart(4, '0')],
+    ['Protocol', 'K-Line / KWP2000'],
+    ['Baud', '10,400 bps'],
   ];
 
   return (
     <Card className="relative overflow-hidden">
       <CardContent className="flex h-full flex-col gap-5 p-7">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">ECU Info</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">
+            ECU Info
+          </p>
           <h3 className="mt-1 text-xl font-bold">{tagline}</h3>
         </div>
 
@@ -312,7 +347,9 @@ function EcuInfoCard({
               key={k}
               className="rounded-lg border border-border/40 bg-background/40 px-3 py-2"
             >
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{k}</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                {k}
+              </p>
               <p className="mt-0.5 truncate text-sm font-medium">{v}</p>
             </div>
           ))}
@@ -320,7 +357,8 @@ function EcuInfoCard({
 
         <div className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
           <Activity className="h-3.5 w-3.5" />
-          ทุกการเชื่อมต่อใช้ FTDI D2XX driver, ผ่าน USB-Serial 921600 → 10400 baud
+          ทุกการเชื่อมต่อใช้ FTDI D2XX driver, ผ่าน USB-Serial 921600 → 10400
+          baud
         </div>
       </CardContent>
     </Card>
@@ -353,7 +391,9 @@ function FilePickerCard({
               </span>
             </span>
           ) : (
-            <span className="text-muted-foreground">( กรุณาเลือกไฟล์ BIN )</span>
+            <span className="text-muted-foreground">
+              ( กรุณาเลือกไฟล์ BIN )
+            </span>
           )}
         </div>
         <div className="flex gap-2">
@@ -362,8 +402,10 @@ function FilePickerCard({
             onClick={onRemove}
             disabled={!binFile}
             className={cn(
-              "inline-flex h-9 items-center gap-1.5 rounded-lg border border-border/60 bg-background/40 px-3 text-sm font-medium transition",
-              binFile ? "hover:bg-destructive/15 hover:text-destructive" : "opacity-50",
+              'inline-flex h-9 items-center gap-1.5 rounded-lg border border-border/60 bg-background/40 px-3 text-sm font-medium transition',
+              binFile
+                ? 'hover:bg-destructive/15 hover:text-destructive'
+                : 'opacity-50',
             )}
           >
             <Trash2 className="h-4 w-4" />
@@ -417,8 +459,8 @@ function StartActionCard({
             {running
               ? `กำลังอัดไฟล์… ${progress}%`
               : binFile
-              ? "พร้อมอัดไฟล์"
-              : "รอการอัดไฟล์ (0KB)/(0kB)"}
+                ? 'พร้อมอัดไฟล์'
+                : 'รอการอัดไฟล์ (0KB)/(0kB)'}
           </p>
         </div>
 
@@ -427,7 +469,7 @@ function StartActionCard({
             className="h-full bg-gradient-to-r from-primary via-primary to-primary/70"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
-            transition={{ ease: "linear", duration: 0.1 }}
+            transition={{ ease: 'linear', duration: 0.1 }}
           />
         </div>
 
@@ -437,14 +479,14 @@ function StartActionCard({
           disabled={running}
           whileTap={{ scale: 0.97 }}
           className={cn(
-            "mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl font-semibold text-primary-foreground transition",
+            'mt-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl font-semibold text-primary-foreground transition',
             running
-              ? "bg-primary/60"
-              : "bg-primary shadow-[0_0_30px_hsl(var(--primary)/0.55)] hover:bg-primary/90",
+              ? 'bg-primary/60'
+              : 'bg-primary shadow-[0_0_30px_hsl(var(--primary)/0.55)] hover:bg-primary/90',
           )}
         >
           <Play className="h-5 w-5" fill="currentColor" />
-          {running ? "กำลังทำงาน…" : "เริ่ม"}
+          {running ? 'กำลังทำงาน…' : 'เริ่ม'}
         </motion.button>
       </CardContent>
     </Card>
