@@ -101,8 +101,9 @@ pub fn list_ftdi() -> Result<Vec<FtdiDevice>, String> {
 
 #[tauri::command]
 pub fn list_ecus(path: Option<PathBuf>) -> Result<Vec<EcuEntry>, String> {
-    let p = path.unwrap_or_else(|| PathBuf::from(r"C:\MZATUNER\data.ini"));
-    let db = EcuDatabase::load(&p).map_err(|e| e.to_string())?;
+    let p = ini_path(path);
+    let db = EcuDatabase::load(&p)
+        .map_err(|e| format!("loading {:?}: {e}", p))?;
     let mut out: Vec<EcuEntry> = Vec::with_capacity(db.keihin.len() + db.shinden.len());
     for (fam, e) in db.all() {
         out.push(EcuEntry {
@@ -551,8 +552,54 @@ fn family_from_str(s: &str) -> Result<Family, String> {
     }
 }
 
+/// Resolve the path to `data.ini` for ECU-database commands.
+///
+/// Lookup order (first hit wins):
+/// 1. Explicit `path` argument from the frontend.
+/// 2. `MZA_DATA_INI` environment variable - lets ops override
+///    without rebuilding (handy on Linux / macOS dev machines).
+/// 3. `data.ini` next to the running executable.
+/// 4. `data.ini` in the current working directory (the dev path -
+///    `npm run tauri:dev` runs the binary from the repo root).
+/// 5. Windows install location `C:\MZATUNER\data.ini` (the original
+///    MZA_TUNER ships it there).
+///
+/// If nothing matches we fall back to the Windows path so the error
+/// message stays consistent with the original tool.
 fn ini_path(path: Option<PathBuf>) -> PathBuf {
-    path.unwrap_or_else(|| PathBuf::from(r"C:\MZATUNER\data.ini"))
+    if let Some(p) = path {
+        return p;
+    }
+    if let Ok(env) = std::env::var("MZA_DATA_INI") {
+        let p = PathBuf::from(env);
+        if p.exists() {
+            return p;
+        }
+    }
+    if let Ok(exe) = std::env::current_exe() {
+        if let Some(dir) = exe.parent() {
+            let p = dir.join("data.ini");
+            if p.exists() {
+                return p;
+            }
+        }
+    }
+    if let Ok(cwd) = std::env::current_dir() {
+        // `cargo tauri dev` may launch the binary from `app/src-tauri`,
+        // `app/`, or the repo root depending on the platform. Walk up
+        // until we find a `data.ini` or we run out of parents - the
+        // file is small enough that an existence check at each level
+        // is cheap.
+        let mut here: Option<&std::path::Path> = Some(&cwd);
+        while let Some(dir) = here {
+            let p = dir.join("data.ini");
+            if p.exists() {
+                return p;
+            }
+            here = dir.parent();
+        }
+    }
+    PathBuf::from(r"C:\MZATUNER\data.ini")
 }
 
 /// Add a new ECU entry. Returns the auto-allocated `IDxxxx` id.
@@ -674,5 +721,55 @@ pub fn dump_rom(
         bytes: Some(bytes),
         duration_ms: elapsed,
         log,
+    })
+}
+
+/// ROM dump (Shinden) via a remote `loy-bridge` daemon. Same return
+/// shape as the local `dump_rom`. `daemon_backend` selects which
+/// transport the daemon uses to open the device (defaults to
+/// `"d2xx"`).
+#[tauri::command(async)]
+pub fn dump_rom_via_bridge(
+    app: AppHandle,
+    url: String,
+    size: String,
+    device_index: Option<u32>,
+    daemon_backend: Option<String>,
+) -> Result<OperationResult, String> {
+    let started = Instant::now();
+    let backend = daemon_backend.unwrap_or_else(|| "d2xx".to_string());
+    let label = format!("ROM Dump {}", size);
+
+    kline_log::info(
+        &app,
+        format!("--- {} via bridge @ {} (daemon backend: {}) ---", label, url, backend),
+    );
+
+    let res = bridge_client::dump_rom(&url, &size, device_index.unwrap_or(0), &backend)
+        .map_err(|e| e.to_string())?;
+
+    // Mirror every line the bridge logged into our streaming console
+    // so the user sees a consistent UI no matter where the work runs.
+    for line in &res.log {
+        kline_log::info(&app, line.clone());
+    }
+    kline_log::info(
+        &app,
+        format!(
+            "--- {} via bridge complete: {} bytes in {} ms ---",
+            label,
+            res.bytes.len(),
+            started.elapsed().as_millis()
+        ),
+    );
+
+    let bytes_len = res.bytes.len();
+    Ok(OperationResult {
+        family: "Shinden".to_string(),
+        label,
+        ok: bytes_len > 0,
+        bytes: Some(res.bytes),
+        duration_ms: res.duration_ms,
+        log: res.log,
     })
 }

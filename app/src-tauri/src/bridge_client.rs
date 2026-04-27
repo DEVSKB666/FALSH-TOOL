@@ -175,6 +175,39 @@ pub struct LiveSampleResultDto {
     pub log: Vec<String>,
 }
 
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct DumpRomResultDto {
+    /// Echoes the requested size label (`"48K"` or `"64K"`).
+    pub size: String,
+    /// Raw ROM bytes - 49 152 (48K) or 32 768 (64K) on success.
+    pub bytes: Vec<u8>,
+    /// End-to-end duration measured by the daemon.
+    pub duration_ms: u64,
+    /// Per-step log lines from the daemon.
+    pub log: Vec<String>,
+}
+
+/// Convenience: `dump_rom` over the bridge. `size` is `"48K"` or
+/// `"64K"`; `backend` selects the daemon-side transport (`"d2xx"` /
+/// `"libusb"`). The chunked Shinden read can take ~1 minute even on
+/// good hardware, so callers should expect a long-running RPC.
+pub fn dump_rom(
+    url: &str,
+    size: &str,
+    device_index: u32,
+    backend: &str,
+) -> Result<DumpRomResultDto, BridgeError> {
+    call::<DumpRomResultDto>(
+        url,
+        "dump_rom",
+        json!({
+            "size":         size,
+            "device_index": device_index,
+            "backend":      backend,
+        }),
+    )
+}
+
 /// Convenience: `read_live_sample` over the bridge. The daemon opens
 /// the FTDI, runs WAKEUP + ESTABLISH + TABLE_17 + TABLE_20, and closes
 /// in one shot - so each call costs ~1 s end-to-end. The frontend's

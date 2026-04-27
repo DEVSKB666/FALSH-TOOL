@@ -101,3 +101,91 @@ pub fn read_eeprom_shinden(t: &mut dyn KLine, log: &mut Vec<String>) -> Result<V
     log.push(format!("[shinden] done - {} bytes", out.len()));
     Ok(out)
 }
+
+// ---- ROM dump (chunked Shinden read) --------------------------------
+
+const ROM_FRAME_TIMEOUT: Duration = Duration::from_millis(300);
+
+/// Dump the upper 48 KB of the Shinden ROM (`start_hi=0x40`, total
+/// 49 152 bytes). Mirror of `app/src-tauri/src/eeprom.rs::dump_rom_shinden_48k`.
+pub fn dump_rom_shinden_48k(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    dump_rom_shinden_inner(t, log, /*start_hi=*/ 0x40, /*total=*/ 49_152, "ROM Dump 48K")
+}
+
+/// Dump the upper 32 KB of the Shinden ROM (label "64K" in the
+/// original UI; `start_hi=0x80`, total 32 768 bytes). Mirror of
+/// `app/src-tauri/src/eeprom.rs::dump_rom_shinden_64k`.
+pub fn dump_rom_shinden_64k(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    dump_rom_shinden_inner(t, log, /*start_hi=*/ 0x80, /*total=*/ 32_768, "ROM Dump 64K")
+}
+
+fn dump_rom_shinden_inner(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+    start_hi: u8,
+    total: usize,
+    label: &str,
+) -> Result<Vec<u8>, TransportError> {
+    log.push(format!("[shinden] {} starting (start_hi=0x{:02X})", label, start_hi));
+
+    // Standard Shinden init - same prologue as `read_eeprom_shinden`.
+    try_send(t, &WAKEUP,        log, "sh-wakeup")?;    sleep_ms(STEP_PAUSE_MS);
+    try_send(t, &ESTABLISH,     log, "sh-establish")?; sleep_ms(STEP_PAUSE_MS);
+    try_send(t, &SH_HELLO,      log, "sh-hello")?;     sleep_ms(STEP_PAUSE_MS);
+    try_send(t, &SH_WAREYOU,    log, "sh-wareyou")?;   sleep_ms(STEP_PAUSE_MS);
+    try_send(t, &SH_START_ADDR, log, "sh-startaddr")?;
+
+    let mut out: Vec<u8> = Vec::with_capacity(total);
+    // Frame layout: [82 82 00 09 00 <addr_lo> <addr_hi> 12 <chk>]
+    let mut frame: [u8; 9] = [0x82, 0x82, 0x00, 0x09, 0x00, 0x00, start_hi, 0x0C, 0x00];
+    let mut offset: usize = 0;
+
+    while out.len() < total {
+        frame[5] = (offset & 0xFF) as u8;
+        frame[6] = start_hi.wrapping_add((offset / 256) as u8) & 0xFF;
+        frame[7] = 0x0C;
+        let sum: u32 = frame[..8].iter().map(|b| *b as u32).sum();
+        frame[8] = (256u32.wrapping_sub(sum & 0xFF) & 0xFF) as u8;
+
+        let resp = match t.round_trip(&frame, ROM_FRAME_TIMEOUT) {
+            Ok(r) => r,
+            Err(TransportError::Io(msg)) if msg.contains("recv") => {
+                log.push(format!("[shinden] silent at offset {offset} ({msg}) - stopping"));
+                break;
+            }
+            Err(e) => return Err(e),
+        };
+
+        // The C# original keeps bytes 13..=24 (12 data bytes per packet)
+        // after the 13-byte header that includes the echo + ACK.
+        if resp.len() <= 24 {
+            log.push(format!(
+                "[shinden] short response at offset {offset} (len={}) - stopping",
+                resp.len()
+            ));
+            break;
+        }
+        let take_end = resp.len().min(25);
+        out.extend_from_slice(&resp[13..take_end]);
+
+        offset += 12;
+        if offset % 1_536 == 0 {
+            log.push(format!(
+                "[shinden] {} progress: {}/{} bytes",
+                label,
+                out.len(),
+                total
+            ));
+        }
+        sleep_ms(15);
+    }
+
+    log.push(format!("[shinden] {} done: {} bytes", label, out.len()));
+    Ok(out)
+}

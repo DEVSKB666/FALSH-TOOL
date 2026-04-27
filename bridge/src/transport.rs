@@ -324,7 +324,12 @@ pub fn list_ports() -> Result<Vec<DeviceInfo>, TransportError> {
 }
 
 /// A trait object you can drop straight into the EEPROM helpers.
-pub type DynKLine = Box<dyn KLine>;
+///
+/// `+ Send` is required so the daemon can keep an open transport in a
+/// process-wide `Mutex` (the persistent live-data session in
+/// `server.rs`) and hand it to whichever client thread happens to
+/// service the next `read_live_sample`.
+pub type DynKLine = Box<dyn KLine + Send>;
 
 /// Open the right transport for `(backend, index)` with the standard
 /// KWP fast-init wakeup pulse. Use this for the EEPROM tool and any

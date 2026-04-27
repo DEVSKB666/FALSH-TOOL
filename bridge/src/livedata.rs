@@ -97,6 +97,12 @@ fn sleep_ms(ms: u64) {
 /// wakeup pulse + 130 ms post-handover settle (in the transport's
 /// `open`) is the actual unblocker - earlier 25 ms pulses left Honda
 /// ECUs asleep so every poll just bounced TX echoes around.
+///
+/// In production the daemon uses `establish` + `poll_tables` instead
+/// (cheap steady-state polling on a persistent session), but
+/// `poll_once` stays around as a self-contained reference path and
+/// for ad-hoc CLI / test invocations.
+#[allow(dead_code)]
 pub fn poll_once(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
@@ -125,6 +131,49 @@ pub fn poll_once(
     ));
 
     Ok((resp16, resp20))
+}
+
+/// Steady-state poll: skip the WAKEUP/ESTABLISH handshake and just
+/// query the two tables. Use this on every poll *after* the ECU has
+/// been initialised - saves the 70 ms LOW + 130 ms settle that
+/// `open()` already paid for, and which the ECU does not need on
+/// every frame once it's in monitor mode.
+///
+/// Mirrors `app/src-tauri/src/livedata.rs::poll_tables` so the local
+/// and bridge live-data feeds run at the same cadence.
+pub fn poll_tables(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<(Vec<u8>, Vec<u8>), TransportError> {
+    const POLL_PAUSE_MS: u64 = 30;
+
+    let table_16 = with_checksum(frame(TABLE_16_BODY));
+    let table_20 = with_checksum(frame(TABLE_20_BODY));
+
+    log.push("[livedata] poll(no-init) begin".into());
+    let resp16 = try_send(t, &table_16, log, "table16")?;
+    sleep_ms(POLL_PAUSE_MS);
+    let resp20 = try_send(t, &table_20, log, "table20")?;
+
+    Ok((resp16, resp20))
+}
+
+/// Honda KWP wakeup + establish handshake. Run once after `open()`
+/// when the persistent session is first created, and again whenever
+/// the steady-state poll comes back fully empty (which usually means
+/// the ECU dropped us due to a missed timing).
+pub fn establish(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<(), TransportError> {
+    const POLL_PAUSE_MS: u64 = 30;
+
+    log.push("[livedata] establish - WAKEUP + ESTABLISH".into());
+    let _ = try_send(t, &HONDA_WAKEUP, log, "wakeup")?;
+    sleep_ms(POLL_PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH, log, "establish")?;
+    sleep_ms(POLL_PAUSE_MS);
+    Ok(())
 }
 
 fn hex(bytes: &[u8]) -> String {

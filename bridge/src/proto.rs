@@ -115,6 +115,34 @@ pub struct ReadLiveSampleParams {
     pub backend: Option<String>,
 }
 
+/// Parameters for `dump_rom`.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub struct DumpRomParams {
+    /// Dump preset - currently `"48K"` (upper half) or `"64K"` (upper
+    /// quarter). Same labels the local Tauri `dump_rom` accepts.
+    pub size: String,
+    #[serde(default)]
+    pub device_index: Option<u32>,
+    #[serde(default)]
+    pub backend: Option<String>,
+}
+
+/// Result payload of `dump_rom`.
+#[derive(Debug, Serialize)]
+pub struct DumpRomResult {
+    /// Echoes the requested size label so the client doesn't have to
+    /// remember which call this reply belongs to.
+    pub size: String,
+    /// Raw ROM bytes - 49 152 (48K) or 32 768 (64K) on success, fewer
+    /// when the ECU went silent mid-dump.
+    pub bytes: Vec<u8>,
+    /// End-to-end duration in milliseconds (open + init + chunked read).
+    pub duration_ms: u64,
+    /// Per-step log lines, identical in spirit to `EepromReadResult.log`.
+    pub log: Vec<String>,
+}
+
 /// Result payload of `read_live_sample`. Mirrors the local
 /// `LiveSampleDto` so the frontend parser can be shared verbatim.
 #[derive(Debug, Serialize)]

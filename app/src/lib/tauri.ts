@@ -261,6 +261,24 @@ export const tauri = {
     });
   },
 
+  /** Dump the Shinden ROM via a remote `loy-bridge` daemon. Same
+   *  return shape as the local one. `daemonBackend` selects which
+   *  transport the daemon uses to open the cable - pass through the
+   *  `FtdiDevice.daemon_backend` of the bridge port the user picked. */
+  async dumpRomViaBridge(
+    url: string,
+    size: '48K' | '64K',
+    deviceIndex = 0,
+    daemonBackend: 'd2xx' | 'libusb' = 'd2xx',
+  ) {
+    return (await getInvoke())<OperationResult>('dump_rom_via_bridge', {
+      url,
+      size,
+      deviceIndex,
+      daemonBackend,
+    });
+  },
+
   /** XDF / ADX password breaker (port of Form4 "RED_MATRIX"). Pass the
    *  raw file bytes, original filename (used to detect XDF vs ADX) and
    *  optionally a custom password. Returns the cleaned plaintext + the
@@ -533,6 +551,20 @@ async function mockInvoke<T>(
         duration_ms: 1,
         log: ['[mock] read_eeprom_via_bridge - browser preview'],
       } as unknown as T;
+    case 'dump_rom_via_bridge': {
+      const size = (args?.size as string) ?? '48K';
+      const totalBytes = size === '64K' ? 32768 : 49152;
+      return {
+        family: 'Shinden',
+        label: `ROM Dump ${size}`,
+        ok: true,
+        bytes: Array.from({ length: totalBytes }, (_, i) => (i ^ 0xaa) & 0xff),
+        duration_ms: 12000,
+        log: [
+          `[mock] dump_rom_via_bridge ${size} - returning fake ${totalBytes} bytes`,
+        ],
+      } as unknown as T;
+    }
     case 'read_live_sample_via_bridge':
       return {
         table16: [],

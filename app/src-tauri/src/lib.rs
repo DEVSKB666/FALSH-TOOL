@@ -41,6 +41,7 @@ pub fn run() {
             commands::list_ftdi_via_bridge,
             commands::read_eeprom_via_bridge,
             commands::read_live_sample_via_bridge,
+            commands::dump_rom_via_bridge,
         ])
         .setup(|_app| {
             #[cfg(debug_assertions)]
