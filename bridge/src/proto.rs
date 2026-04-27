@@ -103,3 +103,28 @@ pub struct EepromReadResult {
     /// debugging the K-Line conversation from the client side.
     pub log: Vec<String>,
 }
+
+/// Parameters for `read_live_sample`. Same shape as `ReadEepromParams`
+/// minus the `variant` field (live data uses a fixed Honda KWP poll).
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub struct ReadLiveSampleParams {
+    #[serde(default)]
+    pub device_index: Option<u32>,
+    #[serde(default)]
+    pub backend: Option<String>,
+}
+
+/// Result payload of `read_live_sample`. Mirrors the local
+/// `LiveSampleDto` so the frontend parser can be shared verbatim.
+#[derive(Debug, Serialize)]
+pub struct ReadLiveSampleResult {
+    /// 24-byte echo-stripped reply to TABLE_17 (or empty if ECU silent).
+    pub table16: Vec<u8>,
+    /// 8-byte echo-stripped reply to TABLE_20 (or empty if ECU silent).
+    pub table20: Vec<u8>,
+    /// End-to-end duration in milliseconds (open + init + poll).
+    pub duration_ms: u64,
+    /// Per-step log lines, identical in spirit to `EepromReadResult.log`.
+    pub log: Vec<String>,
+}

@@ -16,6 +16,7 @@
 mod eeprom;
 #[cfg(all(feature = "hardware", not(feature = "mock")))]
 mod libusb_ftdi;
+mod livedata;
 mod proto;
 mod server;
 mod transport;

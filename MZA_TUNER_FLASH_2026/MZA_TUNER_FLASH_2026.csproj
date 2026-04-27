@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12B38B5D-FC1F-4E53-BF1C-5D179D5CA216}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MZA_TUNER_FLASH_2026</RootNamespace>
+    <AssemblyName>MZA_TUNER_FLASH_2026</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>MZA_TUNER_FLASH_2026.ico</ApplicationIcon>
+    <StartupObject>ns1.Class158</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FTD2XX_NET">
+      <HintPath>..\..\..\..\..\MZATUNER\FTD2XX_NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="-PrivateImplementationDetails-{68F2EF73-\EC2D41B1-A2F9-4664-90D8-86645EE2E753.cs" />
+    <Compile Include="ns0\Attribute0.cs" />
+    <Compile Include="ns0\Attribute1.cs" />
+    <Compile Include="ns0\Attribute2.cs" />
+    <Compile Include="ns0\Class16.cs" />
+    <Compile Include="ns0\Class17.cs" />
+    <Compile Include="ns0\Class18.cs" />
+    <Compile Include="ns0\Class19.cs" />
+    <Compile Include="ns0\Class20.cs" />
+    <Compile Include="ns0\Class21.cs" />
+    <Compile Include="ns0\Class22.cs" />
+    <Compile Include="ns0\Class23.cs" />
+    <Compile Include="ns0\Class24.cs" />
+    <Compile Include="ns0\Class25.cs" />
+    <Compile Include="ns0\Class26.cs" />
+    <Compile Include="ns0\Class27.cs" />
+    <Compile Include="ns0\Class28.cs" />
+    <Compile Include="ns0\Class29.cs" />
+    <Compile Include="ns0\Class30.cs" />
+    <Compile Include="ns0\Class31.cs" />
+    <Compile Include="ns0\Class32.cs" />
+    <Compile Include="ns0\Class33.cs" />
+    <Compile Include="ns0\Class34.cs" />
+    <Compile Include="ns0\Class35.cs" />
+    <Compile Include="ns0\Class36.cs" />
+    <Compile Include="ns0\Class37.cs" />
+    <Compile Include="ns0\Class38.cs" />
+    <Compile Include="ns0\Class39.cs" />
+    <Compile Include="ns0\Class40.cs" />
+    <Compile Include="ns0\Class41.cs" />
+    <Compile Include="ns0\Class42.cs" />
+    <Compile Include="ns0\Class43.cs" />
+    <Compile Include="ns0\Class44.cs" />
+    <Compile Include="ns0\Class45.cs" />
+    <Compile Include="ns0\Class46.cs" />
+    <Compile Include="ns0\Class47.cs" />
+    <Compile Include="ns0\Class48.cs" />
+    <Compile Include="ns0\Class49.cs" />
+    <Compile Include="ns0\Class50.cs" />
+    <Compile Include="ns0\Class51.cs" />
+    <Compile Include="ns0\Class52.cs" />
+    <Compile Include="ns0\Class53.cs" />
+    <Compile Include="ns0\Class54.cs" />
+    <Compile Include="ns0\Class55.cs" />
+    <Compile Include="ns0\Class56.cs" />
+    <Compile Include="ns0\Class57.cs" />
+    <Compile Include="ns0\Class58.cs" />
+    <Compile Include="ns0\Class59.cs" />
+    <Compile Include="ns0\Class60.cs" />
+    <Compile Include="ns0\Class61.cs" />
+    <Compile Include="ns0\Class62.cs" />
+    <Compile Include="ns0\Class63.cs" />
+    <Compile Include="ns0\Class64.cs" />
+    <Compile Include="ns0\Class65.cs" />
+    <Compile Include="ns0\Class66.cs" />
+    <Compile Include="ns0\Class67.cs" />
+    <Compile Include="ns0\Class68.cs" />
+    <Compile Include="ns0\Class69.cs" />
+    <Compile Include="ns0\Class70.cs" />
+    <Compile Include="ns0\Class71.cs" />
+    <Compile Include="ns0\Class72.cs" />
+    <Compile Include="ns0\Class73.cs" />
+    <Compile Include="ns0\Class74.cs" />
+    <Compile Include="ns0\Class75.cs" />
+    <Compile Include="ns0\Class76.cs" />
+    <Compile Include="ns0\Class77.cs" />
+    <Compile Include="ns0\Class78.cs" />
+    <Compile Include="ns0\GClass0.cs" />
+    <Compile Include="ns0\GClass1.cs" />
+    <Compile Include="ns0\GClass2.cs" />
+    <Compile Include="ns0\GForm0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns0\GForm0.Designer.cs">
+      <DependentUpon>GForm0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns0\GForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns0\GForm1.Designer.cs">
+      <DependentUpon>GForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns0\GForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns0\GForm2.Designer.cs">
+      <DependentUpon>GForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns0\GForm3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns0\GForm3.Designer.cs">
+      <DependentUpon>GForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns0\GForm4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns0\GForm4.Designer.cs">
+      <DependentUpon>GForm4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\Class100.cs" />
+    <Compile Include="ns1\Class101.cs" />
+    <Compile Include="ns1\Class102.cs" />
+    <Compile Include="ns1\Class103.cs" />
+    <Compile Include="ns1\Class104.cs" />
+    <Compile Include="ns1\Class105.cs" />
+    <Compile Include="ns1\Class106.cs" />
+    <Compile Include="ns1\Class107.cs" />
+    <Compile Include="ns1\Class108.cs" />
+    <Compile Include="ns1\Class109.cs" />
+    <Compile Include="ns1\Class110.cs" />
+    <Compile Include="ns1\Class111.cs" />
+    <Compile Include="ns1\Class112.cs" />
+    <Compile Include="ns1\Class113.cs" />
+    <Compile Include="ns1\Class114.cs" />
+    <Compile Include="ns1\Class115.cs" />
+    <Compile Include="ns1\Class116.cs" />
+    <Compile Include="ns1\Class117.cs" />
+    <Compile Include="ns1\Class118.cs" />
+    <Compile Include="ns1\Class119.cs" />
+    <Compile Include="ns1\Class120.cs" />
+    <Compile Include="ns1\Class121.cs" />
+    <Compile Include="ns1\Class122.cs" />
+    <Compile Include="ns1\Class155.cs" />
+    <Compile Include="ns1\Class158.cs" />
+    <Compile Include="ns1\Class79.cs" />
+    <Compile Include="ns1\Class80.cs" />
+    <Compile Include="ns1\Class81.cs" />
+    <Compile Include="ns1\Class82.cs" />
+    <Compile Include="ns1\Class83.cs" />
+    <Compile Include="ns1\Class84.cs" />
+    <Compile Include="ns1\Class85.cs" />
+    <Compile Include="ns1\Class86.cs" />
+    <Compile Include="ns1\Class87.cs" />
+    <Compile Include="ns1\Class88.cs" />
+    <Compile Include="ns1\Class89.cs" />
+    <Compile Include="ns1\Class90.cs" />
+    <Compile Include="ns1\Class91.cs" />
+    <Compile Include="ns1\Class92.cs" />
+    <Compile Include="ns1\Class93.cs" />
+    <Compile Include="ns1\Class94.cs" />
+    <Compile Include="ns1\Class95.cs" />
+    <Compile Include="ns1\Class96.cs" />
+    <Compile Include="ns1\Class97.cs" />
+    <Compile Include="ns1\Class98.cs" />
+    <Compile Include="ns1\Class99.cs" />
+    <Compile Include="ns1\GAttribute0.cs" />
+    <Compile Include="ns1\GClass11.cs" />
+    <Compile Include="ns1\GClass12.cs" />
+    <Compile Include="ns1\GClass13.cs" />
+    <Compile Include="ns1\GClass14.cs" />
+    <Compile Include="ns1\GClass15.cs" />
+    <Compile Include="ns1\GClass16.cs" />
+    <Compile Include="ns1\GClass17.cs" />
+    <Compile Include="ns1\GClass3.cs" />
+    <Compile Include="ns1\GClass4.cs" />
+    <Compile Include="ns1\GClass5.cs" />
+    <Compile Include="ns1\GControl0.cs" />
+    <Compile Include="ns1\GControl1.cs" />
+    <Compile Include="ns1\GControl2.cs" />
+    <Compile Include="ns1\GEnum0.cs" />
+    <Compile Include="ns1\GEnum1.cs" />
+    <Compile Include="ns1\GEnum2.cs" />
+    <Compile Include="ns1\GForm10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm10.Designer.cs">
+      <DependentUpon>GForm10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm11.Designer.cs">
+      <DependentUpon>GForm11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm12.Designer.cs">
+      <DependentUpon>GForm12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm13.Designer.cs">
+      <DependentUpon>GForm13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm14.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm14.Designer.cs">
+      <DependentUpon>GForm14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm15.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm15.Designer.cs">
+      <DependentUpon>GForm15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm5.Designer.cs">
+      <DependentUpon>GForm5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm6.Designer.cs">
+      <DependentUpon>GForm6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm7.Designer.cs">
+      <DependentUpon>GForm7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm8.Designer.cs">
+      <DependentUpon>GForm8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns1\GForm9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns1\GForm9.Designer.cs">
+      <DependentUpon>GForm9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ns2\Class164.cs" />
+    <Compile Include="ns2\Class165.cs" />
+    <Compile Include="ns2\Class166.cs" />
+    <Compile Include="ns2\Class167.cs" />
+    <Compile Include="ns2\Class168.cs" />
+    <Compile Include="ns2\Class169.cs" />
+    <Compile Include="ns2\Class170.cs" />
+    <Compile Include="ns2\Class171.cs" />
+    <Compile Include="ns2\Class172.cs" />
+    <Compile Include="ns2\Class173.cs" />
+    <Compile Include="ns2\Class174.cs" />
+    <Compile Include="ns2\Class175.cs" />
+    <Compile Include="ns2\Class176.cs" />
+    <Compile Include="ns2\Class177.cs" />
+    <Compile Include="ns2\Class178.cs" />
+    <Compile Include="ns2\Class179.cs" />
+    <Compile Include="ns2\Class180.cs" />
+    <Compile Include="ns2\Class181.cs" />
+    <Compile Include="ns2\Class182.cs" />
+    <Compile Include="ns2\Class183.cs" />
+    <Compile Include="ns2\Class184.cs" />
+    <Compile Include="ns2\Class185.cs" />
+    <Compile Include="ns2\Class186.cs" />
+    <Compile Include="ns2\Class187.cs" />
+    <Compile Include="ns2\Class188.cs" />
+    <Compile Include="ns2\Class188.Designer.cs">
+      <DependentUpon>Class188.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ns2\Class189.cs" />
+    <Compile Include="ns2\Class190.cs" />
+    <Compile Include="ns2\GAttribute1.cs" />
+    <Compile Include="ns2\GClass18.cs" />
+    <Compile Include="ns2\GClass19.cs" />
+    <Compile Include="ns2\GForm16.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ns2\GForm16.Designer.cs">
+      <DependentUpon>GForm16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Form4.resources" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Honda_Flash_Tools.Net.lockdeta.exe" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.Honda_Flash_Tools.Net.S.exe" />
+    <EmbeddedResource Include="Honda_Flash_Tools.Net.pass.resources" />
+    <EmbeddedResource Include="ns1\GForm12.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="ns2\Class188.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Class188.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

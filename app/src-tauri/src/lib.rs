@@ -8,6 +8,7 @@ mod eeprom;
 mod libusb_ftdi;
 mod kline_log;
 mod livedata;
+mod livedata_session;
 mod bridge_client;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -16,6 +17,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_store::Builder::default().build())
+        .manage(livedata_session::LiveSessionState::default())
         .invoke_handler(tauri::generate_handler![
             commands::app_info,
             commands::list_ftdi,
@@ -32,9 +34,13 @@ pub fn run() {
             commands::update_ecu_entry,
             commands::delete_ecu_entry,
             commands::read_live_sample,
+            livedata_session::livedata_start,
+            livedata_session::livedata_poll,
+            livedata_session::livedata_stop,
             commands::bridge_ping,
             commands::list_ftdi_via_bridge,
             commands::read_eeprom_via_bridge,
+            commands::read_live_sample_via_bridge,
         ])
         .setup(|_app| {
             #[cfg(debug_assertions)]

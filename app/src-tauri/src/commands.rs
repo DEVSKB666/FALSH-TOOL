@@ -223,12 +223,22 @@ pub fn kline_test(
         // this is ~14 ms on the wire - long enough for the cable's TX LED
         // to blink visibly. If a real ECU is on the bus it will reply;
         // otherwise we just hit the recv timeout (which is also logged).
+        // Helper: K-Line is single-wire, so the FTDI always reads its
+        // own TX bytes back first. Anything beyond that is a real ECU
+        // reply. We strip the echo before judging "silent vs answered".
         kline_log::info(&app, "[probe] TX Honda init frame (Keihin discovery)");
         let frame = [0xFEu8, 0x04, 0x72, 0x8C];
         match transport.round_trip(&frame, std::time::Duration::from_millis(400)) {
             Ok(resp) => {
-                kline_log::info(&app, format!("[probe] ECU responded with {} byte(s)", resp.len()));
-                log.push(format!("probe response: {} bytes", resp.len()));
+                let echo_only = resp.len() <= frame.len() && resp.starts_with(&frame);
+                let real_bytes = if resp.starts_with(&frame) { resp.len() - frame.len() } else { resp.len() };
+                if echo_only || real_bytes == 0 {
+                    kline_log::info(&app, "[probe] no ECU reply - only TX echo on bus (check key ON, K-Line pin, ground)");
+                    log.push("probe: echo only, ECU silent".to_string());
+                } else {
+                    kline_log::info(&app, format!("[probe] ECU responded with {} byte(s) (after echo strip)", real_bytes));
+                    log.push(format!("probe response: {} bytes", real_bytes));
+                }
             }
             Err(e) => {
                 kline_log::info(&app, format!("[probe] no reply ({}). Cable TX worked, but no ECU on bus.", e));
@@ -241,7 +251,13 @@ pub fn kline_test(
         let shinden = [0x27, 0x0B, 0xE0, 0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x48, 0x6F, 0x43];
         match transport.round_trip(&shinden, std::time::Duration::from_millis(400)) {
             Ok(resp) => {
-                kline_log::info(&app, format!("[probe] Shinden responded with {} byte(s)", resp.len()));
+                let echo_only = resp.len() <= shinden.len() && resp.starts_with(&shinden);
+                let real_bytes = if resp.starts_with(&shinden) { resp.len() - shinden.len() } else { resp.len() };
+                if echo_only || real_bytes == 0 {
+                    kline_log::info(&app, "[probe] Shinden no reply - only TX echo on bus");
+                } else {
+                    kline_log::info(&app, format!("[probe] Shinden responded with {} byte(s) (after echo strip)", real_bytes));
+                }
             }
             Err(e) => {
                 kline_log::info(&app, format!("[probe] Shinden no reply ({})", e));
@@ -483,11 +499,44 @@ pub fn read_live_sample(
 
     let (t16, t20) = livedata_mod::poll_once(transport.as_mut(), &mut log)
         .map_err(|e| e.to_string())?;
-    let _ = livedata_mod::disconnect(transport.as_mut());
+    // NOTE: We deliberately do NOT send K_DISCONNECT here. The TyN
+    // `2C 64 73 23` frame is not part of the Honda KWP spec - sending it
+    // confuses stock ECUs and they go silent on the next poll. Just
+    // closing the FTDI transport (when this scope ends) is enough; the
+    // ECU's KWP session will time out naturally after ~2 s of silence
+    // and the next poll's WAKEUP/ESTABLISH will re-establish it.
 
     Ok(LiveSampleDto {
         table16:     t16,
         table20:     t20,
+        duration_ms: started.elapsed().as_millis() as u64,
+    })
+}
+
+/// Read one live-data sample via a remote `loy-bridge` daemon. The
+/// daemon opens its own FTDI, runs the Honda KWP wakeup + establish +
+/// TABLE_17 + TABLE_20 sequence, and returns the raw (echo-stripped)
+/// bytes. `daemon_backend` selects which transport the daemon opens
+/// the device through (`"d2xx"` / `"libusb"`); defaults to `"d2xx"`.
+#[tauri::command(async)]
+pub fn read_live_sample_via_bridge(
+    app: AppHandle,
+    url: String,
+    device_index: Option<u32>,
+    daemon_backend: Option<String>,
+) -> Result<LiveSampleDto, String> {
+    let started = Instant::now();
+    let backend = daemon_backend.unwrap_or_else(|| "d2xx".to_string());
+    let res = bridge_client::read_live_sample(&url, device_index.unwrap_or(0), &backend)
+        .map_err(|e| e.to_string())?;
+    // Mirror every line the bridge logged into our streaming console
+    // so the user sees a consistent UI no matter where the work runs.
+    for line in &res.log {
+        kline_log::info(&app, line.clone());
+    }
+    Ok(LiveSampleDto {
+        table16:     res.table16,
+        table20:     res.table20,
         duration_ms: started.elapsed().as_millis() as u64,
     })
 }

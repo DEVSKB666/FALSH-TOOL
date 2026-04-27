@@ -1,0 +1,64 @@
+name: Build loy-bridge.exe
+
+# Builds the `loy-bridge` daemon on a real Windows runner so we get a
+# native `.exe` (cross-compiling from macOS is painful because the FTDI
+# D2XX import library only ships for MSVC). Triggered manually from the
+# Actions tab, or automatically when a tag like `bridge-v0.2` is pushed.
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'bridge-v*'
+
+permissions:
+  contents: write   # Needed by softprops/action-gh-release to attach the
+                    # binary when the workflow runs on a tag push.
+
+jobs:
+  windows-build:
+    name: Build on windows-latest
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry + target dir
+        uses: Swatinem/rust-cache@v2
+        with:
+          # Scope the cache to just the bridge crate so a noisy app/
+          # change doesn't invalidate everything.
+          workspaces: '. -> target'
+          shared-key: 'loy-bridge-windows'
+
+      - name: Build release binary
+        run: cargo build --release -p loy-bridge
+
+      # The build produces target/release/loy-bridge.exe (PowerShell uses
+      # backslashes but cargo always emits forward slashes too).
+      - name: Show artifacts
+        run: |
+          dir target\release\loy-bridge*
+        shell: pwsh
+
+      - name: Upload .exe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: loy-bridge-windows-x64
+          path: target/release/loy-bridge.exe
+          if-no-files-found: error
+          retention-days: 30
+
+      # When triggered by a `bridge-v*` tag, also publish a GitHub
+      # Release with the .exe attached so non-technical users can grab
+      # it without going through the Actions tab.
+      - name: Attach to release (tag pushes only)
+        if: startsWith(github.ref, 'refs/tags/bridge-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: target/release/loy-bridge.exe
+          name: ${{ github.ref_name }}
+          generate_release_notes: true

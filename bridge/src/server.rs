@@ -3,8 +3,10 @@
 //! clients, so `std::net` is plenty - no need for tokio).
 
 use crate::eeprom;
+use crate::livedata;
 use crate::proto::{
-    EepromReadResult, PortInfo, ReadEepromParams, Request, Response, VariantArg,
+    EepromReadResult, PortInfo, ReadEepromParams, ReadLiveSampleParams,
+    ReadLiveSampleResult, Request, Response, VariantArg,
 };
 use crate::transport::{list_ports, open_kline};
 use anyhow::{Context, Result};
@@ -104,6 +106,10 @@ fn dispatch(req: Request) -> Response {
             Ok(v)  => Response::ok(id, v),
             Err(e) => Response::err(id, e.to_string()),
         },
+        "read_live_sample" => match handle_read_live_sample(req.params) {
+            Ok(v)  => Response::ok(id, v),
+            Err(e) => Response::err(id, e.to_string()),
+        },
         other => Response::err(id, format!("unknown method: {other}")),
     };
     // Summarise the response so logs are readable at INFO without
@@ -120,6 +126,18 @@ fn dispatch(req: Request) -> Response {
             .map(|a| a.len())
             .unwrap_or(0);
         info!(method = %method, bytes = n, "response ok");
+    } else if method == "read_live_sample" {
+        let t16 = resp.result.as_ref()
+            .and_then(|v| v.get("table16"))
+            .and_then(|v| v.as_array())
+            .map(|a| a.len())
+            .unwrap_or(0);
+        let t20 = resp.result.as_ref()
+            .and_then(|v| v.get("table20"))
+            .and_then(|v| v.as_array())
+            .map(|a| a.len())
+            .unwrap_or(0);
+        info!(method = %method, table16 = t16, table20 = t20, "response ok");
     } else {
         info!(method = %method, "response ok");
     }
@@ -156,6 +174,37 @@ fn handle_list_ports() -> Result<Value> {
         })
         .collect();
     Ok(serde_json::to_value(out)?)
+}
+
+fn handle_read_live_sample(params: Value) -> Result<Value> {
+    let p: ReadLiveSampleParams =
+        serde_json::from_value(params).context("invalid params for read_live_sample")?;
+    let device_index = p.device_index.unwrap_or(0);
+    let backend = p.backend.unwrap_or_else(|| "d2xx".to_string());
+    let started = Instant::now();
+    let mut log = Vec::new();
+
+    info!(device_index, backend = %backend, "read_live_sample start");
+    let mut transport = open_kline(device_index, &backend, &mut log)
+        .map_err(|e| anyhow::anyhow!(e))?;
+
+    let (table16, table20) = livedata::poll_once(transport.as_mut(), &mut log)
+        .map_err(|e| anyhow::anyhow!(e))?;
+    let elapsed = started.elapsed().as_millis() as u64;
+    info!(
+        table16 = table16.len(),
+        table20 = table20.len(),
+        elapsed_ms = elapsed,
+        "read_live_sample done"
+    );
+
+    let result = ReadLiveSampleResult {
+        table16,
+        table20,
+        duration_ms: elapsed,
+        log,
+    };
+    Ok(serde_json::to_value(result)?)
 }
 
 fn handle_read_eeprom(params: Value) -> Result<Value> {

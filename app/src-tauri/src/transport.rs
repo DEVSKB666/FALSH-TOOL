@@ -24,7 +24,12 @@ pub enum TransportError {
 }
 
 /// Minimal trait that high-level Honda code (`crate::eeprom`) speaks against.
-pub trait KLine {
+///
+/// `Send` is required so the trait object can live inside a Tauri-managed
+/// `Mutex<Option<Box<dyn KLine + Send>>>` (used by the persistent live-data
+/// session). The handle is only ever touched by one thread at a time
+/// because the Mutex guards every access; we don't need `Sync`.
+pub trait KLine: Send {
     fn send(&mut self, frame: &[u8]) -> Result<(), TransportError>;
     fn recv(&mut self, expected_min: usize, timeout: Duration) -> Result<Vec<u8>, TransportError>;
 

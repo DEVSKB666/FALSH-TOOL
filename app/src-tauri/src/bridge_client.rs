@@ -162,3 +162,35 @@ pub fn ping(url: &str) -> Result<(), BridgeError> {
     let _: Value = call(url, "ping", Value::Null)?;
     Ok(())
 }
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct LiveSampleResultDto {
+    /// Echo-stripped TABLE_17 reply (24 bytes when ECU is responsive).
+    pub table16: Vec<u8>,
+    /// Echo-stripped TABLE_20 reply (8 bytes when ECU is responsive).
+    pub table20: Vec<u8>,
+    /// End-to-end duration measured by the daemon.
+    pub duration_ms: u64,
+    /// Per-step log lines from the daemon.
+    pub log: Vec<String>,
+}
+
+/// Convenience: `read_live_sample` over the bridge. The daemon opens
+/// the FTDI, runs WAKEUP + ESTABLISH + TABLE_17 + TABLE_20, and closes
+/// in one shot - so each call costs ~1 s end-to-end. The frontend's
+/// 60 Hz smoothing layer hides the gap; if you need higher native
+/// poll rates, add a persistent-session method on the daemon.
+pub fn read_live_sample(
+    url: &str,
+    device_index: u32,
+    backend: &str,
+) -> Result<LiveSampleResultDto, BridgeError> {
+    call::<LiveSampleResultDto>(
+        url,
+        "read_live_sample",
+        json!({
+            "device_index": device_index,
+            "backend":      backend,
+        }),
+    )
+}

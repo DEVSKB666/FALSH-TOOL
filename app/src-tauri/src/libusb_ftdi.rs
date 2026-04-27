@@ -248,12 +248,25 @@ impl LibusbKLine {
 
     /// Read at least `min` bytes of *payload* (after stripping FTDI's
     /// 2-byte modem-status prefix from each 64-byte USB chunk).
+    ///
+    /// When `min == 0` (the round-trip case) we deliberately keep
+    /// polling until the outer `timeout` expires - the K-Line bus
+    /// echoes our TX bytes back almost immediately, but the ECU's
+    /// reply lands 25-100 ms later (Honda KWP P2 timing). Returning
+    /// early after just the echo would make us miss every real reply.
     fn bulk_read(&mut self, min: usize, timeout: Duration) -> Result<Vec<u8>, TransportError> {
         let started = Instant::now();
         let mut packet = [0u8; 64];
 
         while started.elapsed() < timeout {
-            match self.handle.read_bulk(EP_IN, &mut packet, Duration::from_millis(50)) {
+            // Cap each USB read at the remaining outer-timeout budget so
+            // we don't overshoot if the bus is silent for the rest of
+            // the window.
+            let remaining = timeout.saturating_sub(started.elapsed());
+            let chunk = remaining.min(Duration::from_millis(50));
+            if chunk.is_zero() { break; }
+
+            match self.handle.read_bulk(EP_IN, &mut packet, chunk) {
                 Ok(n) => {
                     if n > FT_HEADER {
                         self.rx_buf.extend_from_slice(&packet[FT_HEADER..n]);
@@ -261,16 +274,9 @@ impl LibusbKLine {
                     if min > 0 && self.rx_buf.len() >= min {
                         break;
                     }
-                    if min == 0 && !self.rx_buf.is_empty() {
-                        // Try one more poll to grab any trailing bytes.
-                        std::thread::sleep(Duration::from_millis(2));
-                        if let Ok(n2) = self.handle.read_bulk(EP_IN, &mut packet, Duration::from_millis(20)) {
-                            if n2 > FT_HEADER {
-                                self.rx_buf.extend_from_slice(&packet[FT_HEADER..n2]);
-                            }
-                        }
-                        break;
-                    }
+                    // For `min == 0` we keep looping until the outer
+                    // timeout - never break early just because *some*
+                    // bytes (= TX echo) showed up.
                 }
                 Err(rusb::Error::Timeout) => continue,
                 Err(e) => return Err(TransportError::Io(format!("bulk_read: {e}"))),
