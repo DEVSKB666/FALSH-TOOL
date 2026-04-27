@@ -394,9 +394,13 @@ fn handle_dump_rom(params: Value) -> Result<Value> {
             .map_err(|e| anyhow::anyhow!(e))?,
         "64K" => eeprom::dump_rom_shinden_64k(transport.as_mut(), &mut log)
             .map_err(|e| anyhow::anyhow!(e))?,
+        // EXPERIMENTAL - speculative 4-page sweep on byte[4]; see
+        // `eeprom::dump_rom_shinden_256k_experimental` for caveats.
+        "256K" => eeprom::dump_rom_shinden_256k_experimental(transport.as_mut(), &mut log)
+            .map_err(|e| anyhow::anyhow!(e))?,
         other => {
             return Err(anyhow::anyhow!(
-                "unknown ROM dump size: {other:?} (use \"48K\" or \"64K\")"
+                "unknown ROM dump size: {other:?} (use \"48K\", \"64K\" or \"256K\")"
             ))
         }
     };

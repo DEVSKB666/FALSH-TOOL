@@ -209,24 +209,74 @@ pub fn format_eeprom_shinden(t: &mut dyn KLine, log: &mut Vec<String>, fill: u8)
 /// Dump the upper 48 KB of the Shinden ROM via the `82 82 00 09 ...`
 /// chunked-read protocol. Each request fetches 12 bytes; total = 49152 bytes.
 pub fn dump_rom_shinden_48k(t: &mut dyn KLine, log: &mut Vec<String>, app: Option<&AppHandle>) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, app, /*start_hi=*/ 0x40, /*total=*/ 49152, "ROM Dump 48K")
+    dump_rom_shinden_inner(t, log, app, /*page=*/ 0x00, /*start_hi=*/ 0x40, /*total=*/ 49152, "ROM Dump 48K")
 }
 
 /// Dump the upper 32 KB of the Shinden ROM (label "64K" in the original UI).
 pub fn dump_rom_shinden_64k(t: &mut dyn KLine, log: &mut Vec<String>, app: Option<&AppHandle>) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, app, /*start_hi=*/ 0x80, /*total=*/ 32768, "ROM Dump 64K")
+    dump_rom_shinden_inner(t, log, app, /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32768, "ROM Dump 64K")
+}
+
+/// **Experimental** 256 KB dump - byte 4 of the read frame (which the
+/// Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
+/// selector and we sweep pages `0x00..0x03`, each covering the full
+/// 16-bit `0x0000..0xFFFF` address space. The original C# tool only
+/// references 256K+ sizes for FLASH-write, never READ - so this is a
+/// guess. If the ECU does not actually bank-switch on byte 4 the
+/// resulting `.bin` will just be the same 64 KB four times over.
+pub fn dump_rom_shinden_256k_experimental(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+    app: Option<&AppHandle>,
+) -> Result<Vec<u8>, TransportError> {
+    log.push(
+        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 64 KB on byte[4]".into(),
+    );
+    let mut out: Vec<u8> = Vec::with_capacity(262_144);
+    for page in 0u8..4u8 {
+        let label = format!("ROM Dump 256K page {page:#04X}");
+        let chunk = dump_rom_shinden_inner(
+            t,
+            log,
+            app,
+            /*page=*/ page,
+            /*start_hi=*/ 0x00,
+            /*total=*/ 65_536,
+            &label,
+        )?;
+        if chunk.is_empty() {
+            log.push(format!(
+                "[shinden] page {page:#04X} returned no bytes - aborting sweep"
+            ));
+            break;
+        }
+        out.extend_from_slice(&chunk);
+        if let Some(app) = app {
+            kline_log::progress(app, "ROM Dump 256K", out.len() as u64, 262_144u64);
+        }
+    }
+    log.push(format!(
+        "[shinden] ROM Dump 256K (experimental) total: {} bytes",
+        out.len()
+    ));
+    Ok(out)
 }
 
 fn dump_rom_shinden_inner(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
     app: Option<&AppHandle>,
+    page: u8,
     start_hi: u8,
     total: usize,
     label: &str,
 ) -> Result<Vec<u8>, TransportError> {
-    log.push(format!("[shinden] {} starting (start_hi=0x{:02X})", label, start_hi));
-    // Standard Shinden init.
+    log.push(format!(
+        "[shinden] {} starting (page=0x{:02X}, start_hi=0x{:02X})",
+        label, page, start_hi
+    ));
+    // Standard Shinden init - same prologue as `read_eeprom_shinden`
+    // so the ECU is in chunked-read state before we hammer it.
     try_send(t, &WAKEUP,        log, "sh-wakeup",    FRAME_TIMEOUT)?; sleep_ms(STEP_PAUSE_MS);
     try_send(t, &ESTABLISH,     log, "sh-establish", FRAME_TIMEOUT)?; sleep_ms(STEP_PAUSE_MS);
     try_send(t, &SH_HELLO,      log, "sh-hello",     FRAME_TIMEOUT)?; sleep_ms(STEP_PAUSE_MS);
@@ -234,8 +284,10 @@ fn dump_rom_shinden_inner(
     try_send(t, &SH_START_ADDR, log, "sh-startaddr", FRAME_TIMEOUT)?;
 
     let mut out: Vec<u8> = Vec::with_capacity(total);
-    // [82 82 00 09 00 <addr_lo> <addr_hi> 12 <chk>]
-    let mut frame: [u8; 9] = [0x82, 0x82, 0x00, 0x09, 0x00, 0x00, start_hi, 0x0C, 0x00];
+    // Frame layout: [82 82 00 09 <page> <addr_lo> <addr_hi> 12 <chk>]
+    // For 48K/64K dumps `page` is always 0x00; the 256K experiment
+    // increments it to probe whether the ECU bank-switches on byte[4].
+    let mut frame: [u8; 9] = [0x82, 0x82, 0x00, 0x09, page, 0x00, start_hi, 0x0C, 0x00];
     let mut offset: usize = 0;
 
     // Loop until we have the requested number of bytes.

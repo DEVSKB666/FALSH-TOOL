@@ -112,7 +112,7 @@ pub fn dump_rom_shinden_48k(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, /*start_hi=*/ 0x40, /*total=*/ 49_152, "ROM Dump 48K")
+    dump_rom_shinden_inner(t, log, /*page=*/ 0x00, /*start_hi=*/ 0x40, /*total=*/ 49_152, "ROM Dump 48K")
 }
 
 /// Dump the upper 32 KB of the Shinden ROM (label "64K" in the
@@ -122,17 +122,62 @@ pub fn dump_rom_shinden_64k(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
 ) -> Result<Vec<u8>, TransportError> {
-    dump_rom_shinden_inner(t, log, /*start_hi=*/ 0x80, /*total=*/ 32_768, "ROM Dump 64K")
+    dump_rom_shinden_inner(t, log, /*page=*/ 0x00, /*start_hi=*/ 0x80, /*total=*/ 32_768, "ROM Dump 64K")
+}
+
+/// **Experimental** 256 KB dump - byte 4 of the read frame (which the
+/// Shinden 48K/64K paths leave at `0x00`) is repurposed as a page
+/// selector and we sweep pages `0x00 .. 0x03`, each covering the full
+/// 16-bit `0x0000..0xFFFF` address space.
+///
+/// This is a guess: the original C# tool's `int_2 == 524288` /
+/// `int_2 == 1048576` paths only configure the FLASH-write text
+/// boxes, never a 256K+ READ. If the ECU does not actually
+/// bank-switch on byte 4 you'll just get the same 64 K page back
+/// four times - useful as a probe, but the resulting `.bin` will
+/// not be valid ROM data.
+pub fn dump_rom_shinden_256k_experimental(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    log.push(
+        "[shinden] ROM Dump 256K (experimental) - sweeping 4 pages × 64 KB on byte[4]".into(),
+    );
+    let mut out: Vec<u8> = Vec::with_capacity(262_144);
+    for page in 0u8..4u8 {
+        let label = format!("ROM Dump 256K page {page:#04X}");
+        let chunk = dump_rom_shinden_inner(
+            t,
+            log,
+            /*page=*/ page,
+            /*start_hi=*/ 0x00,
+            /*total=*/ 65_536,
+            &label,
+        )?;
+        if chunk.is_empty() {
+            log.push(format!(
+                "[shinden] page {page:#04X} returned no bytes - aborting sweep"
+            ));
+            break;
+        }
+        out.extend_from_slice(&chunk);
+    }
+    log.push(format!("[shinden] ROM Dump 256K (experimental) total: {} bytes", out.len()));
+    Ok(out)
 }
 
 fn dump_rom_shinden_inner(
     t: &mut dyn KLine,
     log: &mut Vec<String>,
+    page: u8,
     start_hi: u8,
     total: usize,
     label: &str,
 ) -> Result<Vec<u8>, TransportError> {
-    log.push(format!("[shinden] {} starting (start_hi=0x{:02X})", label, start_hi));
+    log.push(format!(
+        "[shinden] {} starting (page=0x{:02X}, start_hi=0x{:02X})",
+        label, page, start_hi
+    ));
 
     // Standard Shinden init - same prologue as `read_eeprom_shinden`.
     try_send(t, &WAKEUP,        log, "sh-wakeup")?;    sleep_ms(STEP_PAUSE_MS);
@@ -142,8 +187,10 @@ fn dump_rom_shinden_inner(
     try_send(t, &SH_START_ADDR, log, "sh-startaddr")?;
 
     let mut out: Vec<u8> = Vec::with_capacity(total);
-    // Frame layout: [82 82 00 09 00 <addr_lo> <addr_hi> 12 <chk>]
-    let mut frame: [u8; 9] = [0x82, 0x82, 0x00, 0x09, 0x00, 0x00, start_hi, 0x0C, 0x00];
+    // Frame layout: [82 82 00 09 <page> <addr_lo> <addr_hi> 12 <chk>]
+    // For 48K/64K dumps `page` is always 0x00; the 256K experiment
+    // increments it to probe whether the ECU bank-switches.
+    let mut frame: [u8; 9] = [0x82, 0x82, 0x00, 0x09, page, 0x00, start_hi, 0x0C, 0x00];
     let mut offset: usize = 0;
 
     while out.len() < total {

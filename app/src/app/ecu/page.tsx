@@ -43,7 +43,7 @@ type Op =
   | { kind: 'read'; variant: 'Keihin' | 'Shinden' }
   | { kind: 'reset'; variant: 'Keihin' | 'Shinden' }
   | { kind: 'format'; fill: 0x00 | 0xff }
-  | { kind: 'dump'; size: '48K' | '64K' };
+  | { kind: 'dump'; size: '48K' | '64K' | '256K' };
 
 interface OpDef {
   id: string;
@@ -122,6 +122,14 @@ const OPERATIONS: OpDef[] = [
     icon: FileDown,
     tone: 'purple',
     op: { kind: 'dump', size: '64K' },
+  },
+  {
+    id: 'dump-256k',
+    label: 'ดูดไฟล์กล่อง 256K (ทดลอง)',
+    thaiSubtitle: '4 × 64K page sweep · อาจไม่รองรับ ECU บางรุ่น',
+    icon: FileDown,
+    tone: 'amber',
+    op: { kind: 'dump', size: '256K' },
   },
 ];
 

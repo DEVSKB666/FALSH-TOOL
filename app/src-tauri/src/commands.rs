@@ -710,7 +710,10 @@ pub fn dump_rom(
     let bytes = match size.as_str() {
         "48K" => eeprom::dump_rom_shinden_48k(transport.as_mut(), &mut log, Some(&app)).map_err(|e| e.to_string())?,
         "64K" => eeprom::dump_rom_shinden_64k(transport.as_mut(), &mut log, Some(&app)).map_err(|e| e.to_string())?,
-        other => return Err(format!("unknown ROM dump size: {other} (use \"48K\" or \"64K\")")),
+        // EXPERIMENTAL - speculative byte[4] page sweep; see
+        // `eeprom::dump_rom_shinden_256k_experimental` for caveats.
+        "256K" => eeprom::dump_rom_shinden_256k_experimental(transport.as_mut(), &mut log, Some(&app)).map_err(|e| e.to_string())?,
+        other => return Err(format!("unknown ROM dump size: {other} (use \"48K\", \"64K\" or \"256K\")")),
     };
     let elapsed = started.elapsed().as_millis() as u64;
     kline_log::info(&app, format!("--- {} done: {} bytes in {} ms ---", label, bytes.len(), elapsed));

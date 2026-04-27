@@ -248,9 +248,11 @@ export const tauri = {
     });
   },
 
-  /** Dump the Shinden ROM. `size` = "48K" (upper half) or "64K" (upper quarter). */
+  /** Dump the Shinden ROM. `size` = `"48K"` (upper half), `"64K"`
+   *  (upper quarter), or `"256K"` (experimental 4-page sweep on
+   *  byte[4] - see eeprom.rs::dump_rom_shinden_256k_experimental). */
   async dumpRom(
-    size: '48K' | '64K',
+    size: '48K' | '64K' | '256K',
     deviceIndex = 0,
     backend: 'd2xx' | 'libusb' = 'd2xx',
   ) {
@@ -267,7 +269,7 @@ export const tauri = {
    *  `FtdiDevice.daemon_backend` of the bridge port the user picked. */
   async dumpRomViaBridge(
     url: string,
-    size: '48K' | '64K',
+    size: '48K' | '64K' | '256K',
     deviceIndex = 0,
     daemonBackend: 'd2xx' | 'libusb' = 'd2xx',
   ) {
@@ -496,7 +498,8 @@ async function mockInvoke<T>(
     }
     case 'dump_rom': {
       const size = (args?.size as string) ?? '48K';
-      const totalBytes = size === '64K' ? 32768 : 49152;
+      const totalBytes =
+        size === '256K' ? 262144 : size === '64K' ? 32768 : 49152;
       return {
         family: 'Shinden',
         label: `ROM Dump ${size}`,
@@ -553,7 +556,8 @@ async function mockInvoke<T>(
       } as unknown as T;
     case 'dump_rom_via_bridge': {
       const size = (args?.size as string) ?? '48K';
-      const totalBytes = size === '64K' ? 32768 : 49152;
+      const totalBytes =
+        size === '256K' ? 262144 : size === '64K' ? 32768 : 49152;
       return {
         family: 'Shinden',
         label: `ROM Dump ${size}`,
