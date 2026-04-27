@@ -103,7 +103,7 @@ function EcuConverterCard() {
           <FileLock2 className="h-5 w-5 text-primary" />
           ECU File Converter
         </CardTitle>
-        <CardDescription>รองรับ AES-256-ECB + MD5 + Base64 (มาตรฐานเดียวกับ MZA-TUNER)</CardDescription>
+        <CardDescription>รองรับ AES-256-ECB + MD5 + Base64</CardDescription>
       </CardHeader>
       <CardContent className="space-y-5">
         <div className="flex gap-2">

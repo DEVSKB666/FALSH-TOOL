@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
  *   > WARMING UP ISO-9141 BUS... [OK]
  */
 const STEPS = [
-  { icon: Cpu,            label: "INITIALIZING MZA-TUNER 2026" },
+  { icon: Cpu,            label: "INITIALIZING LOY-TUNER 2026" },
   { icon: Wifi,           label: "SEARCHING FTDI INTERFACE" },
   { icon: CircuitBoard,   label: "FTDI D2XX DRIVER DETECTED" },
   { icon: ShieldCheck,    label: "AUTHENTICATING LICENSE KEY" },

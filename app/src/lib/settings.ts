@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 /**
  * App-wide user-tunable settings.
@@ -11,13 +11,13 @@ import { persist, createJSONStorage } from "zustand/middleware";
  * Zustand store either way.
  */
 
-export type ThemePreset = "light" | "dark" | "racing" | "neon";
+export type ThemePreset = 'light' | 'dark' | 'racing' | 'neon';
 export type BackgroundPreset =
-  | "particles"
-  | "circuit"
-  | "scanlines"
-  | "aurora"
-  | "off";
+  | 'particles'
+  | 'circuit'
+  | 'scanlines'
+  | 'aurora'
+  | 'off';
 
 export interface SettingsState {
   /** Brand name shown in the title bar / splash. */
@@ -63,28 +63,28 @@ export interface SettingsState {
 
 const DEFAULTS: Pick<
   SettingsState,
-  | "appName"
-  | "logoDataUrl"
-  | "theme"
-  | "background"
-  | "showSplash"
-  | "splashSeenThisRun"
-  | "autoConnect"
-  | "soundEnabled"
-  | "tagline"
-  | "bridgeUrl"
-  | "bridgeEnabled"
+  | 'appName'
+  | 'logoDataUrl'
+  | 'theme'
+  | 'background'
+  | 'showSplash'
+  | 'splashSeenThisRun'
+  | 'autoConnect'
+  | 'soundEnabled'
+  | 'tagline'
+  | 'bridgeUrl'
+  | 'bridgeEnabled'
 > = {
-  appName: "MZA-TUNER 2026",
+  appName: 'LOY-TUNER 2026',
   logoDataUrl: null,
-  theme: "racing",
-  background: "particles",
+  theme: 'racing',
+  background: 'particles',
   showSplash: true,
   splashSeenThisRun: false,
   autoConnect: true,
   soundEnabled: true,
-  tagline: "Honda Keihin / Shinden Tuner",
-  bridgeUrl: "",
+  tagline: 'Honda Keihin / Shinden Tuner',
+  bridgeUrl: '',
   bridgeEnabled: false,
 };
 
@@ -106,10 +106,10 @@ export const useSettings = create<SettingsState>()(
       reset: () => set({ ...DEFAULTS }),
     }),
     {
-      name: "mza-tuner.settings",
+      name: 'mza-tuner.settings',
       storage: createJSONStorage(() => localStorage),
       // never persist the per-session splash flag
       partialize: ({ splashSeenThisRun: _ignored, ...rest }) => rest,
-    }
-  )
+    },
+  ),
 );

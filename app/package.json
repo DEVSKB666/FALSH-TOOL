@@ -1,8 +1,8 @@
 {
-  "name": "mza-tuner-app",
+  "name": "loy-tuner-app",
   "version": "0.1.0",
   "private": true,
-  "description": "MZA-Tuner - Honda ECU Flasher (Tauri 2 + Next.js + Tailwind)",
+  "description": "LOY-Tuner - Honda ECU Flasher (Tauri 2 + Next.js + Tailwind)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
