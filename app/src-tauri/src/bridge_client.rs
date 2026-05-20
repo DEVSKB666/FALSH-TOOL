@@ -234,6 +234,38 @@ pub fn read_ecm_id(
     )
 }
 
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct ClearDtcResultDto {
+    /// Hex-encoded reply to the CLEAR_DTC frame after TX-echo strip.
+    pub raw_hex:     String,
+    /// Raw bytes of the same reply for callers that want to inspect
+    /// the protocol layer directly.
+    pub reply:       Vec<u8>,
+    /// `true` when the ECU answered with at least one byte (any
+    /// response is treated as an ack by the C# original).
+    pub ok:          bool,
+    pub duration_ms: u64,
+    pub log:         Vec<String>,
+}
+
+/// Convenience: `clear_dtc` over the bridge. Drops any cached
+/// live-data session daemon-side, runs WAKEUP+ESTABLISH+CLEAR_DTC and
+/// returns the (echo-stripped) reply.
+pub fn clear_dtc(
+    url: &str,
+    device_index: u32,
+    backend: &str,
+) -> Result<ClearDtcResultDto, BridgeError> {
+    call::<ClearDtcResultDto>(
+        url,
+        "clear_dtc",
+        json!({
+            "device_index": device_index,
+            "backend":      backend,
+        }),
+    )
+}
+
 /// Convenience: `read_live_sample` over the bridge. The daemon opens
 /// the FTDI, runs WAKEUP + ESTABLISH + TABLE_17 + TABLE_20, and closes
 /// in one shot - so each call costs ~1 s end-to-end. The frontend's

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * Live K-Line traffic console.
@@ -9,34 +9,81 @@
  * lines persist across page navigation.
  */
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUp, CircleAlert, Eraser, Info, Pause, Play, Terminal } from "lucide-react";
-import { isTauri, type KlineLogLine } from "@/lib/tauri";
-import { useKlineLog } from "@/lib/log";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from 'react';
+import {
+  ArrowDown,
+  ArrowDownToLine,
+  ArrowUp,
+  CircleAlert,
+  Eraser,
+  Info,
+  Pause,
+  Play,
+  Terminal,
+} from 'lucide-react';
+import { isTauri, type KlineLogLine } from '@/lib/tauri';
+import { useKlineLog } from '@/lib/log';
+import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 const MAX_LINES = 800;
 
 export function KlineLogPanel() {
-  const lines     = useKlineLog((s) => s.lines);
-  const paused    = useKlineLog((s) => s.paused);
+  const lines = useKlineLog((s) => s.lines);
+  const paused = useKlineLog((s) => s.paused);
   const setPaused = useKlineLog((s) => s.setPaused);
-  const clear     = useKlineLog((s) => s.clear);
+  const clear = useKlineLog((s) => s.clear);
 
   const [showTauri, setShowTauri] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  /** True when the viewport is already pinned to the bottom. We
+   *  only auto-scroll while this is true so the operator can scroll
+   *  up to read older lines without the log fighting them back. */
+  const stickToBottomRef = useRef(true);
+  /** Mirrors the ref into reactive state for the "Jump to latest"
+   *  pill that should only appear when the user is reading older
+   *  messages. */
+  const [stickToBottom, setStickToBottom] = useState(true);
 
   useEffect(() => {
     setShowTauri(isTauri);
   }, []);
 
-  // Auto-scroll to bottom whenever new lines arrive (unless paused).
-  useEffect(() => {
-    if (!paused && scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  /** Track whether the user is at the bottom. We treat "within
+   *  ~24 px of the bottom" as effectively pinned so a single
+   *  trackpad nudge during fast logging doesn't immediately drop
+   *  the user out of follow-mode. */
+  function onScroll() {
+    const el = scrollRef.current;
+    if (!el) return;
+    const distance = el.scrollHeight - el.scrollTop - el.clientHeight;
+    const atBottom = distance < 24;
+    if (atBottom !== stickToBottomRef.current) {
+      stickToBottomRef.current = atBottom;
+      setStickToBottom(atBottom);
     }
+  }
+
+  // Smart auto-scroll: only follow new lines while the user is
+  // already at the bottom. If they scrolled up to read older
+  // messages, leave them there - the "Jump to latest" pill below
+  // gets them back in one click.
+  useEffect(() => {
+    if (paused) return;
+    if (!stickToBottomRef.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
   }, [lines, paused]);
+
+  /** Force-scroll back to the newest line and re-arm follow mode. */
+  function jumpToLatest() {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+    stickToBottomRef.current = true;
+    setStickToBottom(true);
+  }
 
   return (
     <Card className="flex h-full flex-col overflow-hidden">
@@ -48,20 +95,32 @@ export function KlineLogPanel() {
             K-Line Traffic Log
           </p>
           <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-muted-foreground">
-            <span className={cn("inline-block h-1.5 w-1.5 rounded-full",
-              paused ? "bg-amber-500"
-                     : showTauri ? "bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]"
-                                 : "bg-muted-foreground/60")} />
-            {paused ? "หยุดชั่วคราว" : showTauri ? "live" : "browser"}
-            <span className="ml-1.5 font-mono">{lines.length}/{MAX_LINES}</span>
+            <span
+              className={cn(
+                'inline-block h-1.5 w-1.5 rounded-full',
+                paused
+                  ? 'bg-amber-500'
+                  : showTauri
+                    ? 'bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]'
+                    : 'bg-muted-foreground/60',
+              )}
+            />
+            {paused ? 'หยุดชั่วคราว' : showTauri ? 'live' : 'browser'}
+            <span className="ml-1.5 font-mono">
+              {lines.length}/{MAX_LINES}
+            </span>
           </span>
           <button
             type="button"
             onClick={() => setPaused(!paused)}
-            title={paused ? "Resume" : "Pause"}
+            title={paused ? 'Resume' : 'Pause'}
             className="rounded p-1 text-muted-foreground transition hover:bg-accent hover:text-foreground"
           >
-            {paused ? <Play className="h-3.5 w-3.5" /> : <Pause className="h-3.5 w-3.5" />}
+            {paused ? (
+              <Play className="h-3.5 w-3.5" />
+            ) : (
+              <Pause className="h-3.5 w-3.5" />
+            )}
           </button>
           <button
             type="button"
@@ -74,18 +133,35 @@ export function KlineLogPanel() {
         </div>
 
         {/* Lines */}
-        <div
-          ref={scrollRef}
-          className="custom-scrollbar h-full min-h-[180px] overflow-y-auto rounded-lg border border-border/40 bg-black/40 p-2 font-mono text-[11px] leading-relaxed"
-        >
-          {lines.length === 0 ? (
-            <p className="px-2 py-1 text-muted-foreground/70">
-              {showTauri
-                ? "ยังไม่มี traffic — กด ▶ เชื่อมต่อ หรือเริ่มอ่าน EEPROM"
-                : "Browser dev mode — เปิดผ่าน `npm run tauri:dev` เพื่อเห็น traffic จริง"}
-            </p>
-          ) : (
-            lines.map((l, i) => <LogRow key={`${l.ts}-${i}`} line={l} />)
+        <div className="relative h-full min-h-[180px]">
+          <div
+            ref={scrollRef}
+            onScroll={onScroll}
+            className="custom-scrollbar absolute inset-0 overflow-y-auto rounded-lg border border-border/40 bg-black/40 p-2 font-mono text-[11px] leading-relaxed"
+          >
+            {lines.length === 0 ? (
+              <p className="px-2 py-1 text-muted-foreground/70">
+                {showTauri
+                  ? 'ยังไม่มี traffic — กด ▶ เชื่อมต่อ หรือเริ่มอ่าน EEPROM'
+                  : 'Browser dev mode — เปิดผ่าน `npm run tauri:dev` เพื่อเห็น traffic จริง'}
+              </p>
+            ) : (
+              lines.map((l, i) => <LogRow key={`${l.ts}-${i}`} line={l} />)
+            )}
+          </div>
+
+          {/* Floating "Jump to latest" pill - only shown while the
+              user is reading older lines. Restores follow-mode when
+              clicked so subsequent traffic auto-scrolls again. */}
+          {!stickToBottom && lines.length > 0 && (
+            <button
+              type="button"
+              onClick={jumpToLatest}
+              className="absolute bottom-2 right-2 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow-lg ring-1 ring-primary/40 transition hover:bg-primary/90"
+            >
+              <ArrowDownToLine className="h-3.5 w-3.5" />
+              ไปบรรทัดล่าสุด
+            </button>
           )}
         </div>
       </CardContent>
@@ -95,16 +171,19 @@ export function KlineLogPanel() {
 
 function LogRow({ line }: { line: KlineLogLine }) {
   const t = new Date(line.ts);
-  const hh = t.getHours().toString().padStart(2, "0");
-  const mm = t.getMinutes().toString().padStart(2, "0");
-  const ss = t.getSeconds().toString().padStart(2, "0");
-  const ms = t.getMilliseconds().toString().padStart(3, "0");
+  const hh = t.getHours().toString().padStart(2, '0');
+  const mm = t.getMinutes().toString().padStart(2, '0');
+  const ss = t.getSeconds().toString().padStart(2, '0');
+  const ms = t.getMilliseconds().toString().padStart(3, '0');
 
   const palette =
-    line.dir === "tx"   ? { Icon: ArrowUp,    cls: "text-sky-400",     label: "TX" } :
-    line.dir === "rx"   ? { Icon: ArrowDown,  cls: "text-emerald-400", label: "RX" } :
-    line.dir === "err"  ? { Icon: CircleAlert,cls: "text-red-400",     label: "ER" } :
-                          { Icon: Info,       cls: "text-amber-300",   label: "..." };
+    line.dir === 'tx'
+      ? { Icon: ArrowUp, cls: 'text-sky-400', label: 'TX' }
+      : line.dir === 'rx'
+        ? { Icon: ArrowDown, cls: 'text-emerald-400', label: 'RX' }
+        : line.dir === 'err'
+          ? { Icon: CircleAlert, cls: 'text-red-400', label: 'ER' }
+          : { Icon: Info, cls: 'text-amber-300', label: '...' };
   const { Icon, cls, label } = palette;
 
   return (
@@ -112,11 +191,13 @@ function LogRow({ line }: { line: KlineLogLine }) {
       <span className="shrink-0 text-muted-foreground/60">
         {hh}:{mm}:{ss}.{ms}
       </span>
-      <Icon className={cn("mt-0.5 h-3 w-3 shrink-0", cls)} />
-      <span className={cn("shrink-0 font-bold", cls)}>{label}</span>
-      {line.dir === "tx" || line.dir === "rx" ? (
+      <Icon className={cn('mt-0.5 h-3 w-3 shrink-0', cls)} />
+      <span className={cn('shrink-0 font-bold', cls)}>{label}</span>
+      {line.dir === 'tx' || line.dir === 'rx' ? (
         <>
-          <span className="shrink-0 text-muted-foreground/60">[{line.len}B]</span>
+          <span className="shrink-0 text-muted-foreground/60">
+            [{line.len}B]
+          </span>
           <span className="break-all text-foreground/90">{line.hex}</span>
         </>
       ) : (

@@ -5,9 +5,9 @@
 use crate::eeprom;
 use crate::livedata;
 use crate::proto::{
-    DumpRomParams, DumpRomResult, EepromReadResult, PortInfo, ReadEcmIdParams,
-    ReadEcmIdResult, ReadEepromParams, ReadLiveSampleParams, ReadLiveSampleResult,
-    Request, Response, VariantArg,
+    ClearDtcParams, ClearDtcResult, DumpRomParams, DumpRomResult, EepromReadResult, PortInfo,
+    ReadEcmIdParams, ReadEcmIdResult, ReadEepromParams, ReadLiveSampleParams,
+    ReadLiveSampleResult, Request, Response, VariantArg,
 };
 use crate::transport::{list_ports, open_kline, DynKLine};
 use anyhow::{Context, Result};
@@ -175,6 +175,10 @@ fn dispatch(req: Request) -> Response {
             Err(e) => Response::err(id, e.to_string()),
         },
         "read_ecm_id" => match handle_read_ecm_id(req.params) {
+            Ok(v)  => Response::ok(id, v),
+            Err(e) => Response::err(id, e.to_string()),
+        },
+        "clear_dtc" => match handle_clear_dtc(req.params) {
             Ok(v)  => Response::ok(id, v),
             Err(e) => Response::err(id, e.to_string()),
         },
@@ -483,6 +487,43 @@ fn handle_read_ecm_id(params: Value) -> Result<Value> {
     let result = ReadEcmIdResult {
         raw_hex,
         ecm_id,
+        duration_ms: elapsed,
+        log,
+    };
+    Ok(serde_json::to_value(result)?)
+}
+
+fn handle_clear_dtc(params: Value) -> Result<Value> {
+    let p: ClearDtcParams =
+        serde_json::from_value(params).context("invalid params for clear_dtc")?;
+    let device_index = p.device_index.unwrap_or(0);
+    let backend = p.backend.unwrap_or_else(|| "d2xx".to_string());
+    let started = Instant::now();
+    let mut log = Vec::new();
+
+    info!(device_index, backend = %backend, "clear_dtc start");
+    // The CLEAR_DTC frame is exclusive: the persistent live-data
+    // session would otherwise hold the FTDI handle and starve us.
+    drop_live_session(&mut log);
+    let mut transport = open_kline(device_index, &backend, &mut log)
+        .map_err(|e| anyhow::anyhow!(e))?;
+
+    let reply = livedata::clear_dtc(transport.as_mut(), &mut log)
+        .map_err(|e| anyhow::anyhow!(e))?;
+
+    let raw_hex = reply
+        .iter()
+        .map(|b| format!("{:02X}", b))
+        .collect::<Vec<_>>()
+        .join(" ");
+    let ok = !reply.is_empty();
+    let elapsed = started.elapsed().as_millis() as u64;
+    info!(elapsed_ms = elapsed, ok, "clear_dtc done");
+
+    let result = ClearDtcResult {
+        raw_hex,
+        reply,
+        ok,
         duration_ms: elapsed,
         log,
     };

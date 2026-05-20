@@ -884,3 +884,93 @@ pub fn dump_rom_via_bridge(
         log: res.log,
     })
 }
+
+/// Clear all stored Honda Diagnostic Trouble Codes / sensor fault
+/// flags. Sends WAKEUP + ESTABLISH + `72 05 60 03 26` (the
+/// byte-for-byte port of `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::
+/// toolStripMenuItem_35_Click`). Caller is expected to surface a
+/// confirmation prompt before invoking - the operation is
+/// non-destructive but it does mutate ECU state.
+#[tauri::command(async)]
+pub fn clear_dtc(
+    app: AppHandle,
+    device_index: Option<u32>,
+    backend: Option<String>,
+) -> Result<OperationResult, String> {
+    let idx     = device_index.unwrap_or(0);
+    let backend = backend.unwrap_or_else(|| "d2xx".to_string());
+    let started = Instant::now();
+    let mut log = Vec::new();
+    let label   = "Clear DTC".to_string();
+
+    kline_log::info(&app, format!("--- {} via {} ---", label, backend));
+
+    let mut transport = open_transport(&app, idx, &backend, &mut log)?;
+    let reply = livedata_mod::clear_dtc(transport.as_mut(), &mut log)
+        .map_err(|e| e.to_string())?;
+    for line in &log {
+        kline_log::info(&app, line.clone());
+    }
+    let elapsed = started.elapsed().as_millis() as u64;
+    let ok = !reply.is_empty();
+    kline_log::info(
+        &app,
+        format!("--- {} {} in {} ms ---", label, if ok { "OK" } else { "NO ACK" }, elapsed),
+    );
+
+    Ok(OperationResult {
+        family: "Honda".to_string(),
+        label,
+        ok,
+        bytes: Some(reply),
+        duration_ms: elapsed,
+        log,
+    })
+}
+
+/// Clear DTCs via a remote `loy-bridge` daemon. Same return shape
+/// as the local `clear_dtc`. `daemon_backend` selects which
+/// transport the daemon uses to open the device (defaults to
+/// `"d2xx"`).
+#[tauri::command(async)]
+pub fn clear_dtc_via_bridge(
+    app: AppHandle,
+    url: String,
+    device_index: Option<u32>,
+    daemon_backend: Option<String>,
+) -> Result<OperationResult, String> {
+    let started = Instant::now();
+    let backend = daemon_backend.unwrap_or_else(|| "d2xx".to_string());
+    let label   = "Clear DTC".to_string();
+
+    kline_log::info(
+        &app,
+        format!("--- {} via bridge @ {} (daemon backend: {}) ---", label, url, backend),
+    );
+
+    let res = bridge_client::clear_dtc(&url, device_index.unwrap_or(0), &backend)
+        .map_err(|e| e.to_string())?;
+
+    for line in &res.log {
+        kline_log::info(&app, line.clone());
+    }
+    kline_log::info(
+        &app,
+        format!(
+            "--- {} via bridge {} in {} ms (raw={}) ---",
+            label,
+            if res.ok { "OK" } else { "NO ACK" },
+            started.elapsed().as_millis(),
+            res.raw_hex
+        ),
+    );
+
+    Ok(OperationResult {
+        family: "Honda".to_string(),
+        label,
+        ok: res.ok,
+        bytes: Some(res.reply),
+        duration_ms: res.duration_ms,
+        log: res.log,
+    })
+}

@@ -170,6 +170,32 @@ pub struct ReadEcmIdResult {
     pub log:         Vec<String>,
 }
 
+/// Parameters for `clear_dtc`. Same shape as `ReadEcmIdParams`.
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub struct ClearDtcParams {
+    #[serde(default)]
+    pub device_index: Option<u32>,
+    #[serde(default)]
+    pub backend: Option<String>,
+}
+
+/// Result payload of `clear_dtc`. Mirrors the local app's
+/// `ClearDtcResultDto`.
+#[derive(Debug, Serialize)]
+pub struct ClearDtcResult {
+    /// Hex-encoded reply to the CLEAR_DTC frame after TX-echo strip.
+    pub raw_hex:     String,
+    /// Raw bytes of the same reply.
+    pub reply:       Vec<u8>,
+    /// `true` when the ECU answered with at least one byte.
+    pub ok:          bool,
+    /// End-to-end duration in ms.
+    pub duration_ms: u64,
+    /// Per-step log lines from the daemon.
+    pub log:         Vec<String>,
+}
+
 /// Result payload of `read_live_sample`. Mirrors the local
 /// `LiveSampleDto` so the frontend parser can be shared verbatim.
 #[derive(Debug, Serialize)]

@@ -46,6 +46,17 @@ export interface SettingsState {
   /** Master toggle for the remote bridge. */
   bridgeEnabled: boolean;
 
+  /** Toast + sound when a sensor reading enters the danger band
+   *  (configured per-sensor in `lib/livedata.ts`). Off by default
+   *  so demo-mode noise doesn't blast the user with alerts. */
+  liveAlertsEnabled: boolean;
+
+  /** Auto-dump the current ROM to a backup file *before* every
+   *  Flash operation. Strongly recommended; defaults to `true`.
+   *  Saved into `~/MZA-Backup/<date>_<ecmid>.bin` when running
+   *  inside Tauri (the FS plugin handles cross-platform paths). */
+  autoBackupBeforeFlash: boolean;
+
   // ---- mutators (kept thin; UI calls these directly) -----------------
   setAppName: (name: string) => void;
   setLogoDataUrl: (url: string | null) => void;
@@ -57,6 +68,8 @@ export interface SettingsState {
   setTagline: (v: string) => void;
   setBridgeUrl: (v: string) => void;
   setBridgeEnabled: (v: boolean) => void;
+  setLiveAlertsEnabled: (v: boolean) => void;
+  setAutoBackupBeforeFlash: (v: boolean) => void;
   markSplashSeen: () => void;
   reset: () => void;
 }
@@ -74,6 +87,8 @@ const DEFAULTS: Pick<
   | 'tagline'
   | 'bridgeUrl'
   | 'bridgeEnabled'
+  | 'liveAlertsEnabled'
+  | 'autoBackupBeforeFlash'
 > = {
   appName: 'LOY-TUNER 2026',
   logoDataUrl: null,
@@ -86,6 +101,8 @@ const DEFAULTS: Pick<
   tagline: 'Honda Keihin / Shinden Tuner',
   bridgeUrl: '',
   bridgeEnabled: false,
+  liveAlertsEnabled: true,
+  autoBackupBeforeFlash: true,
 };
 
 export const useSettings = create<SettingsState>()(
@@ -102,6 +119,9 @@ export const useSettings = create<SettingsState>()(
       setTagline: (tagline) => set({ tagline }),
       setBridgeUrl: (bridgeUrl) => set({ bridgeUrl }),
       setBridgeEnabled: (bridgeEnabled) => set({ bridgeEnabled }),
+      setLiveAlertsEnabled: (liveAlertsEnabled) => set({ liveAlertsEnabled }),
+      setAutoBackupBeforeFlash: (autoBackupBeforeFlash) =>
+        set({ autoBackupBeforeFlash }),
       markSplashSeen: () => set({ splashSeenThisRun: true }),
       reset: () => set({ ...DEFAULTS }),
     }),

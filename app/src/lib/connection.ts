@@ -59,6 +59,11 @@ export interface ConnectionState {
    *  push the resulting 5-byte signature into `ecuId`. Best-effort -
    *  silently noops if the connection isn't active. */
   refreshEcuId: () => Promise<void>;
+  /** Send the Honda KWP "Erase DTC" frame
+   *  (`72 05 60 03 26` after WAKEUP+ESTABLISH) against the
+   *  currently selected port. Resolves to `{ ok, error? }`. The
+   *  caller is expected to confirm with the user before invoking. */
+  clearDtc: () => Promise<{ ok: boolean; error?: string }>;
   /** Convenience: lookup the FtdiDevice for the current `selectedKey`. */
   selectedDevice: () => FtdiDevice | null;
 }
@@ -162,6 +167,39 @@ export const useConnection = create<ConnectionState>((set, get) => ({
 
   setEcuId(id) {
     set({ ecuId: id });
+  },
+
+  async clearDtc() {
+    const { status, selectedDevice } = get();
+    if (status !== 'connected') {
+      return { ok: false, error: 'ยังไม่ได้เชื่อมต่อกับกล่อง' };
+    }
+    const dev = selectedDevice();
+    if (!dev) return { ok: false, error: 'ไม่พบพอร์ตที่เลือกไว้' };
+    const cfg = bridgeConfig();
+    try {
+      // Pick the right transport: bridge mode → daemon-side RPC,
+      // local mode → direct Tauri command. The C# original
+      // (`toolStripMenuItem_35_Click`) treats any reply as success;
+      // we surface `ok` from the response so the UI can show a
+      // proper error if the ECU stays silent.
+      const res =
+        cfg.active && dev.backend === 'bridge'
+          ? await tauri.clearDtcViaBridge(
+              cfg.url,
+              dev.index,
+              (dev.daemon_backend ?? 'd2xx') as 'd2xx' | 'libusb',
+            )
+          : dev.backend !== 'bridge'
+            ? await tauri.clearDtc(dev.index, dev.backend)
+            : null;
+      if (!res) return { ok: false, error: 'ไม่สามารถส่งคำสั่งได้' };
+      return res.ok
+        ? { ok: true }
+        : { ok: false, error: 'กล่องไม่ตอบกลับ (NO ACK)' };
+    } catch (e) {
+      return { ok: false, error: String(e) };
+    }
   },
 
   async refreshEcuId() {

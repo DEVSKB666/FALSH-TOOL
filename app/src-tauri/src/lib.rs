@@ -44,6 +44,8 @@ pub fn run() {
             commands::read_live_sample_via_bridge,
             commands::dump_rom_via_bridge,
             commands::read_ecm_id_via_bridge,
+            commands::clear_dtc,
+            commands::clear_dtc_via_bridge,
         ])
         .setup(|_app| {
             #[cfg(debug_assertions)]

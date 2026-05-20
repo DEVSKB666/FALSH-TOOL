@@ -424,6 +424,42 @@ export const tauri = {
     });
   },
 
+  /** Clear all stored Honda Diagnostic Trouble Codes. Sends
+   *  WAKEUP + ESTABLISH + `72 05 60 03 26` (the byte-for-byte port
+   *  of `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::toolStripMenuItem_35_Click`).
+   *  Caller is expected to confirm with the user before invoking. */
+  async clearDtc(deviceIndex = 0, backend: 'd2xx' | 'libusb' = 'd2xx') {
+    return (await getInvoke())<{
+      family: string;
+      label: string;
+      ok: boolean;
+      bytes: number[] | null;
+      duration_ms: number;
+      log: string[];
+    }>('clear_dtc', { deviceIndex, backend });
+  },
+
+  /** Clear DTCs via a remote `loy-bridge` daemon. Same return shape
+   *  as the local `clearDtc`. */
+  async clearDtcViaBridge(
+    url: string,
+    deviceIndex = 0,
+    daemonBackend: 'd2xx' | 'libusb' = 'd2xx',
+  ) {
+    return (await getInvoke())<{
+      family: string;
+      label: string;
+      ok: boolean;
+      bytes: number[] | null;
+      duration_ms: number;
+      log: string[];
+    }>('clear_dtc_via_bridge', {
+      url,
+      deviceIndex,
+      daemonBackend,
+    });
+  },
+
   /** Read one live-data sample via a remote `loy-bridge` daemon. The
    *  daemon opens its own FTDI, runs the full WAKEUP+ESTABLISH+TABLE_17
    *  +TABLE_20 cycle, and returns the same `LiveSampleDto` shape as the
@@ -571,6 +607,16 @@ async function mockInvoke<T>(
         raw_hex: '72 0B 71 01 04 08 0F 01 00 00 00',
         ecm_id: '0104080F01',
         duration_ms: 100,
+      } as unknown as T;
+    case 'clear_dtc':
+    case 'clear_dtc_via_bridge':
+      return {
+        family: 'Honda',
+        label: 'Clear DTC',
+        ok: true,
+        bytes: [0x72, 0x05, 0x60, 0x03, 0x26],
+        duration_ms: 250,
+        log: ['[mock] clear_dtc - browser dev mode'],
       } as unknown as T;
     case 'livedata_poll':
       return {

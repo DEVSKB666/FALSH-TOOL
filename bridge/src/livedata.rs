@@ -206,6 +206,35 @@ pub fn read_ecm_id(
     Ok(reply)
 }
 
+/// Honda KWP "Erase DTC" frame - byte-for-byte port of
+/// `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::toolStripMenuItem_35_Click`'s
+/// `array3 = { 114, 5, 96, 3, 38 }`. Clears stored Diagnostic
+/// Trouble Codes after the standard WAKEUP + ESTABLISH handshake.
+const HONDA_CLEAR_DTC: [u8; 5] = [0x72, 0x05, 0x60, 0x03, 0x26];
+
+/// Run WAKEUP + ESTABLISH + CLEAR_DTC and return the
+/// (echo-stripped) reply for diagnostics. Mirror of the local
+/// app's `livedata::clear_dtc`.
+pub fn clear_dtc(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    const POLL_PAUSE_MS: u64 = 30;
+
+    log.push("[livedata] clear_dtc - WAKEUP + ESTABLISH + CLEAR_DTC".into());
+    let _ = try_send(t, &HONDA_WAKEUP, log, "wakeup")?;
+    sleep_ms(POLL_PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH, log, "establish")?;
+    sleep_ms(POLL_PAUSE_MS);
+    let reply = try_send(t, &HONDA_CLEAR_DTC, log, "clear_dtc")?;
+    log.push(format!(
+        "[livedata] clear_dtc reply ({} B): {}",
+        reply.len(),
+        hex(&reply)
+    ));
+    Ok(reply)
+}
+
 fn hex(bytes: &[u8]) -> String {
     bytes
         .iter()

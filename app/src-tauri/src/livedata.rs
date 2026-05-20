@@ -198,6 +198,36 @@ pub fn read_ecm_id(
     Ok(reply)
 }
 
+/// Honda KWP "Erase DTC" frame - byte-for-byte port of
+/// `MZA_TUNER_FLASH_2026/ns1/GForm12.cs::toolStripMenuItem_35_Click`'s
+/// `array3 = { 114, 5, 96, 3, 38 }`. Sent after the standard
+/// WAKEUP + ESTABLISH handshake to clear all stored Diagnostic
+/// Trouble Codes / sensor fault flags from the Keihin ECU.
+const HONDA_CLEAR_DTC: [u8; 5] = [0x72, 0x05, 0x60, 0x03, 0x26];
+
+/// Run WAKEUP + ESTABLISH + CLEAR_DTC and return the
+/// (echo-stripped) reply. The C# original blindly assumes success
+/// once the third frame is acknowledged; we forward the raw reply
+/// so the caller can surface protocol errors if any. An empty Vec
+/// indicates a silent ECU (only TX echo bounced back).
+pub fn clear_dtc(
+    t: &mut dyn KLine,
+    log: &mut Vec<String>,
+) -> Result<Vec<u8>, TransportError> {
+    log.push("[livedata] clear_dtc - WAKEUP + ESTABLISH + CLEAR_DTC".into());
+    let _ = try_send(t, &HONDA_WAKEUP)?;
+    sleep_ms(POLL_PAUSE_MS);
+    let _ = try_send(t, &HONDA_ESTABLISH)?;
+    sleep_ms(POLL_PAUSE_MS);
+    let reply = try_send(t, &HONDA_CLEAR_DTC)?;
+    log.push(format!(
+        "[livedata] clear_dtc reply ({} B): {}",
+        reply.len(),
+        hex(&reply)
+    ));
+    Ok(reply)
+}
+
 fn hex(bytes: &[u8]) -> String {
     bytes.iter().map(|b| format!("{:02X}", b)).collect::<Vec<_>>().join(" ")
 }

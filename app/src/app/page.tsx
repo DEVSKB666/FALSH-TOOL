@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Activity,
@@ -14,6 +15,7 @@ import {
   Play,
   ShieldCheck,
   Sparkles,
+  Eraser,
   Trash2,
   Volume2,
   VolumeX,
@@ -24,6 +26,7 @@ import {
 } from 'lucide-react';
 import { useSettings } from '@/lib/settings';
 import { useConnection } from '@/lib/connection';
+import { useEcuLookup } from '@/lib/ecu-lookup';
 import { sound } from '@/lib/sounds';
 import { toast } from '@/components/toast';
 import { AppShell } from '@/components/app-shell';
@@ -65,6 +68,8 @@ function Dashboard() {
   const flashCount = useConnection((s) => s.flashCount);
   const ecuId = useConnection((s) => s.ecuId);
   const refreshEcmId = useConnection((s) => s.refreshEcuId);
+  const refreshEcuDb = useEcuLookup((s) => s.refresh);
+  const lookupByEcmId = useEcuLookup((s) => s.lookupByEcmId);
 
   // First time we see "connected" with no ecuId yet, fire WAKEUP+
   // ESTABLISH and stash the 5-byte signature so the "ECM ID" row on
@@ -75,6 +80,16 @@ function Dashboard() {
       void refreshEcmId();
     }
   }, [status, ecuId, refreshEcmId]);
+
+  // Load `data.ini` once so the dashboard can resolve ECM-id ↔ part
+  // code in real time. Cheap (parses at most ~250 entries) and
+  // bridges any subsequent lookup, including the ECU page's
+  // search-by-ecm-id workflows.
+  useEffect(() => {
+    void refreshEcuDb();
+  }, [refreshEcuDb]);
+
+  const matchedEcu = lookupByEcmId(ecuId);
 
   // File picker state - kept local since it doesn't need to be global yet.
   const [binFile, setBinFile] = useState<File | null>(null);
@@ -132,6 +147,7 @@ function Dashboard() {
           appName={appName}
           tagline={tagline}
           flashCount={flashCount}
+          matchedEcu={matchedEcu}
         />
       </div>
 
@@ -281,22 +297,68 @@ function BannerCard({
 
       <CardContent className="relative flex h-full min-h-[280px] flex-col items-center justify-center gap-4 p-8">
         {logo ? (
-          <img
-            src={logo}
-            alt={appName}
-            className="max-h-44 w-auto rounded-xl object-contain ring-1 ring-primary/30"
-          />
-        ) : (
-          <motion.div
-            className="flex h-32 w-32 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/60 shadow-[0_0_60px_hsl(var(--primary)/0.6)]"
-            animate={{ rotate: [0, 4, -4, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-          >
-            <Zap
-              className="h-16 w-16 text-primary-foreground"
-              strokeWidth={2.4}
+          /* Spinning conic-gradient ring around the brand logo. The
+             outer wrapper rotates infinitely while the inner mask
+             (`bg-card`) hides everything except a thin animated band,
+             giving the impression of a single glowing border that
+             travels around the logo. A second slower counter-rotating
+             dotted ring adds a hi-tech depth cue. */
+          <div className="relative h-44 w-44">
+            {/* Animated conic ring (the visible border) - fully
+                circular to match the round LoyMapX logo. */}
+            <motion.div
+              aria-hidden
+              className="absolute -inset-1 rounded-full [background:conic-gradient(from_0deg,hsl(var(--primary))_0deg,transparent_120deg,hsl(var(--accent))_240deg,hsl(var(--primary))_360deg)] blur-[1px]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
             />
-          </motion.div>
+            {/* Circular inner mask carved into the card so only the
+                thin ring shows. */}
+            <div
+              aria-hidden
+              className="absolute inset-0 rounded-full bg-card"
+            />
+            {/* Outer slower dotted halo - travels in the opposite
+                direction for layered depth. */}
+            <motion.div
+              aria-hidden
+              className="absolute -inset-3 rounded-full border border-dashed border-primary/40"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+            />
+            {/* Logo itself - clipped to a circle so the ring hugs it. */}
+            <img
+              src={logo}
+              alt={appName}
+              className="absolute inset-1.5 h-[calc(100%-0.75rem)] w-[calc(100%-0.75rem)] rounded-full object-cover ring-1 ring-primary/30"
+            />
+          </div>
+        ) : (
+          /* Fallback when the user hasn't uploaded a brand image -
+             a glowing rotating Zap badge with the same conic ring
+             treatment so the layout doesn't shift between states. */
+          <div className="relative h-36 w-36">
+            <motion.div
+              aria-hidden
+              className="absolute -inset-1 rounded-full [background:conic-gradient(from_0deg,hsl(var(--primary))_0deg,transparent_120deg,hsl(var(--accent))_240deg,hsl(var(--primary))_360deg)] blur-[1px]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 rounded-full bg-card"
+            />
+            <motion.div
+              className="absolute inset-1.5 flex items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/60 shadow-[0_0_60px_hsl(var(--primary)/0.6)]"
+              animate={{ rotate: [0, 4, -4, 0] }}
+              transition={{ duration: 6, repeat: Infinity }}
+            >
+              <Zap
+                className="h-14 w-14 text-primary-foreground"
+                strokeWidth={2.4}
+              />
+            </motion.div>
+          </div>
         )}
         <div className="text-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">
@@ -316,19 +378,35 @@ function EcuInfoCard({
   appName,
   tagline,
   flashCount,
+  matchedEcu,
 }: {
   ecuId: string | null;
   appName: string;
   tagline: string;
   flashCount: number;
+  matchedEcu: import('@/lib/tauri').EcuEntry | null;
 }) {
+  // When the ECM-id matches a row in `data.ini`, show the part code
+  // and family right under "ECM ID" so the operator instantly knows
+  // which BIN they should be loading. `matchedEcu` is computed by
+  // the parent from `useEcuLookup`.
   const rows: Array<[string, string]> = [
     ['Brand', appName],
-    ['Family', 'Honda Keihin / Shinden'],
+    [
+      'Family',
+      matchedEcu ? `Honda ${matchedEcu.family}` : 'Honda Keihin / Shinden',
+    ],
     ['ECM ID', ecuId ?? 'ยังไม่ได้อ่าน'],
+    [
+      'Match',
+      matchedEcu
+        ? `${matchedEcu.part_code}  (${matchedEcu.id})`
+        : ecuId
+          ? 'ไม่พบในฐานข้อมูล'
+          : '—',
+    ],
     ['Flashes', String(flashCount).padStart(4, '0')],
     ['Protocol', 'K-Line / KWP2000'],
-    ['Baud', '10,400 bps'],
   ];
 
   return (
@@ -354,6 +432,17 @@ function EcuInfoCard({
             </div>
           ))}
         </div>
+
+        {/* Quick links to specialised pages so the operator doesn't
+            have to hunt through the navbar after a fresh connect. */}
+        <Link
+          href="/dtc"
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-destructive/50 bg-destructive/10 px-3 text-sm font-semibold text-destructive transition hover:bg-destructive/20"
+        >
+          <Eraser className="h-4 w-4" />
+          ลบ DTC (Erase Trouble Codes)
+          <ChevronRight className="h-4 w-4" />
+        </Link>
 
         <div className="mt-auto flex items-center gap-2 text-xs text-muted-foreground">
           <Activity className="h-3.5 w-3.5" />
